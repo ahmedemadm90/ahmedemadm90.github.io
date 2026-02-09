@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ahmed Emad  Portfolio</title>
+  <meta name="description" content="Ahmed Emad  Laravel & Flutter Engineer. Shipping production systems across web and mobile." />
+  <style>
+    :root{
+      --bg:#0a0b14;
+      --bg2:#0f1124;
+      --text:#f3f4ff;
+      --muted:rgba(243,244,255,.7);
+      --muted2:rgba(243,244,255,.55);
+      --card:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --soft:rgba(255,255,255,.08);
+      --accent:#7c8cff;
+      --accent2:#ff7ad9;
+      --accent3:#36e1c4;
+      --g1: linear-gradient(110deg,#7c8cff,#a35dff,#ff7ad9);
+      --g2: linear-gradient(140deg,#36e1c4,#4ea7ff,#7c8cff);
+      --radius:22px;
+      --shadow: 0 28px 80px rgba(0,0,0,.5);
+      --glow: 0 0 0 1px rgba(255,255,255,.05), 0 20px 70px rgba(0,0,0,.55);
+      --font: "Space Grotesk", "Sora", "Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(124,140,255,.14), transparent 60%),
+        radial-gradient(900px 700px at 110% 10%, rgba(255,122,217,.12), transparent 55%),
+        radial-gradient(700px 700px at 30% 120%, rgba(54,225,196,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    ::selection{background: rgba(124,140,255,.35); color:#fff}
+
+    .container{max-width:1180px; margin:0 auto; padding:0 20px}
+
+    .bgfx{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden}
+    .orb{position:absolute; border-radius:999px; filter: blur(70px); opacity:.18}
+    .orb.one{width:900px; height:520px; left:50%; top:-220px; transform:translateX(-50%); background:var(--g1); animation: float1 18s ease-in-out infinite}
+    .orb.two{width:560px; height:560px; right:-180px; bottom:-260px; background:var(--g2); opacity:.16; animation: float2 22s ease-in-out infinite}
+    .gridlines{position:absolute; inset:0; background:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 26px 26px; opacity:.15}
+
+    header{position:sticky; top:0; z-index:5; backdrop-filter: blur(14px); border-bottom:1px solid rgba(255,255,255,.06); background: rgba(9,10,18,.55)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0}
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo{width:42px; height:42px; border-radius:16px; background:var(--g1); box-shadow: 0 14px 35px rgba(124,140,255,.2)}
+    .brand .name{font-weight:800; font-size:14px; line-height:1.1}
+    .brand .sub{font-size:12px; color:var(--muted2); margin-top:2px}
+    .links{display:none; gap:18px; color:var(--muted); font-size:14px}
+    .links a:hover{color:#fff}
+
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,.05); color:var(--muted); font-size:13px; transition:.2s ease; box-shadow: 0 10px 25px rgba(0,0,0,.18)}
+    .btn:hover{background:rgba(255,255,255,.10); transform: translateY(-1px)}
+    .btn.primary{border:none; background:var(--g1); color:#fff; font-weight:800; box-shadow: 0 22px 60px rgba(124,140,255,.2); padding:12px 14px}
+    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,.15)}
+    .icon{width:16px; height:16px; display:inline-block}
+
+    main{position:relative; z-index:2}
+
+    .hero{padding:42px 0 30px}
+    .heroGrid{display:grid; gap:20px; grid-template-columns:1fr}
+    .pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); background:rgba(255,255,255,.06); border-radius:999px; padding:7px 12px; color:var(--muted); font-size:12px; font-weight:700}
+    h1{font-size:44px; line-height:1.05; margin:16px 0 12px; letter-spacing:-.02em}
+    .gradText{background:var(--g1); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .lead{color:var(--muted); line-height:1.6; max-width:58ch; margin:0 0 18px; font-size:16px}
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 14px}
+
+    .card{border:1px solid var(--border); background:var(--card); border-radius:var(--radius); box-shadow: 0 1px 0 rgba(255,255,255,.06); backdrop-filter: blur(14px); transition:.25s ease}
+    .card:hover{border-color: rgba(255,255,255,.18); box-shadow: var(--glow); transform: translateY(-2px)}
+    .card.pad{padding:18px}
+
+    .stats{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px}
+    .stat{border:1px solid var(--border); background:rgba(255,255,255,.05); border-radius:18px; padding:12px}
+    .stat .label{display:flex; gap:8px; align-items:center; color:var(--muted); font-size:12px; font-weight:700}
+    .stat .value{margin-top:8px; font-size:18px; font-weight:900}
+
+    section{padding:40px 0}
+    .sectionHead{max-width: 760px; margin: 0 auto; text-align:center}
+    .kicker{display:inline-flex; align-items:center; gap:8px; background:var(--g1); padding:7px 12px; border-radius:999px; font-size:12px; font-weight:900; box-shadow: 0 20px 60px rgba(124,140,255,.16)}
+    h2{margin:14px 0 10px; font-size:36px; letter-spacing:-.02em}
+    .desc{color:var(--muted); line-height:1.7; margin:0; font-size:15px}
+
+    .toolbar{display:grid; gap:10px; padding:14px}
+    .toolbarGrid{grid-template-columns:1fr}
+    .field{display:flex; align-items:center; gap:10px; border:1px solid var(--border); background:rgba(255,255,255,.05); border-radius:18px; padding:10px 12px}
+    .field:focus-within{border-color: rgba(124,140,255,.5); box-shadow: 0 0 0 3px rgba(124,140,255,.18)}
+    .field input{width:100%; background:transparent; border:none; outline:none; color:var(--text); font-size:14px}
+    .filters{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .filterGroup{display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:6px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,.05)}
+    .filterLabel{font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted2); font-weight:800; padding:0 6px}
+    .filterBtn{border:1px solid transparent; background:rgba(255,255,255,.06); color:var(--muted); font-size:12px; font-weight:800; padding:6px 10px; border-radius:999px; cursor:pointer; transition:.2s ease}
+    .filterBtn:hover{background:rgba(255,255,255,.12)}
+    .filterBtn.active{background:var(--g1); color:#fff; border-color:rgba(255,255,255,.25); box-shadow: 0 10px 25px rgba(124,140,255,.25)}
+
+    .metaRow{display:flex; justify-content:space-between; gap:10px; padding:0 14px 12px; color:var(--muted2); font-size:12px}
+
+    .projects{display:grid; gap:14px; grid-template-columns:1fr}
+    .projHead{display:flex; justify-content:space-between; gap:12px; align-items:flex-start}
+    .badge{font-size:11px; font-weight:800; padding:4px 8px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.05); color:var(--muted); white-space:nowrap}
+    .proj h3{margin:0; font-size:16px}
+    .proj p{margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.55}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .chip{font-size:12px; font-weight:700; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.05); color:var(--muted)}
+    .hlTitle{margin-top:12px; font-size:11px; text-transform:uppercase; letter-spacing:.10em; color:var(--muted2); font-weight:900}
+    .hl{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+    .hl li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:14px; line-height:1.45}
+    .dot{width:18px; height:18px; border-radius:7px; border:1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.06); display:grid; place-items:center; margin-top:2px}
+    .dot svg{width:12px; height:12px; opacity:.72}
+    .tag{font-size:11px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.05); color:var(--muted2)}
+
+    .timeline{display:grid; gap:12px; margin-top:18px}
+    .roleCard{padding:16px}
+    .roleTop{display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap}
+    .roleTitle{font-weight:900; font-size:16px}
+    .roleMeta{color:var(--muted2); font-size:12px}
+    .roleCompany{font-weight:800; color:var(--text)}
+    .roleDates{color:var(--muted2); font-size:12px}
+    .roleList{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+    .roleList li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:14px; line-height:1.5}
+
+    .approach{display:grid; gap:14px; grid-template-columns:1fr}
+    .step{border:1px solid var(--border); background:rgba(255,255,255,.05); border-radius:18px; padding:12px}
+    .stepTop{display:flex; justify-content:space-between; align-items:center}
+    .stepNum{font-size:12px; font-weight:900; color:var(--muted2)}
+    .stepTag{font-size:12px; color:var(--muted2)}
+    .stepT{margin-top:8px; font-weight:900; font-size:14px}
+    .stepD{margin-top:6px; color:var(--muted); font-size:14px; line-height:1.45}
+
+    .contactWrap{border-radius:28px; border:1px solid var(--border); background: linear-gradient(110deg, rgba(124,140,255,.12), rgba(255,255,255,0) 45%), linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,0)); padding:18px}
+    .contactGrid{display:grid; gap:14px; grid-template-columns:1fr}
+    .summaryBox{border:1px solid var(--border); background:rgba(255,255,255,.05); border-radius:18px; padding:12px; color:var(--muted); font-size:14px; line-height:1.6}
+
+    footer{margin-top:18px; padding-top:14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:10px; align-items:center; justify-content:space-between; color:var(--muted2); font-size:12px}
+
+    .fadeUp{opacity:0; transform: translateY(14px); transition: .6s ease}
+    .fadeUp.in{opacity:1; transform: translateY(0)}
+
+    @media (min-width: 860px){
+      .links{display:flex}
+      .heroGrid{grid-template-columns: 7fr 5fr; align-items:center}
+      .toolbarGrid{grid-template-columns: 6fr 6fr; align-items:center}
+      .projects{grid-template-columns: repeat(2, 1fr)}
+      .approach{grid-template-columns: 7fr 5fr}
+      .contactGrid{grid-template-columns: 7fr 5fr; align-items:center}
+      .contactWrap{padding:26px}
+      footer{flex-direction:row}
+    }
+
+    @keyframes float1{0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,20px)}}
+    @keyframes float2{0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,-10px)}}
+    @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important}}
+  </style>
+</head>
+<body>
+  <div class="bgfx">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="gridlines"></div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top">
+          <div class="logo"></div>
+          <div>
+            <div class="name">Ahmed Emad</div>
+            <div class="sub">Laravel  Flutter Engineer</div>
+          </div>
+        </a>
+
+        <nav class="links">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#approach">Approach</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div style="display:flex; gap:10px; align-items:center">
+          <a class="btn ghost" id="btnLinkedInTop" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" id="btnCvTop" href="Ahmed-Emad.pdf" download target="_blank">Download CV</a>
+          <a class="btn primary" id="btnEmailTop" href="mailto:your.email@example.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="heroGrid">
+          <div class="fadeUp">
+            <div class="pill">Available for Laravel / Flutter roles  Egypt / Remote</div>
+            <h1>I build <span class="gradText">production-ready</span> web & mobile systems.</h1>
+            <p class="lead">Laravel for scalable backend APIs and business workflows. Flutter for cross-platform mobile apps. Clean architecture, maintainability, and shipping.</p>
+            <div class="heroActions">
+              <a class="btn primary" href="#projects">Explore Projects</a>
+              <a class="btn" href="Ahmed-Emad.pdf" download>Download CV</a>
+              <a class="btn" href="#contact">Lets Talk</a>
+            </div>
+            <div class="chips">
+              <span class="chip">Laravel</span>
+              <span class="chip">Flutter</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">RBAC</span>
+              <span class="chip">Multi-tenant SaaS</span>
+            </div>
+          </div>
+
+          <div class="fadeUp">
+            <div class="card pad">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+                <div>
+                  <div style="font-weight:900; font-size:14px">Hiring snapshot</div>
+                  <div style="font-size:12px; color:var(--muted2); margin-top:4px">Evidence-driven, project-heavy background</div>
+                </div>
+                <div style="width:46px; height:46px; border-radius:18px; background:var(--g1)"></div>
+              </div>
+              <div class="stats">
+                <div class="stat">
+                  <div class="label"><span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4V7Z" stroke="currentColor" opacity=".8"/></svg></span>Projects built</div>
+                  <div class="value">150+</div>
+                </div>
+                <div class="stat">
+                  <div class="label"><span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18" stroke="currentColor" opacity=".8"/></svg></span>Primary stacks</div>
+                  <div class="value">Laravel & Flutter</div>
+                </div>
+                <div class="stat">
+                  <div class="label"><span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16" stroke="currentColor" opacity=".8"/></svg></span>System focus</div>
+                  <div class="value">APIs & SaaS & Mobile</div>
+                </div>
+                <div class="stat">
+                  <div class="label"><span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3 6v6c0 5 3.6 9.2 9 10 5.4-.8 9-5 9-10V6l-9-4Z" stroke="currentColor" opacity=".8"/></svg></span>Core strengths</div>
+                  <div class="value">RBAC & Multi-tenant</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="sectionHead fadeUp">
+          <div class="kicker">Experience</div>
+          <h2>Work experience that ships</h2>
+          <p class="desc">9+ years building web and mobile systems across enterprise, SaaS, and operations.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="card roleCard fadeUp">
+            <div class="roleTop">
+              <div>
+                <div class="roleTitle">Web & Mobile Developer</div>
+                <div class="roleMeta"><span class="roleCompany">Cemex Egypt</span> • Enterprise</div>
+              </div>
+              <div class="roleDates">Oct 2017 — Present</div>
+            </div>
+            <ul class="roleList">
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Led delivery of multiple web and mobile applications with high-quality standards.</li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Designed and implemented REST APIs for web/mobile integration.</li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Performance tuning, optimization, and mentoring junior developers.</li>
+            </ul>
+          </div>
+
+          <div class="card roleCard fadeUp">
+            <div class="roleTop">
+              <div>
+                <div class="roleTitle">Web & Mobile Developer</div>
+                <div class="roleMeta"><span class="roleCompany">Exception Tech Group</span> • Product</div>
+              </div>
+              <div class="roleDates">Jan 2017 — Present</div>
+            </div>
+            <ul class="roleList">
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Built Laravel and React Native applications with a focus on UX and scalability.</li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Integrated secure payment gateways and third-party APIs.</li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Cross-browser/device compatibility, testing, and UI/UX collaboration.</li>
+            </ul>
+          </div>
+
+          <div class="card roleCard fadeUp">
+            <div class="roleTop">
+              <div>
+                <div class="roleTitle">Backend Developer</div>
+                <div class="roleMeta"><span class="roleCompany">Ibnsina Pharma</span> • Healthcare</div>
+              </div>
+              <div class="roleDates">Nov 2015 — Dec 2016</div>
+            </div>
+            <ul class="roleList">
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Developed secure PHP/Laravel applications for pharmacy records and medical data.</li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Implemented privacy-focused features and third-party integrations.</li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Testing, debugging, and ongoing maintenance based on user feedback.</li>
+            </ul>
+          </div>
+
+          <div class="card roleCard fadeUp">
+            <div class="roleTop">
+              <div>
+                <div class="roleTitle">Back End Developer</div>
+                <div class="roleMeta"><span class="roleCompany">TE Data</span> • Telecom</div>
+              </div>
+              <div class="roleDates">Oct 2014 — Oct 2015</div>
+            </div>
+            <ul class="roleList">
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span>Backend development for internal systems and operations tooling.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="approach">
+      <div class="container">
+        <div class="sectionHead fadeUp">
+          <div class="kicker">How I work</div>
+          <h2>A simple process that scales</h2>
+          <p class="desc">Clear alignment, clean architecture, iterative shipping  so teams can build on top of it.</p>
+        </div>
+
+        <div class="approach" style="margin-top:18px">
+          <div class="card pad fadeUp">
+            <div style="font-weight:900; font-size:16px">Engineering mindset</div>
+            <p class="desc" style="margin-top:8px">I align on outcomes, design the system, then ship in iterations.</p>
+            <div class="step" style="margin-top:12px">
+              <div class="stepTop"><div class="stepNum">01</div><div class="stepTag">Scope</div></div>
+              <div class="stepT">Clarify the business goal</div>
+              <div class="stepD">Define roles, constraints, and success criteria.</div>
+            </div>
+            <div class="step" style="margin-top:10px">
+              <div class="stepTop"><div class="stepNum">02</div><div class="stepTag">Design</div></div>
+              <div class="stepT">Design the architecture</div>
+              <div class="stepD">APIs, data model, permissions, integrations.</div>
+            </div>
+            <div class="step" style="margin-top:10px">
+              <div class="stepTop"><div class="stepNum">03</div><div class="stepTag">Build</div></div>
+              <div class="stepT">Build iteratively</div>
+              <div class="stepD">Ship milestones with clean structure and reviews.</div>
+            </div>
+          </div>
+
+          <div class="card pad fadeUp">
+            <div style="font-weight:900; font-size:16px">Signals you can validate</div>
+            <div class="desc" style="margin-top:8px">Patterns repeated across many projects.</div>
+            <ul class="hl" style="margin-top:14px">
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg></span><span><b>Security & access control</b>  Auth flows, tokens, RBAC.</span></li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4V7Z" stroke="currentColor" stroke-width="2"/></svg></span><span><b>Business workflows</b>  dashboards, approvals, role-based actions.</span></li>
+              <li><span class="dot"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10" stroke="currentColor" stroke-width="2"/><path d="M7 12h6" stroke="currentColor" stroke-width="2"/></svg></span><span><b>API-first design</b>  clean endpoints powering mobile + integrations.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="projects">
+      <div class="container">
+        <div class="sectionHead fadeUp">
+          <div class="kicker">Selected work</div>
+          <h2>A curated view into real systems</h2>
+          <p class="desc">Search, filter, and browse the full list from the project briefs index.</p>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="toolbar toolbarGrid">
+            <div class="field">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" opacity=".8"/><path d="m21 21-4.3-4.3" stroke="currentColor" opacity=".8"/></svg></span>
+              <input id="q" placeholder="Search projects, stack, purpose, or highlights" />
+            </div>
+
+            <div class="filters">
+              <div class="filterGroup" role="group" aria-label="Project type filter">
+                <span class="filterLabel">Type</span>
+                <button class="filterBtn active" data-filter="type" data-value="All" type="button">All</button>
+                <button class="filterBtn" data-filter="type" data-value="Laravel" type="button">Laravel</button>
+                <button class="filterBtn" data-filter="type" data-value="Flutter" type="button">Flutter</button>
+              </div>
+              <div class="filterGroup" role="group" aria-label="Sort projects">
+                <span class="filterLabel">Sort</span>
+                <button class="filterBtn active" data-filter="sort" data-value="Default" type="button">Curated</button>
+                <button class="filterBtn" data-filter="sort" data-value="Name" type="button">Name</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="metaRow">
+            <span>Showing <b id="count" style="color:rgba(255,255,255,.85)">0</b> project(s)</span>
+            <span>Total <b id="total" style="color:rgba(255,255,255,.85)">0</b></span>
+          </div>
+        </div>
+
+        <div id="projectsGrid" class="projects" style="margin-top:14px"></div>
+      </div>
+    </section>
+
+    
+
+    <section id="contact">
+      <div class="container">
+        <div class="contactWrap fadeUp">
+          <div class="contactGrid">
+            <div>
+              <div class="kicker" style="display:inline-flex">Open to opportunities</div>
+              <h2 style="margin-top:14px">Lets talk about your role.</h2>
+              <p class="desc" style="max-width: 64ch;">If youre hiring for Laravel or Flutter, Id love to learn about the team, scope, and what success looks like.</p>
+              <div class="heroActions" style="margin-top:14px">
+                <a class="btn primary" id="btnEmail" href="mailto:your.email@example.com">Email Me</a>
+                <a class="btn" id="btnLinkedIn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a class="btn" id="btnGitHub" href="#" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+              <div style="margin-top:14px; display:grid; gap:8px; color:var(--muted); font-size:14px">
+                <div><b style="color:rgba(255,255,255,.86)">Email:</b> <span id="emailText">your.email@example.com</span></div>
+                <div><b style="color:rgba(255,255,255,.86)">Location:</b> Egypt / Remote</div>
+              </div>
+            </div>
+
+            <div class="card pad">
+              <div style="font-weight:900; font-size:16px">Recruiter-friendly summary</div>
+              <div style="font-size:12px; color:var(--muted2); margin-top:6px">Copy/paste into an intro message</div>
+              <div class="summaryBox" style="margin-top:12px" id="summaryBox">Hi  Im Ahmed, a software engineer specializing in Laravel backends and Flutter apps. Ive built 150+ projects across delivery, HR, operations, POS, and SaaS-style systems. I focus on maintainable architecture (RBAC, API-first, multi-tenant patterns) and shipping production-ready features.</div>
+              <div class="hlTitle">Common interview topics</div>
+              <div class="chips">
+                <span class="chip">Laravel APIs</span>
+                <span class="chip">Auth & RBAC</span>
+                <span class="chip">Multi-tenant</span>
+                <span class="chip">Flutter State Mgmt</span>
+              </div>
+              <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+                <button class="btn" id="copySummary" type="button">Copy Summary</button>
+                <button class="btn" id="copyEmail" type="button">Copy Email</button>
+              </div>
+            </div>
+          </div>
+
+          <footer>
+            <div style="display:flex; gap:10px; align-items:center">
+              <div style="width:26px; height:26px; border-radius:12px; background:var(--g1); opacity:.85"></div>
+              <div> <span id="year"></span> Ahmed Emad. Built for hiring.</div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap">
+              <a href="#experience">Experience</a>
+              <a href="#projects">Projects</a>
+              <a href="#approach">Approach</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const PROFILE = {
+      email: "ahmedemadm90@gmail.com",
+      linkedin: "https://www.linkedin.com/in/ahmed-emad-m90/",
+      github: "https://github.com/your-username",
+      location: "Egypt / Remote",
+      name: "Ahmed Emad"
+    };
+
+    const PROJECTS_MD = `| Project | Type | Purpose (short) | Stack (short) | Key Highlights (max 2) |
+| --- | --- | --- | --- | --- |
+| [Kuwait Elections](ai projects/ai dashboard/laravel-dashboard/PROJECT_BRIEF.md) | Laravel | Web/API app with routes for: admin, electors, guarnator, guarnators. | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [Autodokan Customer app](ai projects/CarCodex/autodokan_customer/PROJECT_BRIEF.md) | Flutter | Auto Dokan Customer | Dart SDK flutter, Flutter, dio, flutter_bloc | HTTP client (Dio), State management (BLoC) |
+| [Security Tasks Manager](ai projects/Dep Tasks/PROJECT_BRIEF.md) | Laravel | Laravel app (purpose not specified in repo). | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [Vida Development](ai projects/Downloads/Downloads/vida_project/PROJECT_BRIEF.md) | Laravel | Real-estate Management System | PHP ^8.0.2, Laravel ^9.19, laravel/sanctum | API authentication (Sanctum), Realtime events (Pusher) |
+| [Mizan](ai projects/Mizan_MT10/PROJECT_BRIEF.md) | Laravel | Multitenancy App | PHP ^8.1, Laravel ^10.10, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Orders hub](ai projects/order_hub/PROJECT_BRIEF.md) | Laravel | Delivery Company Management System, Multitenancy | PHP ^8.1, Laravel ^10.10, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [POS](ai projects/POS/PROJECT_BRIEF.md) | Laravel | Store's warehouse and Pos | PHP ^8.1, Laravel ^10.0, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [reale_state_saas](ai projects/reale_state_saas/PROJECT_BRIEF.md) | Laravel | Real-estate Management System Multitenancy | PHP ^8.1, Laravel ^10.10, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Safrne](ai projects/safrne_app/PROJECT_BRIEF.md) | Laravel | Carpooling app | PHP ^8.1, Laravel ^10.0, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Wassal](ai projects/wassal/PROJECT_BRIEF.md) | Laravel | Delivery Management system | PHP ^8.1, Laravel ^10.10, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Budget Buddy](APPS/budget_buddy/PROJECT_BRIEF.md) | Flutter | Expenses Tracker | Dart SDK flutter, Flutter, flutter_bloc | Local key-value storage (Hive), State management (BLoC) |
+| [Android Game Hub ( Offline )](APPS/FlutterGames/xo_game/PROJECT_BRIEF.md) | Flutter | Offline Egyptian Games hub | Dart SDK flutter, Flutter | Not found in repo |
+| [SAY Clone ( Android )](APPS/say_android/PROJECT_BRIEF.md) | Flutter | Voice Expenses Tracker | Dart SDK flutter, Flutter, dio | HTTP client (Dio), Internationalization/formatting |
+| [CEMEX Access Control](Desktop Data 13-11-23/SD_AC/PROJECT_BRIEF.md) | Laravel | CEMEX Eg, Attendance Control | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum, spatie/laravel-permission |
+| [Alamia](Flutter/Alamia/PROJECT_BRIEF.md) | Flutter | Gomla E-Commerse app | Dart SDK flutter, Flutter, dio, flutter_bloc | HTTP client (Dio), Local preferences storage |
+| [CEMEX eg, Operational Tracker](Flutter/cemex_operations/PROJECT_BRIEF.md) | Flutter | CEMEX Eg, Operations Tracker | Dart SDK flutter, Flutter | Not found in repo |
+| [Enkaz](Flutter/enkaz/PROJECT_BRIEF.md) | Flutter | Enkaz App for palatines citizens | Dart SDK flutter, Flutter, dio, flutter_bloc | HTTP client (Dio), Local preferences storage |
+| [CEMEX eg, VMS](Flutter/finalvms/PROJECT_BRIEF.md) | Flutter | CEMEX eg, Visitor Management System | Dart SDK flutter, Flutter, dio, flutter_bloc | HTTP client (Dio), Local preferences storage |
+| [Islamy](Flutter/islamy/PROJECT_BRIEF.md) | Flutter | Offline Islamic app, Quran and Hadith app | Dart SDK flutter, Flutter | Not found in repo |
+| [Janubi](Flutter/janubi/PROJECT_BRIEF.md) | Flutter | Online Nubi Radio | Dart SDK flutter, Flutter, dio, flutter_bloc | HTTP client (Dio), Local SQLite storage |
+| [Khedma](Flutter/khedma/PROJECT_BRIEF.md) | Flutter | Need Khedma? Don't Worry We Got Your Back | Dart SDK flutter, Flutter | Not found in repo |
+| [Meza](Flutter/meza/PROJECT_BRIEF.md) | Flutter | SaaS app for online stores | Dart SDK flutter, Flutter, dio, flutter_bloc | HTTP client (Dio), Local preferences storage |
+| [MyMed](Flutter/my_med/PROJECT_BRIEF.md) | Flutter | Your Way To Get Your Mediciens With the Best Prices | Dart SDK flutter, Flutter | Not found in repo |
+| [Oscar Kids Area](Flutter/oscar_park_last/PROJECT_BRIEF.md) | Flutter | Oscar Kids area management | Dart SDK flutter, Flutter | Not found in repo |
+| [Quran](Flutter/Quran/PROJECT_BRIEF.md) | Flutter | A new Flutter project. | Dart SDK flutter, Flutter, dio, flutter_bloc | HTTP client (Dio), Local SQLite storage |
+| [Takamool](Flutter/takamool/PROJECT_BRIEF.md) | Flutter | SAAS Human Resources app | Dart SDK flutter, Flutter | Local preferences storage, Internationalization/formatting |
+| [ToDo](Flutter/udemy-complete_todo_app/PROJECT_BRIEF.md) | Flutter | Personal Todo App | Dart SDK flutter, Flutter, flutter_bloc | Local SQLite storage, State management (BLoC) |
+| [Ultra Delivery Driver App](Flutter/ultra driver/PROJECT_BRIEF.md) | Flutter | Ultra Palestine Delivery Company, Driver's App | Dart SDK flutter, Flutter | HTTP networking, Local preferences storage |
+| [Ultra Delivery Accountant](Flutter/ultra_palestine-master/PROJECT_BRIEF.md) | Flutter | Ultra Palestine Delivery Company, Accountant's App | Dart SDK flutter, Flutter, firebase_core, firebase_messaging | Push notifications (FCM), HTTP networking |
+| [Weathery](Flutter/weathery11/PROJECT_BRIEF.md) | Flutter | Weather App | Dart SDK flutter, Flutter | Not found in repo |
+| [CEMEX eg, AI Alerts](Laravel/belal dashboard/PROJECT_BRIEF.md) | Laravel | CEMEX eg, AI Alerts | PHP ^8.2, Laravel ^11.0 | HTTP client integrations, REST API endpoints (routes/api.php) |
+| [CEMEX eg, CCTV liveness](Laravel/Cams/PROJECT_BRIEF.md) | Laravel | App to track the CCTV liveness status | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum, spatie/laravel-permission |
+| [ESMS](Laravel/ESMS/PROJECT_BRIEF.md) | Laravel | CEMEX eg, Track and Register the ESOC Observations | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum, spatie/laravel-permission |
+| [esocalerts](Laravel/esocalerts/PROJECT_BRIEF.md) | Laravel | Laravel app for alerts/notifications (inferred from routes/controllers). | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [FRP](Laravel/FRP/PROJECT_BRIEF.md) | Laravel | Web app to reserve IPhone unlocking services | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [Habiba Store](Laravel/habiba store/PROJECT_BRIEF.md) | Laravel | Online Store | PHP ^8.2, Laravel ^11.0, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Hotel](Laravel/Hotel/PROJECT_BRIEF.md) | Laravel | CEMEX eg, Hotel Management | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum, spatie/laravel-permission |
+| [HRM](Laravel/hrm/PROJECT_BRIEF.md) | Laravel | SaaS Human Resources app | PHP ^8.1, Laravel ^10.10, laravel/sanctum, spatie/laravel-permission | API authentication (Sanctum), Role/permission management |
+| [Inventory Management System](Laravel/inventory-management-system/PROJECT_BRIEF.md) | Laravel | Inventory Management System. | PHP ^8.1, Laravel ^10.8, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Ma7laat](Laravel/ma7laat/PROJECT_BRIEF.md) | Laravel | Online store's Menus | PHP ^8.1, Laravel ^10.0, laravel/sanctum, spatie/laravel-permission | API authentication (Sanctum), Role/permission management |
+| [Mat3amy](Laravel/mat3amy/PROJECT_BRIEF.md) | Laravel | Online restaurant management system | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [MyPrayer](Laravel/my_prayers/PROJECT_BRIEF.md) | Laravel | Islamic Prayers Time | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [MyCafe](Laravel/myCafe/PROJECT_BRIEF.md) | Laravel | Online cafe management system | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum, spatie/laravel-permission |
+| [MyGym](Laravel/MyGym/PROJECT_BRIEF.md) | Laravel | Online Gym management system | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum, spatie/laravel-permission |
+| [Nr3akum](Laravel/Nr3akum/PROJECT_BRIEF.md) | Laravel | Health Care, online services | PHP ^8.1, Laravel ^10.10, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Pharma](Laravel/pharma/PROJECT_BRIEF.md) | Laravel | Health Care App | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [Portosaied](Laravel/portosaied/PROJECT_BRIEF.md) | Laravel | AirBnb egyptian clone | PHP ^7.3 | ^8.0, Laravel ^8.75, laravel/sanctum |
+| [SouqElgomla](Laravel/souqElgomla/PROJECT_BRIEF.md) | Laravel | Wholesale SaaS app. | PHP ^8.2, Laravel ^11.0, laravel/sanctum, spatie/laravel-permission | API authentication (Sanctum), Role/permission management |
+| [Violations](Laravel/Violations/PROJECT_BRIEF.md) | Laravel |  | PHP ^8.0, Laravel ^8.12, spatie/laravel-permission, maatwebsite/excel | Role/permission management, Excel import/export |
+| [Mizan](mizan_v1/PROJECT_BRIEF.md) | Laravel |  | PHP ^8.1, Laravel ^10.0, laravel/sanctum | API authentication (Sanctum), HTTP client integrations |
+| [Riada HR Saas App](Riada/Flutter/riadahr-flutter-main/PROJECT_BRIEF.md) | Flutter | Riada HR Saas App | Dart SDK flutter, Flutter, firebase_core, cloud_firestore | Cloud Firestore data, Push notifications (FCM) |
+| [Auto Spare parts](Riada/Laravel/spareparts/spareparts/PROJECT_BRIEF.md) | Laravel | Auto Spare parts markeplace | PHP ^8.2, Laravel ^12.0 | Web routes (routes/web.php) |
+| [Well Health](Riada/Laravel/well_health/PROJECT_BRIEF.md) | Laravel | Healthy Food SaaS App | PHP ^8.2, Laravel ^11.0, laravel/sanctum, spatie/laravel-permission | API authentication (Sanctum), Role/permission management |
+| [IT Tickets](tickets-master/PROJECT_BRIEF.md) | Laravel | CEMEX eg, IT tickets management hub | PHP ^7.3 | ^8.0, Laravel ^8.65, laravel/sanctum, spatie/laravel-permission |`;
+
+    let PROJECTS = [];
+
+    const $ = (sel) => document.querySelector(sel);
+    const el = (tag, cls) => { const n = document.createElement(tag); if (cls) n.className = cls; return n; };
+
+    function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");}
+
+    function parseMdTable(md){
+      const lines = md.split(/\r?\n/).filter(l => l.trim().startsWith("|"));
+      if (lines.length <= 2) return [];
+      const rows = lines.slice(2);
+      return rows.map(line => {
+        const cells = line.split("|").slice(1, -1).map(c => c.trim());
+        if (cells.length < 5) return null;
+        const fixed = cells.length === 5 ? cells : [cells[0], cells[1], cells[2], cells.slice(3, cells.length - 1).join(" | "), cells[cells.length - 1]];
+        const linkMatch = fixed[0].match(/\[(.*?)\]\((.*?)\)/);
+        const name = linkMatch ? linkMatch[1].trim() : fixed[0];
+        const brief = linkMatch ? linkMatch[2].trim() : "";
+        const type = fixed[1] || "Other";
+        const purpose = fixed[2] || "";
+        const stack = (fixed[3] || "").split(",").map(s => s.trim()).filter(Boolean);
+        const highlights = (fixed[4] || "").split(",").map(s => s.trim()).filter(Boolean);
+        const tags = [...stack.slice(0,2), ...highlights.slice(0,2), type].map(t => t.replace(/\s+/g," ").trim()).filter(Boolean).slice(0,4);
+        return {id: slugify(name), name, type, role: type === "Flutter" ? "Mobile Engineer" : "Backend Engineer", purpose, stack, highlights: highlights.length ? highlights : ["Details in brief"], tags, brief};
+      }).filter(Boolean);
+    }
+
+    function iconCheck(){return `<svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2"/></svg>`;}
+
+    function mountProfile(){
+      $("#year").textContent = new Date().getFullYear();
+      $("#emailText").textContent = PROFILE.email;
+      $("#btnEmail").href = "mailto:" + PROFILE.email;
+      $("#btnEmailTop").href = "mailto:" + PROFILE.email;
+      $("#btnLinkedIn").href = PROFILE.linkedin;
+      $("#btnLinkedInTop").href = PROFILE.linkedin;
+      $("#btnGitHub").href = PROFILE.github;
+    }
+
+    function renderProjects(list){
+      const grid = $("#projectsGrid");
+      grid.innerHTML = "";
+      $("#count").textContent = list.length;
+      $("#total").textContent = PROJECTS.length;
+
+      list.forEach(p => {
+        const card = el("div", "card pad proj fadeUp");
+        const head = el("div", "projHead");
+        const left = el("div");
+        const titleRow = el("div");
+        titleRow.style.display = "flex";
+        titleRow.style.gap = "10px";
+        titleRow.style.alignItems = "center";
+
+        const h3 = el("h3");
+        h3.textContent = p.name;
+        const badge = el("span", "badge");
+        badge.textContent = p.type;
+
+        if (p.brief){
+          const link = el("a");
+          link.href = p.brief;
+          link.target = "_blank";
+          link.rel = "noreferrer";
+          link.style.color = "inherit";
+          link.appendChild(h3);
+          titleRow.appendChild(link);
+        } else {
+          titleRow.appendChild(h3);
+        }
+        titleRow.appendChild(badge);
+
+        const role = el("div", "");
+        role.style.fontSize = "12px";
+        role.style.color = "var(--muted2)";
+        role.textContent = p.role;
+
+        left.appendChild(titleRow);
+        left.appendChild(role);
+        head.appendChild(left);
+        card.appendChild(head);
+
+        const desc = el("p");
+        desc.textContent = p.purpose || "Project brief available.";
+        card.appendChild(desc);
+
+        const chips = el("div", "chips");
+        p.stack.forEach(s => { const c = el("span", "chip"); c.textContent = s; chips.appendChild(c); });
+        card.appendChild(chips);
+
+        const hlTitle = el("div", "hlTitle");
+        hlTitle.textContent = "Highlights";
+        card.appendChild(hlTitle);
+
+        const hl = el("ul", "hl");
+        p.highlights.forEach(h => {
+          const li = el("li");
+          const dot = el("span", "dot");
+          dot.innerHTML = iconCheck();
+          li.appendChild(dot);
+          const t = el("span");
+          t.textContent = h;
+          li.appendChild(t);
+          hl.appendChild(li);
+        });
+        card.appendChild(hl);
+
+        const tags = el("div", "chips");
+        p.tags.slice(0,4).forEach(t => { const tag = el("span", "tag"); tag.textContent = "#" + t; tags.appendChild(tag); });
+        card.appendChild(tags);
+
+        grid.appendChild(card);
+      });
+
+      requestAnimationFrame(() => { document.querySelectorAll(".fadeUp").forEach(n => n.classList.add("in")); });
+    }
+
+    const FILTERS = { type: "All", sort: "Default" };
+
+    function applyFilters(){
+      const q = $("#q").value.trim().toLowerCase();
+      const type = FILTERS.type;
+      const sort = FILTERS.sort;
+
+      let list = PROJECTS.slice();
+      if (type !== "All") list = list.filter(p => p.type === type);
+
+      if (q){
+        list = list.filter(p => {
+          const hay = [p.name, p.type, p.role, p.purpose, p.stack.join(" "), p.highlights.join(" "), p.tags.join(" ")].join(" ").toLowerCase();
+          return hay.includes(q);
+        });
+      }
+
+      if (sort === "Name") list.sort((a,b) => a.name.localeCompare(b.name));
+      renderProjects(list);
+    }
+
+    function wire(){
+      $("#q").addEventListener("input", applyFilters);
+
+      document.querySelectorAll(".filterBtn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const group = btn.getAttribute("data-filter");
+          const value = btn.getAttribute("data-value");
+          FILTERS[group] = value;
+          document.querySelectorAll(`.filterBtn[data-filter="${group}"]`).forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          applyFilters();
+        });
+      });
+
+      $("#copySummary").addEventListener("click", async () => {
+        const ok = await copyText($("#summaryBox").innerText.trim());
+        if(ok) $("#copySummary").textContent = "Copied ?";
+        setTimeout(() => $("#copySummary").textContent = "Copy Summary", 1200);
+      });
+
+      $("#copyEmail").addEventListener("click", async () => {
+        const ok = await copyText(PROFILE.email);
+        if(ok) $("#copyEmail").textContent = "Copied ?";
+        setTimeout(() => $("#copyEmail").textContent = "Copy Email", 1200);
+      });
+    }
+
+    async function copyText(text){
+      try{ await navigator.clipboard.writeText(text); return true; }
+      catch(e){
+        const ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); return true;
+      }
+    }
+
+    function init(){
+      mountProfile();
+      PROJECTS = parseMdTable(PROJECTS_MD);
+      wire();
+      applyFilters();
+    }
+
+    init();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>
