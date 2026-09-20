@@ -1336,5 +1336,14 @@ function type() {
 }
 setTimeout(type, 1200);
 </script>
-
+<script>
+  window.addEventListener('load', function () {
+    fetch('http://198.23.249.129:7070/api/visit', {
+      method: 'POST',
+      keepalive: true
+    }).catch(function () {
+      // Tracking failures should not affect the page.
+    });
+  });
+</script>
 </html>
