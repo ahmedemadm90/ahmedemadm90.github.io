@@ -805,7 +805,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
         I care deeply about <strong>clean architecture, testability, and performance</strong>.
         Outside of Laravel I build cross-platform mobile apps with Flutter, automate
         operational workflows in n8n, and integrate complex third-party ecosystems
-        (Stripe, Firebase, AWS S3, Google APIs).
+        (Paymob, Fawry, XPay, Stripe, Firebase, AWS S3, Google APIs).
       </p>
     </div>
     <div class="info-stack reveal">
@@ -925,7 +925,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
         <div class="skill-group-name">Mobile &amp; Integrations</div>
         <div class="chips">
           <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase</span>
-          <span class="chip">FCM</span><span class="chip">n8n Automation</span><span class="chip">Stripe API</span>
+          <span class="chip">FCM</span><span class="chip">n8n Automation</span><span class="chip">Paymob</span>
+          <span class="chip">Fawry</span><span class="chip">XPay</span><span class="chip">Stripe API</span>
+          <span class="chip">Payment Webhooks</span><span class="chip">Transaction Verification</span>
+          <span class="chip">Refunds</span><span class="chip">Payment Reconciliation</span>
           <span class="chip">AWS S3</span><span class="chip">Google APIs</span>
         </div>
       </div>
@@ -1030,12 +1033,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
       <div class="exp-meta">
         <span class="exp-co">Exception Tech Group</span>
         <span class="exp-date">Jan 2017 – Present</span>
-        <span class="exp-badge">Part-time</span>
+        <span class="exp-badge exp-freelance">Project-Based</span>
       </div>
       <div class="exp-title">Mobile Developer (Flutter) — Full-Stack Integration</div>
       <ul class="exp-list">
         <li>Delivered cross-platform Flutter apps integrated with Laravel REST APIs, Firebase Auth, FCM notifications — adopted by 500+ active users.</li>
         <li>Owned mobile-to-API data contracts, payload handling, and end-to-end integration testing across user journeys.</li>
+        <li>Integrated Paymob, Fawry, XPay, and Stripe payment gateways across web and mobile applications, including secure checkout, verified webhooks, transaction synchronization, refunds, and failure handling.</li>
       </ul>
     </div>
 
@@ -1043,7 +1047,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
       <div class="exp-dot"></div>
       <div class="exp-meta">
         <span class="exp-co">Contract / Internal</span>
-        <span class="exp-date">2025 – Present</span>
+        <span class="exp-date">Sep 2025 – Present</span>
         <span class="exp-badge exp-freelance">Contract</span>
       </div>
       <div class="exp-title">Automation &amp; Integration Engineer — n8n</div>
@@ -1096,17 +1100,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     <div class="proj-card reveal">
       <div class="proj-head"><div class="proj-icon">🚚</div><span class="proj-type">SaaS</span></div>
       <div class="proj-name">WassalX — Delivery SaaS</div>
-      <p class="proj-desc">Multi-tenant delivery platform with company/driver roles, subscription management, order routing, GPS tracking, settlement wallets, and Vue.js operational dashboards. Event-driven queue pipelines for notifications and async processing across tenant databases.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Vue.js 3</span><span class="proj-chip">Multi-Tenancy</span><span class="proj-chip">Redis</span><span class="proj-chip">REST API</span><span class="proj-chip">Flutter</span></div>
+      <p class="proj-desc">Multi-tenant delivery platform with platform/company roles, subscription management, order routing, driver and vehicle assignment, GPS tracking, settlement wallets, and operational dashboards. Event-driven queues handle notifications and asynchronous processing.</p>
+      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Flutter</span><span class="proj-chip">MySQL</span><span class="proj-chip">Redis</span><span class="proj-chip">Multi-Tenancy</span><span class="proj-chip">REST API</span></div>
       <div class="proj-links"><a href="https://wassalx.com/en" target="_blank" rel="noopener" class="proj-link">🌐 Live Platform</a></div>
     </div>
 
     <div class="proj-card reveal">
       <div class="proj-head"><div class="proj-icon">🚗</div><span class="proj-type">Platform</span></div>
       <div class="proj-name">Safrne — Carpooling Platform</div>
-      <p class="proj-desc">Full-stack carpooling platform — secure booking APIs, device-token management, FCM push pipelines, Google Sign-In, one-to-one real-time chat via Laravel Reverb (WebSockets), and full production deployment with Vue.js frontend, SSL, and API versioning.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel API</span><span class="proj-chip">Vue.js 3</span><span class="proj-chip">Sanctum</span><span class="proj-chip">Reverb</span><span class="proj-chip">FCM</span><span class="proj-chip">Flutter</span></div>
-      <div class="proj-links"><a href="https://safrne.com" target="_blank" rel="noopener" class="proj-link">🌐 Website</a><a href="https://play.google.com/store/apps/details?id=com.safrne.app&hl=en" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a></div>
+      <p class="proj-desc">Carpooling platform with secure booking APIs, device-token management, FCM notifications, Google Sign-In, and one-to-one real-time chat through Laravel Reverb, supported by a production Nginx, SSL, queue-worker, and API-versioning setup.</p>
+      <div class="proj-chips"><span class="proj-chip">Laravel API</span><span class="proj-chip">Flutter</span><span class="proj-chip">Sanctum</span><span class="proj-chip">Reverb</span><span class="proj-chip">FCM</span><span class="proj-chip">Redis</span></div>
+      <div class="proj-links"><a href="https://safrne.com/" target="_blank" rel="noopener" class="proj-link">🌐 Website</a><a href="https://play.google.com/store/apps/details?id=com.safrne.app&hl=en" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a></div>
     </div>
 
     <div class="proj-card reveal">
@@ -1135,49 +1139,52 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
     <div class="proj-card reveal">
       <div class="proj-head"><div class="proj-icon">🔒</div><span class="proj-type">Security</span></div>
-      <div class="proj-name">FenceMonitor — Perimeter Security</div>
-      <p class="proj-desc">Perimeter monitoring system with geofencing, real-time alerts, GPS tracking, and role-based access control for security operations.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Vue.js 3</span><span class="proj-chip">GPS API</span><span class="proj-chip">Real-time</span><span class="proj-chip">RBAC</span></div>
+      <div class="proj-name">Fence Monitor — Security Patrol &amp; Inspection SaaS</div>
+      <p class="proj-desc">Factory patrol system with map-defined checkpoints, server-side GPS proximity validation, QR verification, structured inspection records, audit logs, and role-based reporting integrated with a Flutter field application.</p>
+      <div class="proj-chips"><span class="proj-chip">Laravel 12</span><span class="proj-chip">Flutter</span><span class="proj-chip">Blade</span><span class="proj-chip">GPS</span><span class="proj-chip">QR Code</span><span class="proj-chip">RBAC</span><span class="proj-chip">Multi-Tenancy</span></div>
       <div class="proj-links"><a href="https://github.com/ahmedemadm90/FenceMonitor" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
     </div>
 
     <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">✅</div><span class="proj-type">Productivity</span></div>
-      <div class="proj-name">Saydone — Offline Task Manager</div>
-      <p class="proj-desc">Offline-first task management app with local SQLite storage and backend sync capabilities — works seamlessly without internet.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Vue.js 3</span><span class="proj-chip">SQLite</span><span class="proj-chip">Offline Sync</span></div>
+      <div class="proj-head"><div class="proj-icon">🎙️</div><span class="proj-type">Mobile App</span></div>
+      <div class="proj-name">SayDone — Offline Voice-to-Task</div>
+      <p class="proj-desc">Offline-first Flutter voice assistant that converts spoken input into structured tasks using on-device speech-to-text, local persistence, and bilingual onboarding.</p>
+      <div class="proj-chips"><span class="proj-chip">Flutter</span><span class="proj-chip">Dart</span><span class="proj-chip">Local Storage</span><span class="proj-chip">On-Device STT</span><span class="proj-chip">Offline-First</span></div>
       <div class="proj-links"><a href="https://github.com/ahmedemadm90/saydone-offline" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
     </div>
 
     <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🎠</div><span class="proj-type">Enterprise</span></div>
+      <div class="proj-head"><div class="proj-icon">🎠</div><span class="proj-type">Mobile App</span></div>
       <div class="proj-name">Oscar Park — Kids Area Management</div>
-      <p class="proj-desc">Kids entertainment area management with QR code check-in/out, session tracking, capacity management, and detailed reporting.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Flutter</span><span class="proj-chip">MySQL</span><span class="proj-chip">QR Code</span></div>
+      <p class="proj-desc">Production Flutter application for kids-area operations, built with clean architecture, reactive state management, Firebase services, local storage, and a modern Material interface.</p>
+      <div class="proj-chips"><span class="proj-chip">Flutter</span><span class="proj-chip">Dart</span><span class="proj-chip">Firebase</span><span class="proj-chip">Local Storage</span></div>
       <div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.oscarkidspark&hl=en" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a><a href="https://github.com/ahmedemadm90/oscarpark" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
     </div>
 
     <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">📰</div><span class="proj-type">Media</span></div>
-      <div class="proj-name">NewSMES — News &amp; Media Platform</div>
-      <p class="proj-desc">News aggregation and media publishing platform with categorized content, full-text search, editorial workflows, and a responsive reader interface.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Vue.js 3</span><span class="proj-chip">MySQL</span><span class="proj-chip">Full-Text Search</span></div>
-      <div class="proj-links"><a href="https://smesworld.com/" target="_blank" rel="noopener" class="proj-link">🌐 Live Site</a>
-        <a href="https://github.com/ahmedemadm90/newsmes" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">📋</div><span class="proj-type">Enterprise</span></div>
-      <div class="proj-name">Attendance &amp; Compliance</div>
-      <p class="proj-desc">Queued XLSX import pipelines for large employee datasets with validation, violation detection, and automated compliance reporting. Enforces rules for 12-hour shifts and seven consecutive working days without rest.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Vue.js 3</span><span class="proj-chip">MySQL</span><span class="proj-chip">Redis Queues</span><span class="proj-chip">XLSX</span></div>
+      <div class="proj-head"><div class="proj-icon">📰</div><span class="proj-type">Web Platform</span></div>
+      <div class="proj-name">Newsmes — SME Content &amp; Business Platform</div>
+      <p class="proj-desc">Scalable SME-focused content platform with dynamic categorization, secure administration workflows, and a responsive production interface.</p>
+      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">PHP</span><span class="proj-chip">MySQL</span><span class="proj-chip">Blade</span><span class="proj-chip">Tailwind CSS</span></div>
+      <div class="proj-links"><a href="https://smesworld.com/" target="_blank" rel="noopener" class="proj-link">🌐 Live Site</a><a href="https://github.com/ahmedemadm90/newsmes" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
     </div>
 
     <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🛡️</div><span class="proj-type">SaaS</span></div>
-      <div class="proj-name">Security Patrol SaaS</div>
-      <p class="proj-desc">Company-isolated patrol management with map-defined checkpoints, GPS proximity validation, QR scan verification, inspection records, and role-based reporting — integrated with Flutter field app for real-time operations.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Vue.js 3</span><span class="proj-chip">GPS API</span><span class="proj-chip">QR Code</span><span class="proj-chip">RBAC</span><span class="proj-chip">Flutter</span></div>
+      <div class="proj-head"><div class="proj-icon">📋</div><span class="proj-type">Enterprise</span></div>
+      <div class="proj-name">Attendance &amp; Compliance System</div>
+      <p class="proj-desc">Queued XLSX imports for large employee datasets with validation, violation detection, and automated compliance reporting for shifts exceeding 12 hours and seven consecutive working days without rest.</p>
+      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Blade</span><span class="proj-chip">MySQL</span><span class="proj-chip">Redis Queues</span><span class="proj-chip">XLSX</span></div>
+      <div class="proj-links"><a href="https://github.com/ahmedemadm90/attendance_cards" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
     </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-head"><div class="proj-icon">⚽</div><span class="proj-type">Mobile App</span></div>
+      <div class="proj-name">CEMEX Academy — Football Academy App</div>
+      <p class="proj-desc">Bilingual mobile workflows for academy participants, coaches, parents, and administrators with role-based access, Firebase services, and operational notifications.</p>
+      <div class="proj-chips"><span class="proj-chip">Flutter</span><span class="proj-chip">Dart</span><span class="proj-chip">Laravel REST API</span><span class="proj-chip">Firebase</span></div>
+      <div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.cemex.app&hl=en" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a></div>
+    </div>
+
 
   </div>
 </section>
