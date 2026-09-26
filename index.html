@@ -1,1358 +1,3306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Ahmed Emad — Senior PHP/Laravel Developer & Full-Stack Engineer based in Cairo, Egypt. Available for remote roles worldwide.">
-<title>Ahmed Emad — PHP/Laravel Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script>
-  window.addEventListener('load', function () {
-    fetch('http://198.23.249.129:7070/api/visit', {
-      method: 'POST',
-      keepalive: true
-    }).catch(function () {
-      // Tracking failures should not affect the page.
-    });
-  });
-</script>
-<style>
-/* ═══════════════════════════════
-   TOKENS
-═══════════════════════════════ */
-:root {
-  --bg:        #09111F;
-  --bg2:       #0E1929;
-  --bg3:       #1A2744;
-  --card:      #111C30;
-  --card2:     #162238;
-  --accent:    #F97316;
-  --accent2:   #FB923C;
-  --accentLow: rgba(249,115,22,.12);
-  --accentMid: rgba(249,115,22,.28);
-  --txt:       #EEF2FF;
-  --txt2:      #8DA0BF;
-  --txt3:      #4D6480;
-  --border:    #1F3050;
-  --border2:   #2A4068;
-  --mono:      'JetBrains Mono', monospace;
-  --display:   'Syne', sans-serif;
-  --body:      'Manrope', sans-serif;
-  --nav:       60px;
-  --r:         14px;
-}
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --bg: #F5F7FA; --bg2: #EBF0F8; --bg3: #DDE5F0;
-    --card: #FFFFFF; --card2: #F0F5FB;
-    --txt: #0A1628; --txt2: #3D5070; --txt3: #8A9BB5;
-    --border: #C8D8EC; --border2: #A8BDD8;
-    --accentLow: rgba(249,115,22,.09); --accentMid: rgba(249,115,22,.22);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmed Emad | Senior PHP/Laravel Developer</title>
+  <meta name="description" content="Portfolio of Ahmed Emad, Senior PHP/Laravel Developer: RESTful APIs, multi-tenant SaaS, Vue.js 3, Redis, Flutter. Cairo, remote worldwide.">
+  <meta name="keywords" content="Ahmed Emad, Laravel, PHP, Vue.js, Redis, REST API, SaaS, Flutter, Cairo, Portfolio">
+  <meta name="author" content="Ahmed Emad">
+  <link rel="canonical" href="https://ahmedemadm90.github.io/">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Tajawal, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Portfolio Config -->
+  <script src="config.js"></script>
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS & ROBUST AESTHETICS
+       ========================================================================== */
+    :root {
+      --bg-base: #060913;
+      --bg-surface: #0c1222;
+      --bg-surface-elevated: #131d36;
+      --bg-glass: rgba(12, 18, 34, 0.85);
+      --bg-glass-card: rgba(19, 29, 54, 0.7);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-card: rgba(255, 255, 255, 0.12);
+      --border-focus: rgba(99, 102, 241, 0.6);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
+
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-glow: rgba(99, 102, 241, 0.35);
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #10b981 100%);
+      --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+
+      --font-display: 'Outfit', sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 35px var(--primary-glow);
+
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.light {
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.88);
+      --bg-glass-card: rgba(255, 255, 255, 0.8);
+      
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-card: rgba(0, 0, 0, 0.1);
+      --border-focus: rgba(99, 102, 241, 0.7);
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #64748b;
+
+      --primary: #4f46e5;
+      --primary-light: #6366f1;
+      --primary-glow: rgba(79, 70, 229, 0.2);
+      --accent-cyan: #0891b2;
+      --accent-emerald: #059669;
+      --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 50%, #059669 100%);
+      --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 100%);
+
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      transition: background-color var(--transition-normal), color var(--transition-normal);
+    }
+
+    html[dir="rtl"] {
+      font-family: 'Tajawal', var(--font-sans);
+    }
+
+    /* Ambient Glow & Grid */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-blob-1 {
+      position: absolute;
+      top: -15%;
+      left: -10%;
+      width: 60vw;
+      height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+      filter: blur(80px);
+    }
+    .ambient-blob-2 {
+      position: absolute;
+      top: 30%;
+      right: -15%;
+      width: 50vw;
+      height: 50vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0) 70%);
+      filter: blur(90px);
+    }
+    .bg-grid-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    html.light .bg-grid-pattern {
+      background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+    .text-gradient {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition-normal);
+    }
+    .btn-primary {
+      background: var(--gradient-accent);
+      color: #ffffff;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(99, 102, 241, 0.5);
+    }
+    .btn-glass {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-card);
+      color: var(--text-primary);
+      backdrop-filter: blur(12px);
+    }
+    .btn-glass:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--primary);
+      color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    .btn-sm {
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+    }
+    .btn-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Top Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 100;
+      transition: background-color var(--transition-normal);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .brand-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 12px var(--primary-glow);
+    }
+    .brand-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color var(--transition-fast);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-primary);
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-accent);
+      border-radius: var(--radius-full);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      color: var(--text-primary);
+      cursor: pointer;
+      padding: 0;
+      transition: all var(--transition-fast);
+    }
+    .mobile-menu-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary-light);
+    }
+    @media (max-width: 1180px) {
+      .nav-links {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex !important;
+      }
+    }
+    @media (max-width: 900px) {
+      .btn-get-in-touch {
+        display: none !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .nav-container {
+        height: 3.8rem;
+        gap: 0.4rem;
+      }
+      .brand-avatar {
+        width: 2.1rem;
+        height: 2.1rem;
+      }
+      .brand-logo span {
+        font-size: 1rem;
+      }
+      .nav-actions {
+        gap: 0.25rem;
+      }
+      #topCvDownloadBtn {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.75rem;
+      }
+      #topCvDownloadBtn .cv-text-long {
+        display: none !important;
+      }
+      #topCvDownloadBtn .cv-text-short {
+        display: inline !important;
+      }
+      #langToggleBtn {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.75rem;
+      }
+      #langToggleBtn .lang-text-long {
+        display: none !important;
+      }
+      #langToggleBtn .lang-text-short {
+        display: inline !important;
+      }
+      #themeToggleBtn {
+        width: 2rem;
+        height: 2rem;
+      }
+      .mobile-menu-btn {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    @media (max-width: 420px) {
+      .brand-logo span {
+        display: none;
+      }
+    }
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 4.5rem;
+      left: 0;
+      width: 100%;
+      background: var(--bg-surface-elevated);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 99;
+      box-shadow: var(--shadow-lg);
+    }
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    /* Page Sections */
+    .page-section {
+      padding: 5rem 0;
+      position: relative;
+    }
+    .section-border-top {
+      border-top: 1px solid var(--border-subtle);
+    }
+    .section-title-wrap {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3.5rem auto;
+    }
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-cyan);
+      margin-bottom: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: var(--radius-full);
+    }
+    .section-heading {
+      font-size: 2.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-subheading {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       HERO SECTION (THE BELOVED CAMERA CARD WITH STATS & SAFE FLOATING BADGES)
+       ========================================================================== */
+    .hero-section {
+      padding: 4.5rem 0 3.5rem 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulseAnim 2s infinite;
+    }
+    @keyframes pulseAnim {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .hero-title {
+      font-size: 3.25rem;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .hero-headline {
+      font-size: 1.25rem;
+      color: var(--primary-light);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      line-height: 1.4;
+    }
+    .hero-intro {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 580px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .hero-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .social-icon-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+    .social-icon-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* THE HERO CARD */
+    .hero-visual-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 520px;
+    }
+    .hero-main-card {
+      position: relative;
+      z-index: 2;
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-card);
+      border-radius: 28px;
+      padding: 2rem 1.75rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .hero-avatar-frame {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 0 auto 1.25rem auto;
+      position: relative;
+      padding: 5px;
+      background: var(--gradient-accent);
+      box-shadow: 0 0 35px var(--primary-glow);
+    }
+    .hero-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      background: var(--bg-surface);
+    }
+    .hero-online-status {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      border: 3px solid var(--bg-surface);
+    }
+    .card-hero-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .card-hero-title {
+      font-size: 0.875rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .card-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      margin-bottom: 1.25rem;
+    }
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.25rem;
+    }
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+    .stat-pill:hover {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.08);
+      transform: translateY(-2px);
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+      line-height: 1.3;
+    }
+
+    /* CLOSER INTERACTIVE FLOATING BADGES (NEVER OVERLAPS CARD PHOTO/TEXT) */
+    #heroFloatingBadgesContainer {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 400px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .floating-badge {
+      pointer-events: auto;
+      position: absolute;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 0.65rem 1rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: floatBadge 6s ease-in-out infinite;
+    }
+    .floating-badge:hover {
+      transform: translateY(-4px) scale(1.05) !important;
+      border-color: var(--primary-light);
+      box-shadow: 0 16px 36px var(--primary-glow);
+      background: var(--bg-surface-elevated);
+    }
+    .floating-badge:hover .badge-arrow {
+      transform: translate(2px, -2px);
+      opacity: 1 !important;
+      color: var(--primary-light);
+    }
+    html.light .floating-badge {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      color: #0f172a;
+    }
+    html.light .floating-badge .badge-cat {
+      color: #64748b !important;
+    }
+    html.light .floating-badge .badge-title {
+      color: #0f172a !important;
+    }
+    html.light .floating-badge:hover {
+      border-color: var(--primary);
+      box-shadow: 0 14px 32px rgba(99, 102, 241, 0.25);
+    }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    /* DESKTOP (1200px+): Badges hug the card closely (12px-14px from card border) */
+    @media (min-width: 1200px) {
+      /* LTR */
+      html[dir="ltr"] .badge-pos-0 {
+        top: 25px;
+        left: calc(100% + 14px);
+        right: auto;
+        animation-delay: 0s;
+      }
+      html[dir="ltr"] .badge-pos-1 {
+        bottom: 35px;
+        right: calc(100% + 14px);
+        left: auto;
+        animation-delay: 2.5s;
+      }
+      html[dir="ltr"] .badge-pos-2 {
+        top: 25px;
+        right: calc(100% + 14px);
+        left: auto;
+        animation-delay: 1.2s;
+      }
+      html[dir="ltr"] .badge-pos-3 {
+        bottom: 35px;
+        left: calc(100% + 14px);
+        right: auto;
+        animation-delay: 3.7s;
+      }
+      html[dir="ltr"] .badge-pos-4 {
+        top: 48%;
+        right: calc(100% + 14px);
+        left: auto;
+      }
+      html[dir="ltr"] .badge-pos-5 {
+        top: 48%;
+        left: calc(100% + 14px);
+        right: auto;
+      }
+
+      /* RTL (Arabic) Outside Placement */
+      html[dir="rtl"] .badge-pos-0 {
+        top: 25px;
+        right: calc(100% + 14px);
+        left: auto;
+        animation-delay: 0s;
+      }
+      html[dir="rtl"] .badge-pos-1 {
+        bottom: 35px;
+        left: calc(100% + 14px);
+        right: auto;
+        animation-delay: 2.5s;
+      }
+      html[dir="rtl"] .badge-pos-2 {
+        top: 25px;
+        left: calc(100% + 14px);
+        right: auto;
+        animation-delay: 1.2s;
+      }
+      html[dir="rtl"] .badge-pos-3 {
+        bottom: 35px;
+        right: calc(100% + 14px);
+        left: auto;
+        animation-delay: 3.7s;
+      }
+      html[dir="rtl"] .badge-pos-4 {
+        top: 48%;
+        left: calc(100% + 14px);
+        right: auto;
+      }
+      html[dir="rtl"] .badge-pos-5 {
+        top: 48%;
+        right: calc(100% + 14px);
+        left: auto;
+      }
+    }
+
+    /* SCREENS UNDER 1200px: Badges neatly sit underneath the card in an organized row */
+    /* MOBILE & TABLET HERO (<= 1199px): Hero Card First, Badges Below in Clean 2x2 Grid */
+    @media (max-width: 1199px) {
+      .hero-visual-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        min-height: auto !important;
+        width: 100% !important;
+        overflow: visible !important;
+      }
+      .hero-main-card {
+        order: 1 !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 400px !important;
+      }
+      #heroFloatingBadgesContainer {
+        order: 2 !important;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.65rem !important;
+        margin: 1.5rem auto 0 auto !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+      }
+      .floating-badge {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        animation: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        padding: 0.65rem 0.85rem !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        justify-content: flex-start !important;
+      }
+      .floating-badge .badge-arrow {
+        margin-left: auto !important;
+      }
+      html[dir="rtl"] .floating-badge .badge-arrow {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+      }
+    }
+    @media (max-width: 440px) {
+      #heroFloatingBadgesContainer {
+        grid-template-columns: 1fr !important;
+        max-width: 330px !important;
+      }
+      .hero-main-card {
+        padding: 1.5rem 1.15rem !important;
+      }
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION & 5 PROFESSIONAL SUMMARY ITEMS
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .about-text p {
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .key-facts-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+    .fact-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .fact-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .fact-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .fact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      margin-bottom: 0.25rem;
+    }
+    .fact-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       SKILLS SECTION (RESPONSIVE: 4 -> 3 -> 2 -> 1 WITH COMPLETE DESCRIPTIONS)
+       ========================================================================== */
+    .skills-categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 1099px) and (min-width: 840px) {
+      .skills-categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 839px) and (min-width: 580px) {
+      .skills-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 579px) {
+      .skills-categories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .skill-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-normal);
+    }
+    .skill-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .skill-card-header h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .skill-item {
+      margin-bottom: 1.25rem;
+    }
+    .skill-item:last-child {
+      margin-bottom: 0;
+    }
+    .skill-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .skill-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-full);
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary-light);
+      margin-left: 0.4rem;
+    }
+    html[dir="rtl"] .skill-badge {
+      margin-left: 0;
+      margin-right: 0.4rem;
+    }
+    .skill-progress-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+    .skill-progress-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: var(--gradient-accent);
+      transition: width 1s ease-in-out;
+    }
+    .skill-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-top: 0.4rem;
+    }
+
+    /* ==========================================================================
+       ADDED VALUE & ROI MATRIX
+       ========================================================================== */
+    .roi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 900px) {
+      .roi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .roi-model-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-normal);
+    }
+    .roi-model-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.45);
+    }
+    .roi-model-card.featured {
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+    }
+    .roi-model-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-accent);
+    }
+    .roi-tag-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 0.75rem;
+    }
+    .roi-item-row {
+      border-top: 1px solid var(--border-subtle);
+      padding: 0.85rem 0;
+    }
+    .roi-item-label {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    .roi-item-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .roi-item-sub {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+    .roi-metrics-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 768px) {
+      .roi-metrics-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+    .roi-summary-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .roi-summary-num {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--accent-emerald);
+    }
+
+    /* ==========================================================================
+       PROJECTS SECTION
+       ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .project-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-normal);
+      cursor: pointer;
+    }
+    .project-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .project-header-banner {
+      height: 130px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-header-banner.has-custom-image {
+      height: 170px;
+      background-size: cover;
+      background-position: center;
+    }
+    .project-header-banner.has-custom-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6,9,19,0.1) 0%, rgba(12,18,34,0.88) 100%);
+    }
+    .project-img-pill {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(12, 18, 34, 0.8);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      padding: 4px 8px;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      z-index: 2;
+    }
+    .project-header-banner i {
+      width: 48px;
+      height: 48px;
+      color: #ffffff;
+      opacity: 0.85;
+    }
+    .project-card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .project-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .project-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-tertiary);
+    }
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1rem;
+    }
+
+    /* ==========================================================================
+       TIMELINE & EXPERIENCE
+       ========================================================================== */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 2rem;
+      width: 2px;
+      background: var(--border-card);
+    }
+    html[dir="rtl"] .timeline::before {
+      left: auto;
+      right: 2rem;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 5rem;
+    }
+    html[dir="rtl"] .timeline-item {
+      padding-left: 0;
+      padding-right: 5rem;
+    }
+    .timeline-marker {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.35rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 4px solid var(--bg-base);
+      box-shadow: 0 0 12px var(--primary-glow);
+    }
+    html[dir="rtl"] .timeline-marker {
+      left: auto;
+      right: 1.35rem;
+    }
+    .timeline-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .timeline-bullets {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .timeline-bullets li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+    html[dir="rtl"] .timeline-bullets li {
+      padding-left: 0;
+      padding-right: 1.5rem;
+    }
+    .timeline-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    html[dir="rtl"] .timeline-bullets li::before {
+      left: auto;
+      right: 0;
+    }
+
+    /* ==========================================================================
+       EDUCATION & CERTIFICATIONS
+       ========================================================================== */
+    .edu-cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    @media (max-width: 900px) {
+      .edu-cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cert-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cert-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       CONTACT SECTION
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+    }
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .contact-method-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition-fast);
+    }
+    .contact-method-card:hover {
+      border-color: var(--primary);
+      transform: translateX(4px);
+    }
+    html[dir="rtl"] .contact-method-card:hover {
+      transform: translateX(-4px);
+    }
+    .contact-icon-box {
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--radius-md);
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(6, 9, 19, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    html[dir="rtl"] .modal-close-btn {
+      right: auto;
+      left: 1.25rem;
+    }
+
+    /* Print Styles */
+    @media print {
+      @page { margin: 1cm; size: A4 portrait; }
+      body { background: #fff !important; color: #000 !important; }
+      .site-header, .ambient-glow, .bg-grid-pattern, .hero-actions, .hero-socials, 
+      .btn, #heroFloatingBadgesContainer, .modal-overlay { display: none !important; }
+      .page-section { padding: 1rem 0 !important; page-break-inside: avoid !important; }
+      .hero-grid { grid-template-columns: 1fr 200px !important; }
+      .hero-main-card { max-width: 200px !important; box-shadow: none !important; border: 1px solid #ccc !important; }
+      .hero-avatar-frame { width: 90px !important; height: 90px !important; }
+      .skill-card, .roi-model-card, .project-card, .timeline-card, .key-facts-card {
+        background: #fff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #000 !important;
+      }
+      h1, h2, h3, h4, p, span { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow">
+    <div class="ambient-blob-1"></div>
+    <div class="ambient-blob-2"></div>
+  </div>
+  <div class="bg-grid-pattern"></div>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="brand-avatar">
+          <img src="profile.svg" alt="Ahmed Emad" id="navBrandAvatarImg">
+        </div>
+        <span id="navBrandName">Ahmed Emad</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+          <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
+          <li><a href="#added-value" class="nav-link" data-i18n="nav_added_value">Added Value</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="#experience" class="nav-link" data-i18n="nav_experience">Experience</a></li>
+          <li><a href="#education" class="nav-link" data-i18n="nav_education">Credentials</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Top bar Official CV PDF download -->
+        <a href="ahmed_emad_cv.pdf" download="ahmed_emad_cv.pdf" onclick="downloadOfficialCv(event)" class="btn btn-glass btn-sm" id="topCvDownloadBtn" title="Download Official CV (PDF)">
+          <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
+          <span class="cv-text-long" data-i18n="nav_download_cv">Official CV</span>
+          <span class="cv-text-short" style="display:none;">CV</span>
+        </a>
+
+        <!-- Language toggle -->
+        <button id="langToggleBtn" class="btn btn-glass btn-sm" onclick="toggleLanguage()" title="Switch Language">
+          <i data-lucide="globe" style="width: 16px; height: 16px;"></i>
+          <span id="langBtnText">العربية</span>
+        </button>
+
+        <!-- Theme toggle -->
+        <button id="themeToggleBtn" class="btn btn-glass btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <i data-lucide="moon" id="themeIcon" style="width: 18px; height: 18px;"></i>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm btn-get-in-touch">
+          <span data-i18n="btn_get_in_touch">Get in Touch</span>
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </a>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+          <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#hero" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_home">Home</a>
+      <a href="#about" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_about">About</a>
+      <a href="#skills" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_skills">Skills</a>
+      <a href="#added-value" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_added_value">Added Value</a>
+      <a href="#projects" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_projects">Projects</a>
+      <a href="#experience" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_experience">Experience</a>
+      <a href="#education" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_education">Credentials</a>
+      <a href="#contact" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_contact">Contact</a>
+      <div style="padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="#contact" class="btn btn-primary" onclick="closeMobileMenu()" style="justify-content: center;">
+          <span data-i18n="btn_get_in_touch">Get in Touch</span>
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION (THE BELOVED CAMERA CARD WITH STATS & SAFE FLOATING BADGES) -->
+    <section id="hero" class="page-section hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-pill">
+            <span class="pulse-dot"></span>
+            <span id="heroAvailabilityPill">Available for High-Impact Projects & Roles</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span data-i18n="hero_greeting">Hi, I'm</span> <span class="text-gradient" id="heroFullName">Ahmed Emad</span>
+          </h1>
+
+          <p class="hero-headline" id="heroHeadline">
+            Senior PHP/Laravel Developer
+          </p>
+
+          <p class="hero-intro" id="heroIntro">
+            I design and ship production-grade backend systems and full-stack web applications.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <span data-i18n="hero_explore_btn">Explore Projects</span>
+              <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+            </a>
+
+            <!-- Print Clean Portfolio Button in Hero -->
+            <button onclick="window.print()" class="btn btn-glass" title="Print Clean Portfolio PDF">
+              <i data-lucide="printer" style="width: 18px; height: 18px;"></i>
+              <span data-i18n="hero_print_btn">Print Portfolio</span>
+            </button>
+          </div>
+
+          <div class="hero-socials">
+            <a href="https://www.linkedin.com/in/ahmed-emad-m90/" id="heroSocialLinkedin" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://github.com/ahmedemadm90" id="heroSocialGithub" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+            <a href="https://wa.me/201006193690" id="heroSocialWhatsapp" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Chat on WhatsApp" style="color:#25d366;">
+              <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+            </a>
+            <a href="mailto:ahmedemadm90@gmail.com" id="heroSocialEmail" class="social-icon-btn" title="Email Direct">
+              <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO VISUAL PORTRAIT (THE BELOVED CAMERA CARD WITH STATS & SAFE FLOATING BADGES) -->
+        <div class="hero-visual-wrap" id="heroVisualWrap">
+          <!-- Floating Badges dynamically inserted with SAFE classes -->
+          <div id="heroFloatingBadgesContainer"></div>
+
+          <div class="hero-main-card">
+            <div class="hero-avatar-frame">
+              <img src="profile.svg" alt="Ahmed Emad" id="heroAvatarCardImg">
+              <span class="hero-online-status" title="Active & Ready"></span>
+            </div>
+
+            <h3 class="card-hero-name" id="cardHeroName">Ahmed Emad</h3>
+            <p class="card-hero-title" id="cardHeroTitle">Senior PHP/Laravel Developer</p>
+            <div class="card-location">
+              <i data-lucide="map-pin" style="width:14px; height:14px;"></i>
+              <span id="cardHeroLocation">New Damietta, Damietta, Egypt (Remote Ready)</span>
+            </div>
+
+            <div class="hero-stats-grid" id="cardHeroStatsGrid">
+              <!-- 4 stat pills inside the camera card -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION (WITH 5 PROFESSIONAL SUMMARY KEY FACTS) -->
+    <section id="about" class="page-section section-border-top">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow"><i data-lucide="user" style="width: 14px; height: 14px;"></i> <span data-i18n="about_eyebrow">About Me</span></span>
+          <h2 class="section-heading"><span data-i18n="about_heading_1">Engineering Mindset Applied to</span> <span class="text-gradient" data-i18n="about_heading_2">Scalable Systems</span></h2>
+          <p class="section-subheading" data-i18n="about_subheading">A synthesis of software orchestration, AI models, and biomedical precision.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <h3 style="font-size: 1.75rem; margin-bottom: 1.25rem;" id="aboutHeadlineText">Building Scalable, Zero-Failure Workflows</h3>
+            <p id="aboutMeP1"></p>
+            
+            <div style="margin-top: 2rem; padding: 1.25rem; background: var(--bg-surface-elevated); border-radius: var(--radius-md); border-left: 4px solid var(--primary);">
+              <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--primary-light); margin-bottom: 0.35rem;" data-i18n="career_vision_label">Career Vision</h4>
+              <p id="careerObjectiveText" style="font-size: 0.95rem; margin: 0;"></p>
+            </div>
+          </div>
+
+          <!-- Key Facts Card (All 5 Professional Summary items) -->
+          <div class="key-facts-card">
+            <h4 style="font-size: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="sparkles" style="color: var(--primary); width: 18px; height: 18px;"></i>
+              <span data-i18n="summary_card_title">Professional Summary</span>
+            </h4>
+            
+            <div id="keyFactsList">
+              <!-- 5 synchronized summary items injected here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION (OPTIMIZED: 4 COLUMNS ON DESKTOP, 3 ON MEDIUM, 2 ON TABLET, 1 ON MOBILE) -->
+    <section id="skills" class="page-section section-border-top">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow"><i data-lucide="cpu" style="width: 14px; height: 14px;"></i> <span data-i18n="skills_eyebrow">Technical Mastery</span></span>
+          <h2 class="section-heading"><span data-i18n="skills_heading_1">Categorized Technical</span> <span class="text-gradient" data-i18n="skills_heading_2">Competencies</span></h2>
+          <p class="section-subheading" data-i18n="skills_subheading">Structured across workflow automation, backend AI systems, embedded IoT, and operational optimization.</p>
+        </div>
+
+        <div class="skills-categories-grid" id="skillsContainer">
+          <!-- 4 Category skill cards injected dynamically with complete descriptions -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT ADDED VALUE & ROI MATRIX -->
+    <section id="added-value" class="page-section section-border-top">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow"><i data-lucide="trending-up" style="width: 14px; height: 14px;"></i> <span data-i18n="roi_eyebrow">Quantitative Value</span></span>
+          <h2 class="section-heading"><span id="roiMainTitle">Client Added Value & ROI Matrix</span></h2>
+          <p class="section-subheading" id="roiMainSubtitle">Quantitative comparison showing the monumental shift from manual labor to intelligent autonomous workflows.</p>
+        </div>
+
+        <!-- 3 Comparative Models -->
+        <div class="roi-grid" id="roiModelsGrid">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Impact Summary Boxes -->
+        <div class="roi-metrics-summary" id="roiMetricsSummary">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Google Drive Button -->
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="https://drive.google.com/" target="_blank" class="btn btn-primary" id="roiDriveBtn">
+            <i data-lucide="folder" style="width: 18px; height: 18px;"></i>
+            <span data-i18n="roi_drive_text">View Detailed ROI Files & Statistics on Google Drive</span>
+            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="page-section section-border-top">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow"><i data-lucide="folder-git-2" style="width: 14px; height: 14px;"></i> <span data-i18n="projects_eyebrow">Engineering Portfolio</span></span>
+          <h2 class="section-heading"><span data-i18n="projects_heading_1">Featured Systems &</span> <span class="text-gradient" data-i18n="projects_heading_2">Products</span></h2>
+          <p class="section-subheading" data-i18n="projects_subheading">Real-world production automations, health-tech hardware prototypes, and interactive cloud applications.</p>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Project cards injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="page-section section-border-top">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow"><i data-lucide="briefcase" style="width: 14px; height: 14px;"></i> <span data-i18n="exp_eyebrow">Work History</span></span>
+          <h2 class="section-heading"><span data-i18n="exp_heading_1">Professional Experience &</span> <span class="text-gradient" data-i18n="exp_heading_2">Roles</span></h2>
+          <p class="section-subheading" data-i18n="exp_subheading">Practical track record in enterprise process automation and system deployment.</p>
+        </div>
+
+        <div class="timeline" id="experienceTimeline">
+          <!-- Experience items injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS -->
+    <section id="education" class="page-section section-border-top">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow"><i data-lucide="graduation-cap" style="width: 14px; height: 14px;"></i> <span data-i18n="edu_eyebrow">Academic Foundation</span></span>
+          <h2 class="section-heading"><span data-i18n="edu_heading_1">Education &</span> <span class="text-gradient" data-i18n="edu_heading_2">Background</span></h2>
+          <p class="section-subheading" data-i18n="edu_subheading">Rigorous medical-technical foundation coupled with continuous technology upskilling.</p>
+        </div>
+
+        <div class="edu-cert-grid">
+          <div id="educationMainCard">
+            <!-- Education degree card -->
+          </div>
+
+          <div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="award" style="color: var(--accent-cyan); width: 22px; height: 22px;"></i>
+              <span data-i18n="cert_heading">Specialized Certifications</span>
+            </h3>
+            <div id="certificationsList">
+              <!-- Cert cards -->
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+              <a href="https://drive.google.com/" target="_blank" class="btn btn-glass" style="width: 100%; justify-content: center;" id="eduCertFolderBtn">
+                <i data-lucide="folder-check" style="width: 18px; height: 18px;"></i>
+                <span data-i18n="view_certificates_drive">View All Certificate Files in Google Drive</span>
+                <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="page-section section-border-top">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow"><i data-lucide="send" style="width: 14px; height: 14px;"></i> <span data-i18n="contact_eyebrow">Direct Outreach</span></span>
+          <h2 class="section-heading"><span data-i18n="contact_heading_1">Let's Discuss Your</span> <span class="text-gradient" data-i18n="contact_heading_2">Next Project</span></h2>
+          <p class="section-subheading" data-i18n="contact_subheading">Ready to streamline your business pipelines or collaborate on innovative systems.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;" data-i18n="contact_channel_title">Direct Channels</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="contact_channel_desc">Feel free to connect via WhatsApp, email, or schedule a technical call.</p>
+
+            <a href="https://wa.me/201006193690" target="_blank" rel="noopener noreferrer" class="contact-method-card">
+              <div class="contact-icon-box" style="color:#25d366; background:rgba(37,211,102,0.1);">
+                <i data-lucide="message-circle"></i>
+              </div>
+              <div>
+                <div class="fact-label" data-i18n="contact_whatsapp_label">WhatsApp & Phone</div>
+                <div class="fact-value" id="contactPhoneText">+20 100 619 3690</div>
+              </div>
+            </a>
+
+            <a href="mailto:ahmedemadm90@gmail.com" class="contact-method-card">
+              <div class="contact-icon-box">
+                <i data-lucide="mail"></i>
+              </div>
+              <div>
+                <div class="fact-label" data-i18n="contact_email_label">Email Address</div>
+                <div class="fact-value" id="contactEmailText">ahmedemadm90@gmail.com</div>
+              </div>
+            </a>
+
+            <div class="contact-method-card">
+              <div class="contact-icon-box" style="color:var(--accent-cyan); background:rgba(6,182,212,0.1);">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div>
+                <div class="fact-label" data-i18n="contact_location_label">Location</div>
+                <div class="fact-value" id="contactLocationText">New Damietta, Damietta, Egypt</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="key-facts-card">
+            <h4 style="font-size: 1.25rem; margin-bottom: 1.5rem;" data-i18n="form_title">Send a Direct Message</h4>
+            <form onsubmit="handleContactSubmit(event)">
+              <div class="form-group">
+                <label class="form-label" data-i18n="form_name">Your Name</label>
+                <input type="text" class="form-input" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="form_email">Your Email</label>
+                <input type="email" class="form-input" required placeholder="john@example.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="form_msg">Project Overview / Inquiry</label>
+                <textarea class="form-textarea" rows="4" required placeholder="Describe your automation requirements or inquiry..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                <span data-i18n="form_send">Transmit Message</span>
+                <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid var(--border-subtle); padding: 2.5rem 0; background: var(--bg-surface); text-align: center;">
+    <div class="container" style="display:flex; flex-direction:column; align-items:center; gap:1.25rem;">
+      <div class="hero-socials" style="margin-bottom:0;">
+        <a href="https://www.linkedin.com/in/ahmed-emad-m90/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/ahmedemadm90" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+        <a href="https://wa.me/201006193690" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Chat on WhatsApp" style="color:#25d366;">
+          <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+        </a>
+        <a href="mailto:ahmedemadm90@gmail.com" class="social-icon-btn" title="Email Direct">
+          <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+        </a>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        © 2026 <span id="footerBrandName">Ahmed Emad</span>. <span data-i18n="footer_rights">All rights reserved.</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- PROJECT MODAL -->
+  <div class="modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const INITIAL_DATA = {
+  "personal": {
+    "fullName": "Ahmed Emad",
+    "fullNameAr": "أحمد عماد",
+    "professionalTitle": "Senior PHP/Laravel Developer",
+    "professionalTitleAr": "مطور PHP/Laravel أول",
+    "professionalHeadline": "Backend Systems, RESTful APIs & Multi-Tenant SaaS | Laravel 12 · Vue.js 3 · Redis · Flutter",
+    "professionalHeadlineAr": "أنظمة Backend وواجهات RESTful API ومنصات SaaS متعددة المستأجرين | Laravel 12 · Vue.js 3 · Redis · Flutter",
+    "shortIntroduction": "I design and ship production-grade backend systems and full-stack web applications, from RESTful API ecosystems and event-driven queues to reactive Vue.js interfaces. Based in Cairo, working with global remote teams.",
+    "shortIntroductionAr": "أصمم وأطلق أنظمة Backend وتطبيقات ويب متكاملة جاهزة للإنتاج، من منظومات RESTful API وطوابير المعالجة المعتمدة على الأحداث إلى واجهات Vue.js التفاعلية. مقيم في القاهرة وأعمل مع فرق عالمية عن بُعد.",
+    "aboutMe": "I'm a Senior PHP/Laravel Developer with over a decade of experience shipping production-grade systems, from event-driven API platforms and multi-tenant SaaS backends to full reactive interfaces built in Vue.js 3. At CEMEX Egypt I lead backend engineering for enterprise applications handling 1,000+ concurrent users and 10K–30K API requests per day at 99%+ uptime. Across freelance engagements I've owned entire product stacks end-to-end: database schemas, queue pipelines, and Composition API frontends with Pinia and Vite. Outside Laravel I build cross-platform mobile apps with Flutter, automate operational workflows in n8n, and integrate third-party ecosystems (Paymob, Fawry, XPay, Stripe, Firebase, AWS S3, Google APIs).",
+    "aboutMeAr": "أنا مطور PHP/Laravel أول بخبرة تتجاوز عشر سنوات في إطلاق أنظمة جاهزة للإنتاج، من منصات API المعتمدة على الأحداث وأنظمة SaaS متعددة المستأجرين إلى واجهات تفاعلية كاملة بـ Vue.js 3. في CEMEX مصر أقود تطوير الـ Backend لتطبيقات مؤسسية تخدم أكثر من 1,000 مستخدم متزامن وما بين 10 و30 ألف طلب API يومياً بجاهزية تتجاوز 99%. وفي مشاريعي الحرة امتلكت منظومات منتجات كاملة من البداية للنهاية: تصميم قواعد البيانات، وطوابير المعالجة، وواجهات Composition API مع Pinia وVite. وبجانب Laravel أبني تطبيقات موبايل بـ Flutter، وأؤتمت مسارات العمل بـ n8n، وأربط منظومات خارجية مثل Paymob وFawry وXPay وStripe وFirebase وAWS S3 وGoogle APIs.",
+    "careerObjective": "Seeking remote senior backend or full-stack roles (Laravel + Vue.js) where clean architecture, testability, and performance matter.",
+    "careerObjectiveAr": "أبحث عن أدوار Backend أو Full-Stack أولى عن بُعد (Laravel + Vue.js) حيث تهم المعمارية النظيفة وقابلية الاختبار والأداء.",
+    "currentLocation": "Cairo, Egypt — Remote Worldwide",
+    "currentLocationAr": "القاهرة، مصر — عن بُعد حول العالم",
+    "nationality": "Egyptian",
+    "availability": "Available for Remote Roles",
+    "availabilityAr": "متاح للعمل عن بُعد",
+    "experienceYears": "10+ Years Experience",
+    "profileImage": "profile.svg",
+    "cvUrl": "ahmed_emad_cv.pdf"
+  },
+  "contact": {
+    "email": "ahmedemadm90@gmail.com",
+    "phone": "+201000803545",
+    "phoneDisplay": "+20 100 080 3545",
+    "whatsappUrl": "https://wa.me/201000803545",
+    "linkedin": "https://www.linkedin.com/in/ahmed-emad-m90/",
+    "github": "https://github.com/ahmedemadm90",
+    "portfolioUrl": "https://ahmedemadm90.github.io/"
+  },
+  "stats": [
+    {
+      "id": "s1",
+      "number": "10+",
+      "label": "Years Experience",
+      "labelAr": "سنوات خبرة"
+    },
+    {
+      "id": "s2",
+      "number": "99%",
+      "label": "Uptime Maintained",
+      "labelAr": "جاهزية تشغيل"
+    },
+    {
+      "id": "s3",
+      "number": "30K+",
+      "label": "Daily API Requests",
+      "labelAr": "طلب API يومياً"
+    },
+    {
+      "id": "s4",
+      "number": "12+",
+      "label": "Shipped Products",
+      "labelAr": "منتج تم إطلاقه"
+    }
+  ],
+  "floatingBadges": [
+    {
+      "id": "b1",
+      "icon": "server",
+      "category": "Stack",
+      "categoryAr": "التقنيات",
+      "title": "PHP 8.4 · Laravel 12",
+      "titleAr": "PHP 8.4 · Laravel 12",
+      "targetSection": "#skills"
+    },
+    {
+      "id": "b2",
+      "icon": "building-2",
+      "category": "Current Role",
+      "categoryAr": "الوظيفة الحالية",
+      "title": "CEMEX Egypt",
+      "titleAr": "CEMEX مصر",
+      "targetSection": "#experience"
+    },
+    {
+      "id": "b3",
+      "icon": "truck",
+      "category": "SaaS",
+      "categoryAr": "منصة SaaS",
+      "title": "WassalX Delivery",
+      "titleAr": "منصة WassalX للتوصيل",
+      "targetSection": "#projects",
+      "targetId": "wassalx"
+    },
+    {
+      "id": "b4",
+      "icon": "smartphone",
+      "category": "Mobile",
+      "categoryAr": "موبايل",
+      "title": "Flutter & Vue.js 3",
+      "titleAr": "Flutter و Vue.js 3",
+      "targetSection": "#skills"
+    }
+  ],
+  "professionalSummary": [
+    {
+      "id": "ps1",
+      "icon": "map-pin",
+      "label": "Location",
+      "labelAr": "الموقع",
+      "value": "Cairo, Egypt — Remote Worldwide",
+      "valueAr": "القاهرة، مصر — عن بُعد حول العالم"
+    },
+    {
+      "id": "ps2",
+      "icon": "briefcase",
+      "label": "Current Role",
+      "labelAr": "الوظيفة الحالية",
+      "value": "Senior Backend Developer @ CEMEX Egypt",
+      "valueAr": "مطور Backend أول في CEMEX مصر"
+    },
+    {
+      "id": "ps3",
+      "icon": "layers",
+      "label": "Primary Stack",
+      "labelAr": "التقنيات الأساسية",
+      "value": "PHP 8.4 · Laravel 12 · Vue.js 3 · Redis",
+      "valueAr": "PHP 8.4 · Laravel 12 · Vue.js 3 · Redis"
+    },
+    {
+      "id": "ps4",
+      "icon": "graduation-cap",
+      "label": "Education",
+      "labelAr": "المؤهل",
+      "value": "B.Sc. Commerce — Assiut University",
+      "valueAr": "بكالوريوس التجارة — جامعة أسيوط"
+    },
+    {
+      "id": "ps5",
+      "icon": "languages",
+      "label": "Languages",
+      "labelAr": "اللغات",
+      "value": "Arabic (Native) · English (Professional)",
+      "valueAr": "العربية (اللغة الأم) · الإنجليزية (مهنية)"
+    }
+  ],
+  "skillsCategories": [
+    {
+      "categoryName": "Backend & Architecture",
+      "categoryNameAr": "الـ Backend والمعمارية",
+      "icon": "server",
+      "skills": [
+        {
+          "name": "PHP 8.4 & Laravel 12",
+          "level": 97,
+          "badge": "Mastery",
+          "desc": "Horizon, Sanctum, Scout, Reverb, Gates & Policies, Artisan, Composer."
+        },
+        {
+          "name": "RESTful APIs & GraphQL",
+          "level": 95,
+          "badge": "Expert",
+          "desc": "API design and versioning, webhooks, WebSockets, rate limiting, API security."
+        },
+        {
+          "name": "Event-Driven & Queues",
+          "level": 93,
+          "badge": "Core",
+          "desc": "Redis queues, Horizon, job chaining, retry strategies, concurrency control, scheduler."
+        },
+        {
+          "name": "Clean Architecture",
+          "level": 92,
+          "badge": "Architect",
+          "desc": "SOLID, DDD, repository and observer patterns, microservices, multi-tenancy."
+        },
+        {
+          "name": "Auth & Security",
+          "level": 90,
+          "badge": "Security",
+          "desc": "OAuth2, JWT, RBAC, OWASP practices, Laravel Gates & Policies."
+        }
+      ]
+    },
+    {
+      "categoryName": "Frontend",
+      "categoryNameAr": "الواجهات الأمامية",
+      "icon": "layout",
+      "skills": [
+        {
+          "name": "Vue.js 3 & Composition API",
+          "level": 90,
+          "badge": "Advanced",
+          "desc": "Pinia, Vue Router, Vite, Inertia.js, real-time dashboards."
+        },
+        {
+          "name": "Livewire & Alpine.js",
+          "level": 88,
+          "badge": "Laravel",
+          "desc": "Reactive Blade interfaces with Livewire, Alpine.js, and Blade templates."
+        },
+        {
+          "name": "TypeScript & JavaScript ES6+",
+          "level": 85,
+          "badge": "Core",
+          "desc": "Typed frontends, modern modules, SPA and PWA patterns."
+        },
+        {
+          "name": "Tailwind CSS & Bootstrap",
+          "level": 88,
+          "badge": "UI",
+          "desc": "Responsive, accessible (WCAG) interfaces."
+        }
+      ]
+    },
+    {
+      "categoryName": "Data & DevOps",
+      "categoryNameAr": "البيانات والـ DevOps",
+      "icon": "database",
+      "skills": [
+        {
+          "name": "MySQL & PostgreSQL",
+          "level": 94,
+          "badge": "Database",
+          "desc": "Schema design, indexing, query optimization, views, transactions, full-text search."
+        },
+        {
+          "name": "Redis",
+          "level": 92,
+          "badge": "Caching",
+          "desc": "Caching, queues, broadcasting, and analytics acceleration."
+        },
+        {
+          "name": "Docker & Linux",
+          "level": 90,
+          "badge": "Production",
+          "desc": "Nginx, PHP-FPM, Supervisor workers, SSL/TLS on Ubuntu and CentOS."
+        },
+        {
+          "name": "CI/CD & Git",
+          "level": 88,
+          "badge": "DevOps",
+          "desc": "GitHub Actions, GitLab, deployment automation, monitoring."
+        },
+        {
+          "name": "Testing",
+          "level": 88,
+          "badge": "Quality",
+          "desc": "PHPUnit, Pest, TDD, feature and integration tests, static analysis, Postman."
+        }
+      ]
+    },
+    {
+      "categoryName": "Mobile & Integrations",
+      "categoryNameAr": "الموبايل والتكاملات",
+      "icon": "smartphone",
+      "skills": [
+        {
+          "name": "Flutter & Dart",
+          "level": 88,
+          "badge": "Mobile",
+          "desc": "Cross-platform apps with Firebase Auth, FCM, Google Sign-In, local storage."
+        },
+        {
+          "name": "Payment Gateways",
+          "level": 92,
+          "badge": "Payments",
+          "desc": "Paymob, Fawry, XPay, Stripe: verified webhooks, refunds, reconciliation."
+        },
+        {
+          "name": "n8n Automation",
+          "level": 90,
+          "badge": "Automation",
+          "desc": "HR, reporting, and operations workflows with retries and error handling."
+        },
+        {
+          "name": "Cloud & Third-Party APIs",
+          "level": 88,
+          "badge": "Integrations",
+          "desc": "AWS S3, Firebase, Google APIs, SMS APIs, webhook processing."
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "jobTitle": "Senior Backend Developer / Full-Stack Solutions Engineer",
+      "jobTitleAr": "مطور Backend أول / مهندس حلول Full-Stack",
+      "company": "CEMEX Egypt",
+      "companyAr": "CEMEX مصر",
+      "employmentType": "Full-time",
+      "employmentTypeAr": "دوام كامل",
+      "startDate": "Oct 2017",
+      "startDateAr": "أكتوبر 2017",
+      "endDate": "Present",
+      "endDateAr": "حتى الآن",
+      "responsibilities": "Engineered enterprise Laravel applications for 1,000+ concurrent users. Architected RESTful API ecosystems processing 10K–30K requests/day with Flutter clients, Firebase, and webhooks. Delivered ERP and HR modules with secure RBAC, audit-ready workflows, and event-driven queues. Re-engineered critical paths and MySQL schemas, improving performance 25–35%. Managed Docker + Linux production (Nginx, PHP-FPM, Supervisor, SSL/TLS, CI/CD) at 99%+ uptime.",
+      "responsibilitiesAr": "بناء تطبيقات Laravel مؤسسية لأكثر من 1,000 مستخدم متزامن. تصميم منظومات RESTful API تعالج 10–30 ألف طلب يومياً مع تطبيقات Flutter وFirebase والـ Webhooks. تسليم وحدات ERP والموارد البشرية بصلاحيات RBAC آمنة ومسارات قابلة للتدقيق وطوابير معالجة معتمدة على الأحداث. إعادة هندسة المسارات الحرجة وجداول MySQL بتحسين أداء 25–35%. إدارة بيئة الإنتاج على Docker وLinux (Nginx وPHP-FPM وSupervisor وSSL/TLS وCI/CD) بجاهزية تتجاوز 99%.",
+      "technologies": [
+        "Laravel",
+        "PHP 8.4",
+        "MySQL",
+        "Redis",
+        "Docker",
+        "Flutter",
+        "Firebase",
+        "RBAC"
+      ]
+    },
+    {
+      "jobTitle": "Automation & Integration Engineer — n8n",
+      "jobTitleAr": "مهندس أتمتة وتكامل — n8n",
+      "company": "Contract / Internal",
+      "companyAr": "عقد / داخلي",
+      "employmentType": "Contract",
+      "employmentTypeAr": "عقد",
+      "startDate": "Sep 2025",
+      "startDateAr": "سبتمبر 2025",
+      "endDate": "Present",
+      "endDateAr": "حتى الآن",
+      "responsibilities": "Orchestrated n8n workflows for HR, reporting, and operational processes, reducing manual effort by about 40–60%. Connected systems via REST APIs and webhooks with structured data transformation, error handling, retries, and notification pipelines for unattended execution.",
+      "responsibilitiesAr": "بناء مسارات عمل n8n للموارد البشرية والتقارير والعمليات، مما خفّض المجهود اليدوي بنحو 40–60%. ربط الأنظمة عبر REST APIs والـ Webhooks مع تحويل منظم للبيانات ومعالجة للأخطاء وإعادة المحاولة وتنبيهات للتشغيل دون تدخل.",
+      "technologies": [
+        "n8n",
+        "REST APIs",
+        "Webhooks",
+        "Automation"
+      ]
+    },
+    {
+      "jobTitle": "Full-Stack Developer — Property Management SaaS",
+      "jobTitleAr": "مطور Full-Stack — منصة SaaS لإدارة العقارات",
+      "company": "Freelance",
+      "companyAr": "عمل حر",
+      "employmentType": "Freelance",
+      "employmentTypeAr": "عمل حر",
+      "startDate": "Apr 2023",
+      "startDateAr": "أبريل 2023",
+      "endDate": "Mar 2024",
+      "endDateAr": "مارس 2024",
+      "responsibilities": "Built a multi-tenant property platform (Vue.js 3 + Pinia + Laravel) with landlord, tenant, and agent portals. Designed a Vue.js 3 dashboard with real-time occupancy metrics and drag-and-drop unit boards. Engineered a Laravel Event + Observer pipeline for lease transitions with PDF contracts and e-signatures on Horizon queues. Cut P95 analytics query time from 3.2s to under 300ms with indexed views and Redis caching.",
+      "responsibilitiesAr": "بناء منصة عقارات متعددة المستأجرين (Vue.js 3 + Pinia + Laravel) ببوابات للملاك والمستأجرين والوكلاء. تصميم لوحة Vue.js 3 بمؤشرات إشغال لحظية ولوحات وحدات بالسحب والإفلات. هندسة مسار أحداث Laravel لتحولات عقود الإيجار مع عقود PDF وتوقيع إلكتروني عبر طوابير Horizon. خفض زمن استعلامات التحليلات (P95) من 3.2 ثانية إلى أقل من 300 ملي ثانية.",
+      "technologies": [
+        "Vue.js 3",
+        "Pinia",
+        "Laravel",
+        "Redis",
+        "Horizon",
+        "AWS S3"
+      ]
+    },
+    {
+      "jobTitle": "Mobile Developer (Flutter) — Full-Stack Integration",
+      "jobTitleAr": "مطور موبايل (Flutter) — تكامل Full-Stack",
+      "company": "Exception Tech Group",
+      "companyAr": "Exception Tech Group",
+      "employmentType": "Project-Based",
+      "employmentTypeAr": "بالمشروع",
+      "startDate": "Jan 2017",
+      "startDateAr": "يناير 2017",
+      "endDate": "Present",
+      "endDateAr": "حتى الآن",
+      "responsibilities": "Delivered cross-platform Flutter apps integrated with Laravel REST APIs, Firebase Auth, and FCM, adopted by 500+ active users. Owned mobile-to-API data contracts and end-to-end integration testing. Integrated Paymob, Fawry, XPay, and Stripe with secure checkout, verified webhooks, refunds, and failure handling.",
+      "responsibilitiesAr": "تسليم تطبيقات Flutter متعددة المنصات مرتبطة بـ Laravel REST APIs وFirebase Auth وFCM يستخدمها أكثر من 500 مستخدم نشط. مسؤولية عقود البيانات بين التطبيق والـ API واختبارات التكامل. ربط بوابات الدفع Paymob وFawry وXPay وStripe مع دفع آمن وWebhooks موثقة واسترداد ومعالجة للأعطال.",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Laravel API",
+        "Firebase",
+        "FCM",
+        "Payments"
+      ]
+    },
+    {
+      "jobTitle": "Backend Developer",
+      "jobTitleAr": "مطور Backend",
+      "company": "Ibnsina Pharma",
+      "companyAr": "ابن سينا فارما",
+      "employmentType": "Full-time",
+      "employmentTypeAr": "دوام كامل",
+      "startDate": "Nov 2015",
+      "startDateAr": "نوفمبر 2015",
+      "endDate": "Dec 2016",
+      "endDateAr": "ديسمبر 2016",
+      "responsibilities": "Developed PHP/MySQL services, internal APIs, and business-logic modules for pharmaceutical operational applications.",
+      "responsibilitiesAr": "تطوير خدمات PHP/MySQL وواجهات API داخلية ووحدات منطق أعمال لتطبيقات التشغيل الدوائية.",
+      "technologies": [
+        "PHP",
+        "MySQL",
+        "APIs"
+      ]
+    },
+    {
+      "jobTitle": "Backend Developer",
+      "jobTitleAr": "مطور Backend",
+      "company": "TE Data",
+      "companyAr": "TE Data",
+      "employmentType": "Full-time",
+      "employmentTypeAr": "دوام كامل",
+      "startDate": "Oct 2014",
+      "startDateAr": "أكتوبر 2014",
+      "endDate": "Oct 2015",
+      "endDateAr": "أكتوبر 2015",
+      "responsibilities": "Built PHP backend components, database operations, and feature enhancements for internal platforms at Egypt's leading ISP.",
+      "responsibilitiesAr": "بناء مكونات PHP وعمليات قواعد البيانات وتحسينات الخصائص للمنصات الداخلية لأكبر مزود إنترنت في مصر.",
+      "technologies": [
+        "PHP",
+        "MySQL"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "wassalx",
+      "name": "WassalX — Delivery SaaS",
+      "nameAr": "WassalX — منصة SaaS للتوصيل",
+      "category": "Multi-Tenant SaaS",
+      "categoryAr": "منصة SaaS متعددة المستأجرين",
+      "shortDescription": "Multi-tenant delivery platform with subscriptions, order routing, driver and vehicle assignment, GPS tracking, settlement wallets, and operational dashboards.",
+      "shortDescriptionAr": "منصة توصيل متعددة المستأجرين بالاشتراكات وتوجيه الطلبات وتعيين السائقين والمركبات وتتبع GPS ومحافظ التسويات ولوحات تشغيلية.",
+      "technologies": [
+        "Laravel",
+        "Flutter",
+        "MySQL",
+        "Redis",
+        "Multi-Tenancy",
+        "REST API"
+      ],
+      "liveDemo": "https://wassalx.com/en",
+      "githubUrl": "",
+      "imageUrl": "",
+      "metric": "Event-Driven Queues",
+      "metricAr": "طوابير معالجة بالأحداث",
+      "overview": "Platform and company roles, subscription management, order routing, and GPS tracking. Event-driven queues handle notifications and asynchronous processing."
+    },
+    {
+      "id": "safrne",
+      "name": "Safrne — Carpooling Platform",
+      "nameAr": "Safrne — منصة مشاركة الرحلات",
+      "category": "Platform & Mobile",
+      "categoryAr": "منصة وتطبيق موبايل",
+      "shortDescription": "Carpooling platform with secure booking APIs, FCM notifications, Google Sign-In, and real-time one-to-one chat through Laravel Reverb.",
+      "shortDescriptionAr": "منصة مشاركة رحلات بواجهات حجز آمنة وإشعارات FCM وتسجيل دخول Google ودردشة لحظية عبر Laravel Reverb.",
+      "technologies": [
+        "Laravel API",
+        "Flutter",
+        "Sanctum",
+        "Reverb",
+        "FCM",
+        "Redis"
+      ],
+      "liveDemo": "https://safrne.com/",
+      "githubUrl": "",
+      "imageUrl": "",
+      "metric": "Real-Time Chat",
+      "metricAr": "دردشة لحظية",
+      "overview": "Production Nginx, SSL, queue workers, and API versioning. Also on Google Play: https://play.google.com/store/apps/details?id=com.safrne.app"
+    },
+    {
+      "id": "property-saas",
+      "name": "Property Management SaaS",
+      "nameAr": "منصة SaaS لإدارة العقارات",
+      "category": "Freelance SaaS",
+      "categoryAr": "منصة SaaS (عمل حر)",
+      "shortDescription": "Multi-tenant property platform with landlord, tenant, and agent portals, lease lifecycle pipelines, and drag-and-drop Vue.js dashboards.",
+      "shortDescriptionAr": "منصة عقارات متعددة المستأجرين ببوابات للملاك والمستأجرين والوكلاء ومسارات دورة حياة العقود ولوحات Vue.js بالسحب والإفلات.",
+      "technologies": [
+        "Vue.js 3",
+        "Pinia",
+        "Laravel",
+        "Redis",
+        "AWS S3",
+        "Horizon"
+      ],
+      "liveDemo": "https://vidadevelopments.ca/",
+      "githubUrl": "",
+      "imageUrl": "",
+      "metric": "P95 3.2s → 300ms",
+      "metricAr": "P95 من 3.2 ث إلى 300 مللي ث",
+      "overview": "Automated expiry notifications, Redis-cached analytics, and AWS S3 signed document management."
+    },
+    {
+      "id": "ultrapal",
+      "name": "Ultrapal — Delivery Management",
+      "nameAr": "Ultrapal — إدارة التوصيل",
+      "category": "Mobile App",
+      "categoryAr": "تطبيق موبايل",
+      "shortDescription": "Delivery management app with real-time order tracking, driver assignment, and push notifications on a Laravel REST API.",
+      "shortDescriptionAr": "تطبيق لإدارة التوصيل بتتبع لحظي للطلبات وتعيين السائقين وإشعارات فورية مع Laravel REST API.",
+      "technologies": [
+        "Flutter",
+        "Laravel API",
+        "Firebase",
+        "FCM"
+      ],
+      "liveDemo": "https://play.google.com/store/apps/details?id=com.ultra.palestine&hl=ar",
+      "githubUrl": "https://github.com/ahmedemadm90/Ultra-Palestine",
+      "imageUrl": "",
+      "metric": "Live Order Tracking",
+      "metricAr": "تتبع لحظي للطلبات",
+      "overview": "Full delivery workflow from order to driver, built with Flutter and Laravel."
+    },
+    {
+      "id": "fence-monitor",
+      "name": "Fence Monitor — Security Patrol SaaS",
+      "nameAr": "Fence Monitor — منصة دوريات الأمن والتفتيش",
+      "category": "Security & Enterprise",
+      "categoryAr": "أمن ومؤسسات",
+      "shortDescription": "Factory patrol system with map-defined checkpoints, server-side GPS proximity validation, QR verification, and audit logs.",
+      "shortDescriptionAr": "نظام دوريات للمصانع بنقاط تفتيش على الخريطة وتحقق من القرب عبر GPS ومسح QR وسجلات تدقيق.",
+      "technologies": [
+        "Laravel 12",
+        "Flutter",
+        "Blade",
+        "GPS",
+        "QR Code",
+        "RBAC",
+        "Multi-Tenancy"
+      ],
+      "liveDemo": "",
+      "githubUrl": "https://github.com/ahmedemadm90/FenceMonitor",
+      "imageUrl": "",
+      "metric": "GPS + QR Verified",
+      "metricAr": "تحقق GPS و QR",
+      "overview": "Structured inspection records and role-based reporting integrated with a Flutter field app."
+    },
+    {
+      "id": "meza",
+      "name": "Meza — Multi-Vendor Marketplace",
+      "nameAr": "Meza — سوق متعدد البائعين",
+      "category": "Marketplace",
+      "categoryAr": "سوق إلكتروني",
+      "shortDescription": "Multi-vendor marketplace with product listings, order management, and seller dashboards backed by a Laravel REST API.",
+      "shortDescriptionAr": "سوق متعدد البائعين بقوائم منتجات وإدارة طلبات ولوحات للبائعين مع Laravel REST API.",
+      "technologies": [
+        "Laravel",
+        "Flutter",
+        "MySQL",
+        "REST API"
+      ],
+      "liveDemo": "",
+      "githubUrl": "https://github.com/ahmedemadm90/meza",
+      "imageUrl": "",
+      "metric": "Multi-Vendor",
+      "metricAr": "متعدد البائعين",
+      "overview": "Seller dashboards and order management across web and mobile."
+    },
+    {
+      "id": "saydone",
+      "name": "SayDone — Offline Voice-to-Task",
+      "nameAr": "SayDone — تحويل الصوت لمهام بدون إنترنت",
+      "category": "Mobile App",
+      "categoryAr": "تطبيق موبايل",
+      "shortDescription": "Offline-first Flutter voice assistant that turns speech into structured tasks with on-device speech-to-text and bilingual onboarding.",
+      "shortDescriptionAr": "مساعد صوتي بـ Flutter يعمل بدون إنترنت ويحوّل الكلام لمهام منظمة بالتعرف على الكلام داخل الجهاز.",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "On-Device STT",
+        "Offline-First"
+      ],
+      "liveDemo": "",
+      "githubUrl": "https://github.com/ahmedemadm90/saydone-offline",
+      "imageUrl": "",
+      "metric": "100% Offline",
+      "metricAr": "يعمل بدون إنترنت",
+      "overview": "Local persistence and on-device speech recognition."
+    },
+    {
+      "id": "oscar-park",
+      "name": "Oscar Park — Kids Area Management",
+      "nameAr": "Oscar Park — إدارة منطقة ألعاب الأطفال",
+      "category": "Mobile App",
+      "categoryAr": "تطبيق موبايل",
+      "shortDescription": "Production Flutter app for kids-area operations with clean architecture, reactive state management, and Firebase services.",
+      "shortDescriptionAr": "تطبيق Flutter إنتاجي لتشغيل مناطق ألعاب الأطفال بمعمارية نظيفة وإدارة حالة تفاعلية وخدمات Firebase.",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Local Storage"
+      ],
+      "liveDemo": "https://play.google.com/store/apps/details?id=com.oscarkidspark&hl=en",
+      "githubUrl": "https://github.com/ahmedemadm90/oscarpark",
+      "imageUrl": "",
+      "metric": "On Google Play",
+      "metricAr": "على Google Play",
+      "overview": "Modern Material interface with local storage."
+    },
+    {
+      "id": "newsmes",
+      "name": "Newsmes — SME Content Platform",
+      "nameAr": "Newsmes — منصة محتوى للشركات الصغيرة",
+      "category": "Web Platform",
+      "categoryAr": "منصة ويب",
+      "shortDescription": "SME-focused content platform with dynamic categorization, secure administration workflows, and a responsive interface.",
+      "shortDescriptionAr": "منصة محتوى للشركات الصغيرة والمتوسطة بتصنيف ديناميكي ومسارات إدارة آمنة وواجهة متجاوبة.",
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "MySQL",
+        "Blade",
+        "Tailwind CSS"
+      ],
+      "liveDemo": "https://smesworld.com/",
+      "githubUrl": "https://github.com/ahmedemadm90/newsmes",
+      "imageUrl": "",
+      "metric": "Live in Production",
+      "metricAr": "يعمل في الإنتاج",
+      "overview": "Scalable content platform for small and medium businesses."
+    },
+    {
+      "id": "attendance",
+      "name": "Attendance & Compliance System",
+      "nameAr": "نظام الحضور والامتثال",
+      "category": "Enterprise",
+      "categoryAr": "مؤسسي",
+      "shortDescription": "Queued XLSX imports for large employee datasets with validation, violation detection, and automated compliance reports.",
+      "shortDescriptionAr": "استيراد ملفات XLSX ضخمة عبر الطوابير مع التحقق واكتشاف المخالفات وتقارير امتثال تلقائية.",
+      "technologies": [
+        "Laravel",
+        "Blade",
+        "MySQL",
+        "Redis Queues",
+        "XLSX"
+      ],
+      "liveDemo": "",
+      "githubUrl": "https://github.com/ahmedemadm90/attendance_cards",
+      "imageUrl": "",
+      "metric": "Auto Compliance",
+      "metricAr": "امتثال تلقائي",
+      "overview": "Flags shifts over 12 hours and seven consecutive working days without rest."
+    },
+    {
+      "id": "cemex-academy",
+      "name": "CEMEX Academy — Football Academy App",
+      "nameAr": "CEMEX Academy — تطبيق أكاديمية كرة القدم",
+      "category": "Mobile App",
+      "categoryAr": "تطبيق موبايل",
+      "shortDescription": "Bilingual app for academy participants, coaches, parents, and administrators with role-based access and notifications.",
+      "shortDescriptionAr": "تطبيق ثنائي اللغة للاعبين والمدربين وأولياء الأمور والإداريين بصلاحيات حسب الدور وإشعارات تشغيلية.",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Laravel REST API",
+        "Firebase"
+      ],
+      "liveDemo": "https://play.google.com/store/apps/details?id=com.cemex.app&hl=en",
+      "githubUrl": "",
+      "imageUrl": "",
+      "metric": "On Google Play",
+      "metricAr": "على Google Play",
+      "overview": "Role-based workflows with Firebase services."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Commerce (B.Sc.)",
+      "degreeAr": "بكالوريوس التجارة",
+      "institution": "Assiut University",
+      "institutionAr": "جامعة أسيوط",
+      "graduationDate": "",
+      "graduationDateAr": "",
+      "gpa": "",
+      "gpaAr": "",
+      "highlights": "Business foundation that informs ERP, HR, and payment-reconciliation systems design.",
+      "highlightsAr": "خلفية تجارية تدعم تصميم أنظمة ERP والموارد البشرية وتسويات المدفوعات.",
+      "certificatesFolderUrl": ""
+    }
+  ],
+  "courses": [],
+  "addedValue": {
+    "sectionTitle": "Impact Delivered in Production",
+    "sectionTitleAr": "الأثر المحقق في بيئة الإنتاج",
+    "sectionSubtitle": "Before-and-after results from real systems I engineered.",
+    "sectionSubtitleAr": "نتائج قبل وبعد من أنظمة حقيقية قمت بهندستها.",
+    "driveReportsUrl": "",
+    "models": [
+      {
+        "id": "m1",
+        "title": "Analytics Queries",
+        "titleAr": "استعلامات التحليلات",
+        "tag": "Property SaaS",
+        "tagAr": "منصة العقارات",
+        "cost": "3.2s → 300ms",
+        "costAr": "3.2 ث ← 300 مللي ث",
+        "costDetail": "P95 query time with indexed views + Redis cache",
+        "costDetailAr": "زمن الاستعلام P95 مع فهارس و Redis",
+        "time": "~10x faster",
+        "timeAr": "أسرع ~10 مرات",
+        "timeDetail": "Occupancy, revenue forecasting, arrears aging",
+        "timeDetailAr": "الإشغال وتوقعات الإيراد والمتأخرات",
+        "accuracy": "Horizon queues",
+        "accuracyAr": "طوابير Horizon",
+        "accuracyDetail": "Async PDF contracts and e-signatures",
+        "accuracyDetailAr": "عقود PDF وتوقيع إلكتروني غير متزامن",
+        "scalability": "Multi-tenant",
+        "scalabilityAr": "متعدد المستأجرين",
+        "badgeColor": "#10b981"
+      },
+      {
+        "id": "m2",
+        "title": "Enterprise Workflows",
+        "titleAr": "مسارات العمل المؤسسية",
+        "tag": "CEMEX Egypt",
+        "tagAr": "CEMEX مصر",
+        "cost": "+25–35%",
+        "costAr": "+25–35%",
+        "costDetail": "Performance gain after re-engineering critical paths",
+        "costDetailAr": "تحسن الأداء بعد إعادة هندسة المسارات الحرجة",
+        "time": "10K–30K / day",
+        "timeAr": "10–30 ألف / يوم",
+        "timeDetail": "API requests served",
+        "timeDetailAr": "طلبات API",
+        "accuracy": "99%+",
+        "accuracyAr": "99%+",
+        "accuracyDetail": "Production uptime",
+        "accuracyDetailAr": "جاهزية التشغيل",
+        "scalability": "1,000+ concurrent users",
+        "scalabilityAr": "أكثر من 1,000 مستخدم متزامن",
+        "badgeColor": "#6366f1"
+      },
+      {
+        "id": "m3",
+        "title": "Operations Automation",
+        "titleAr": "أتمتة العمليات",
+        "tag": "n8n",
+        "tagAr": "n8n",
+        "cost": "−40–60%",
+        "costAr": "−40–60%",
+        "costDetail": "Manual effort removed from HR and reporting",
+        "costDetailAr": "تقليل المجهود اليدوي في الموارد البشرية والتقارير",
+        "time": "Unattended",
+        "timeAr": "بدون تدخل",
+        "timeDetail": "Retries, error handling, notifications",
+        "timeDetailAr": "إعادة محاولة ومعالجة أخطاء وتنبيهات",
+        "accuracy": "Webhooks + APIs",
+        "accuracyAr": "Webhooks و APIs",
+        "accuracyDetail": "Structured data transformation",
+        "accuracyDetailAr": "تحويل منظم للبيانات",
+        "scalability": "Cross-system",
+        "scalabilityAr": "بين الأنظمة",
+        "badgeColor": "#f59e0b"
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Uptime",
+        "labelAr": "الجاهزية",
+        "value": "99%+",
+        "progress": 99
+      },
+      {
+        "label": "Manual Effort Cut",
+        "labelAr": "خفض المجهود اليدوي",
+        "value": "60%",
+        "progress": 60
+      },
+      {
+        "label": "Query Speedup (P95)",
+        "labelAr": "تسريع الاستعلامات",
+        "value": "90%",
+        "progress": 90
+      }
+    ]
   }
-}
-:root[data-theme="light"] {
-  --bg: #F5F7FA; --bg2: #EBF0F8; --bg3: #DDE5F0;
-  --card: #FFFFFF; --card2: #F0F5FB;
-  --txt: #0A1628; --txt2: #3D5070; --txt3: #8A9BB5;
-  --border: #C8D8EC; --border2: #A8BDD8;
-  --accentLow: rgba(249,115,22,.09); --accentMid: rgba(249,115,22,.22);
-}
+};
+    const CLOUD_URL = typeof getPortfolioCloudUrl === 'function' ? getPortfolioCloudUrl() : null;
 
-*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--txt);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; }
+    let data = INITIAL_DATA;
+    let currentLang = localStorage.getItem('portfolio_lang') || 'en';
 
-/* ═══════════════════════════════
-   PROGRESS BAR
-═══════════════════════════════ */
-#progress {
-  position: fixed; top: 0; left: 0; z-index: 200;
-  height: 2px; width: 0%;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transition: width 0.1s linear;
-}
+    // LocalStorage Initial Cache
+    try {
+      const cached = localStorage.getItem('portfolio_cache');
+      if (cached) {
+        data = JSON.parse(cached);
+      }
+    } catch(err) {}
 
-/* ═══════════════════════════════
-   NAV
-═══════════════════════════════ */
-nav {
-  position: fixed;
-  top: env(safe-area-inset-top, 0px);
-  left: 0; right: 0; z-index: 100;
-  height: var(--nav);
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding-inline: clamp(16px, 6vw, 80px);
-  background: color-mix(in srgb, var(--bg) 75%, transparent);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: var(--display);
-  font-weight: 800; font-size: 1.15rem;
-  letter-spacing: -0.02em; color: var(--txt);
-}
-.nav-logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a {
-  font-size: 0.83rem; font-weight: 600;
-  color: var(--txt2); letter-spacing: 0.02em;
-  transition: color .2s; position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute;
-  bottom: -2px; left: 0; right: 0;
-  height: 1.5px; background: var(--accent);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform .25s;
-}
-.nav-links a:hover,
-.nav-links a.active { color: var(--accent); }
-.nav-links a:hover::after,
-.nav-links a.active::after { transform: scaleX(1); }
-.nav-right { display: flex; align-items: center; gap: 10px; }
-.icon-btn {
-  background: none; border: 1px solid var(--border);
-  color: var(--txt2); width: 34px; height: 34px;
-  border-radius: 8px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .9rem; transition: border-color .2s, color .2s;
-}
-.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
-.cta-btn {
-  background: var(--accent); color: #fff;
-  border: none; padding: 7px 18px;
-  border-radius: 8px; font-family: var(--body);
-  font-size: .83rem; font-weight: 700; cursor: pointer;
-  box-shadow: 0 0 0 0 var(--accentMid);
-  transition: background .2s, box-shadow .2s, transform .15s;
-}
-.cta-btn:hover {
-  background: var(--accent2); transform: translateY(-1px);
-  box-shadow: 0 0 0 6px var(--accentLow);
-}
-.hamburger { display: none; }
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: calc(var(--nav) + env(safe-area-inset-top, 0px));
-  left: 0; right: 0; z-index: 99;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 24px clamp(16px, 6vw, 80px);
-  flex-direction: column; gap: 18px;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a { font-size: 1rem; font-weight: 600; color: var(--txt2); }
-.mobile-menu a:hover { color: var(--accent); }
+    // Live Cross-Tab BroadcastChannel listener for instant real-time updates!
+    try {
+      const bc = new BroadcastChannel('portfolio_sync');
+      bc.onmessage = (event) => {
+        if (event.data && event.data.type === 'DATA_UPDATED') {
+          data = event.data.data;
+          renderAll();
+        }
+      };
+    } catch(e) {}
 
-/* ═══════════════════════════════
-   HERO
-═══════════════════════════════ */
-.hero {
-  min-height: 100vh;
-  padding-top: var(--nav);
-  padding-inline: clamp(16px, 8vw, 120px);
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 56px;
-  align-items: center;
-  position: relative; overflow: hidden;
-}
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'portfolio_cache' && e.newValue) {
+        data = JSON.parse(e.newValue);
+        renderAll();
+      }
+    });
 
-/* Circuit trace SVG background */
-.hero-bg {
-  position: absolute; inset: 0; pointer-events: none;
-  opacity: .06;
-}
-.hero-bg svg { width: 100%; height: 100%; }
+    const I18N = {
+      en: {
+        nav_home: "Home",
+        nav_about: "About",
+        nav_skills: "Skills",
+        nav_added_value: "Added Value",
+        nav_projects: "Projects",
+        nav_experience: "Experience",
+        nav_education: "Credentials",
+        nav_contact: "Contact",
+        nav_download_cv: "Official CV",
+        btn_get_in_touch: "Get in Touch",
+        hero_greeting: "Hi, I'm",
+        hero_explore_btn: "Explore Projects",
+        hero_download_cv_btn: "Download CV",
+        hero_print_btn: "Print Portfolio",
+        about_eyebrow: "About Me",
+        about_heading_1: "Engineering Mindset Applied to",
+        about_heading_2: "Scalable Systems",
+        about_subheading: "Clean architecture, testability, and performance, shipped to production.",
+        career_vision_label: "Career Vision",
+        summary_card_title: "Professional Summary",
+        skills_eyebrow: "Technical Mastery",
+        skills_heading_1: "Categorized Technical",
+        skills_heading_2: "Competencies",
+        skills_subheading: "From the data layer to the reactive interface: backend, frontend, DevOps, mobile, and integrations.",
+        roi_eyebrow: "Measured Impact",
+        roi_drive_text: "View Details",
+        projects_eyebrow: "Engineering Portfolio",
+        projects_heading_1: "Featured Systems &",
+        projects_heading_2: "Products",
+        projects_subheading: "SaaS platforms, APIs, and full-stack products shipped to production.",
+        exp_eyebrow: "Work History",
+        exp_heading_1: "Professional Experience &",
+        exp_heading_2: "Roles",
+        exp_subheading: "10+ years shipping systems people rely on, from ISP internals to enterprise SaaS.",
+        edu_eyebrow: "Academic Foundation",
+        edu_heading_1: "Education &",
+        edu_heading_2: "Background",
+        edu_subheading: "Academic foundation plus a decade of hands-on engineering.",
+        cert_heading: "Specialized Certifications",
+        view_certificates_drive: "View All Certificate Files in Google Drive",
+        contact_eyebrow: "Direct Outreach",
+        contact_heading_1: "Let's Discuss Your",
+        contact_heading_2: "Next Project",
+        contact_subheading: "Actively seeking remote senior backend or full-stack roles. My inbox is always open.",
+        contact_channel_title: "Direct Channels",
+        contact_channel_desc: "Feel free to connect via WhatsApp, email, or schedule a technical call.",
+        contact_whatsapp_label: "WhatsApp & Phone",
+        contact_email_label: "Email Address",
+        contact_location_label: "Location",
+        form_title: "Send a Direct Message",
+        form_name: "Your Name",
+        form_email: "Your Email",
+        form_msg: "Project Overview / Inquiry",
+        form_send: "Transmit Message",
+        footer_rights: "All rights reserved.",
+        view_details_btn: "Explore Project",
+        live_demo_btn: "Live Demo"
+      },
+      ar: {
+        nav_home: "الرئيسية",
+        nav_about: "نبذة عني",
+        nav_skills: "المهارات",
+        nav_added_value: "القيمة المضافة",
+        nav_projects: "المشاريع",
+        nav_experience: "الخبرات",
+        nav_education: "المؤهلات",
+        nav_contact: "تواصل معي",
+        nav_download_cv: "السيرة الذاتية (CV)",
+        btn_get_in_touch: "تواصل معي",
+        hero_greeting: "مرحباً، أنا",
+        hero_explore_btn: "استعراض المشاريع",
+        hero_download_cv_btn: "تحميل السيرة الذاتية (CV)",
+        hero_print_btn: "طباعة البورتفوليو",
+        about_eyebrow: "نبذة عني",
+        about_heading_1: "عقلية هندسية لبناء",
+        about_heading_2: "أنظمة قابلة للتوسع",
+        about_subheading: "معمارية نظيفة وقابلية اختبار وأداء عالٍ في بيئة الإنتاج.",
+        career_vision_label: "الرؤية المهنية",
+        summary_card_title: "الملخص المهني والتنفيذي",
+        skills_eyebrow: "الكفاءات التقنية",
+        skills_heading_1: "المهارات التقنية",
+        skills_heading_2: "المصنفة بدقة",
+        skills_subheading: "من طبقة البيانات إلى الواجهة التفاعلية: Backend وFrontend وDevOps وموبايل وتكاملات.",
+        roi_eyebrow: "الأثر المحقق",
+        roi_drive_text: "عرض التفاصيل",
+        projects_eyebrow: "معرض المشاريع",
+        projects_heading_1: "أبرز الأنظمة الهندسية و",
+        projects_heading_2: "المنتجات",
+        projects_subheading: "منصات SaaS وواجهات API ومنتجات متكاملة تعمل في الإنتاج.",
+        exp_eyebrow: "المسار المهني",
+        exp_heading_1: "الخبرات العملية و",
+        exp_heading_2: "الأدوار المهنية",
+        exp_subheading: "أكثر من 10 سنوات في بناء أنظمة يعتمد عليها الناس، من مزودي الإنترنت إلى منصات SaaS المؤسسية.",
+        edu_eyebrow: "الأساس الأكاديمي",
+        edu_heading_1: "التعليم الجامعي و",
+        edu_heading_2: "الخلفية الأكاديمية",
+        edu_subheading: "أساس أكاديمي مع عقد من الخبرة الهندسية العملية.",
+        cert_heading: "الشهادات والاعتمادات الاحترافية",
+        view_certificates_drive: "عرض كافة الشهادات على Google Drive",
+        contact_eyebrow: "قنوات التواصل المباشر",
+        contact_heading_1: "لنبدأ التخطيط لـ",
+        contact_heading_2: "مشروعك القادم",
+        contact_subheading: "أبحث عن أدوار Backend أو Full-Stack أولى عن بُعد، وبريدي مفتوح دائماً.",
+        contact_channel_title: "التواصل السريع",
+        contact_channel_desc: "تواصل معي مباشرة عبر الواتساب أو البريد أو الهاتف.",
+        contact_whatsapp_label: "واتساب وهاتف",
+        contact_email_label: "البريد الإلكتروني",
+        contact_location_label: "الموقع الجغرافي",
+        form_title: "أرسل رسالة مباشرة",
+        form_name: "الاسم الكريم",
+        form_email: "البريد الإلكتروني",
+        form_msg: "تفاصيل المشروع أو الاستفسار",
+        form_send: "إرسال الرسالة الآن",
+        footer_rights: "جميع الحقوق محفوظة.",
+        view_details_btn: "تفاصيل المشروع",
+        live_demo_btn: "عرض حي"
+      }
+    };
 
-.hero-blob {
-  position: absolute; pointer-events: none;
-  width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, var(--accentLow), transparent 70%);
-  top: -100px; left: -150px;
-  animation: blobMove 8s ease-in-out infinite alternate;
-}
-@keyframes blobMove {
-  from { transform: translate(0,0) scale(1); }
-  to   { transform: translate(60px, 40px) scale(1.08); }
-}
+    function init() {
+      applyLanguage(currentLang);
+      renderAll();
+      fetchLatestFromCloud();
+    }
 
-.hero-content { position: relative; }
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      localStorage.setItem('portfolio_lang', currentLang);
+      applyLanguage(currentLang);
+      renderAll();
+    }
 
-/* ─── Hero Visual (right column) ─── */
-.hero-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 460px;
-}
+    function applyLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langBtnText').textContent = lang === 'en' ? 'العربية' : 'English';
+      const shortLangEl = document.getElementById('langBtnTextShort');
+      if (shortLangEl) shortLangEl.textContent = lang === 'en' ? 'AR' : 'EN';
 
-.code-glow {
-  position: absolute;
-  width: 320px; height: 320px; border-radius: 50%;
-  background: radial-gradient(circle, var(--accentLow) 0%, transparent 70%);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  animation: blobMove 6s ease-in-out infinite alternate;
-}
+      const dict = I18N[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+    }
 
-.code-window {
-  width: 100%; max-width: 430px;
-  background: var(--card);
-  border: 1px solid var(--border2);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 28px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(249,115,22,.1), inset 0 1px 0 rgba(255,255,255,.05);
-  position: relative; z-index: 1;
-  animation: windowFloat 5s ease-in-out infinite alternate;
-}
-@keyframes windowFloat {
-  from { transform: translateY(0px) rotate(-0.5deg); }
-  to   { transform: translateY(-10px) rotate(0.5deg); }
-}
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('portfolio_theme', 'light');
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        localStorage.setItem('portfolio_theme', 'dark');
+      }
+      lucide.createIcons();
+    }
 
-.code-bar {
-  display: flex; align-items: center; gap: 7px;
-  padding: 11px 16px;
-  background: var(--bg3);
-  border-bottom: 1px solid var(--border);
-}
-.dot-r { width:10px; height:10px; border-radius:50%; background:#FF5F56; flex-shrink:0; }
-.dot-y { width:10px; height:10px; border-radius:50%; background:#FFBD2E; flex-shrink:0; }
-.dot-g { width:10px; height:10px; border-radius:50%; background:#27C93F; flex-shrink:0; }
-.code-filename {
-  margin-left: 8px;
-  font-family: var(--mono); font-size: .7rem; color: var(--txt3);
-}
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('open');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileDrawer').classList.remove('open');
+    }
 
-.code-body {
-  padding: 18px 20px;
-  font-family: var(--mono); font-size: .77rem; line-height: 1.8;
-  color: var(--txt2); margin: 0; overflow-x: auto;
-  white-space: pre;
-}
-.c-ln  { color: var(--txt3); user-select: none; margin-right: 14px; font-size: .68rem; }
-.c-kw  { color: #C792EA; }
-.c-fn  { color: #82AAFF; }
-.c-str { color: #C3E88D; }
-.c-num { color: #F78C6C; }
-.c-cm  { color: var(--txt3); font-style: italic; }
-.c-cl  { color: #FFCB6B; }
-.c-acc { color: #F97316; }
-.c-var { color: var(--txt); }
-.c-op  { color: var(--txt3); }
-.code-cursor-inline {
-  display: inline-block; width: 7px; height: 13px;
-  background: var(--accent); border-radius: 1.5px;
-  vertical-align: middle; margin-left: 1px;
-  animation: cursor .9s step-end infinite;
-}
+    function renderAll() {
+      const isAr = currentLang === 'ar';
+      const p = data.personal || {};
+      const c = data.contact || {};
+      const av = data.addedValue || {};
 
-/* Floating tech pills */
-.tech-float {
-  position: absolute;
-  font-size: .7rem; font-weight: 700;
-  padding: 5px 13px; border-radius: 100px;
-  background: var(--card); border: 1px solid var(--border2);
-  color: var(--txt2); white-space: nowrap;
-  box-shadow: 0 6px 24px rgba(0,0,0,.4);
-  z-index: 2;
-}
-.tf1 { top:  4%; left: -5%;  animation: floatA 4.2s ease-in-out infinite alternate; }
-.tf2 { top: 18%; right:-8%; animation: floatB 3.8s ease-in-out infinite alternate; }
-.tf3 { top: 50%; left: -9%; animation: floatC 4.6s ease-in-out infinite alternate; }
-.tf4 { bottom:16%; right:-6%; animation: floatA 5.0s ease-in-out infinite alternate; }
-.tf5 { bottom: 3%; left:  4%; animation: floatB 4.4s ease-in-out infinite alternate; }
-@keyframes floatA { from{transform:translateY(0)}   to{transform:translateY(-9px)} }
-@keyframes floatB { from{transform:translateY(-4px)} to{transform:translateY(7px)} }
-@keyframes floatC { from{transform:translateY(3px)}  to{transform:translateY(-8px)} }
+      const displayName = isAr && p.fullNameAr ? p.fullNameAr : (p.fullName || 'Ahmed Emad');
+      const displayTitle = isAr && p.professionalTitleAr ? p.professionalTitleAr : (p.professionalTitle || 'Senior PHP/Laravel Developer');
+      
+      document.getElementById('navBrandName').textContent = isAr ? 'أحمد عماد' : 'Ahmed Emad';
+      document.getElementById('footerBrandName').textContent = displayName;
 
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--accentMid);
-  background: var(--accentLow);
-  color: var(--accent);
-  font-size: .72rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  padding: 5px 14px; border-radius: 100px;
-  margin-bottom: 28px;
-}
-.hero-badge .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent);
-  animation: blink 1.8s ease-in-out infinite;
-}
-@keyframes blink { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
+      const profilePhoto = (p && p.profileImage) ? p.profileImage : 'profile.svg';
+      const heroAvatarImg = document.getElementById('heroAvatarCardImg');
+      if (heroAvatarImg) heroAvatarImg.src = profilePhoto;
+      const navAvatarImg = document.getElementById('navBrandAvatarImg');
+      if (navAvatarImg) navAvatarImg.src = profilePhoto;
+      document.getElementById('heroFullName').textContent = displayName;
+      document.getElementById('cardHeroName').textContent = displayName;
+      document.getElementById('heroHeadline').textContent = isAr && p.professionalHeadlineAr ? p.professionalHeadlineAr : p.professionalHeadline;
+      document.getElementById('cardHeroTitle').textContent = displayTitle;
+      document.getElementById('heroIntro').textContent = isAr && p.shortIntroductionAr ? p.shortIntroductionAr : p.shortIntroduction;
+      document.getElementById('heroAvailabilityPill').textContent = isAr && p.availabilityAr ? p.availabilityAr : p.availability;
+      document.getElementById('cardHeroLocation').textContent = isAr && p.currentLocationAr ? p.currentLocationAr : (p.currentLocation || 'Cairo, Egypt — Remote Worldwide');
 
-.hero-name {
-  font-family: var(--display);
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 800; line-height: 1.0;
-  letter-spacing: -0.04em; color: var(--txt);
-  margin-bottom: 6px;
-}
-.hero-name .accent { color: var(--accent); }
+      // Contact Links
+      if (c.linkedin) document.getElementById('heroSocialLinkedin').href = c.linkedin;
+      if (c.github) document.getElementById('heroSocialGithub').href = c.github;
+      if (c.whatsappUrl) {
+        document.getElementById('heroSocialWhatsapp').href = c.whatsappUrl;
+        document.getElementById('contactPhoneText').parentElement.parentElement.href = c.whatsappUrl;
+      }
+      if (c.email) {
+        document.getElementById('heroSocialEmail').href = 'mailto:' + c.email;
+        document.getElementById('contactEmailText').parentElement.parentElement.href = 'mailto:' + c.email;
+        document.getElementById('contactEmailText').textContent = c.email;
+      }
+      if (c.phoneDisplay || c.phone) {
+        document.getElementById('contactPhoneText').textContent = c.phoneDisplay || c.phone;
+      }
+      if (p.currentLocation) {
+        document.getElementById('contactLocationText').textContent = isAr && p.currentLocationAr ? p.currentLocationAr : p.currentLocation;
+      }
 
-.hero-role-wrap {
-  font-family: var(--display);
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  font-weight: 600; color: var(--txt2);
-  margin-bottom: 26px;
-  display: flex; align-items: center; gap: 10px;
-  flex-wrap: wrap;
-}
-.hero-cursor {
-  display: inline-block; width: 2px; height: 1.2em;
-  background: var(--accent); vertical-align: middle;
-  animation: cursor .9s step-end infinite;
-}
-@keyframes cursor { 0%,100%{opacity:1;} 50%{opacity:0;} }
+      const cvTarget = (p && p.cvUrl) ? p.cvUrl : 'ahmed_emad_cv.pdf';
+      const topCv = document.getElementById('topCvDownloadBtn');
+      if (topCv) topCv.href = cvTarget;
 
-.hero-desc {
-  font-size: clamp(.92rem, 1.4vw, 1rem);
-  color: var(--txt2); max-width: 560px;
-  line-height: 1.85; margin-bottom: 38px;
-}
+      // About
+      document.getElementById('aboutMeP1').textContent = isAr && p.aboutMeAr ? p.aboutMeAr : p.aboutMe;
+      document.getElementById('careerObjectiveText').textContent = isAr && p.careerObjectiveAr ? p.careerObjectiveAr : p.careerObjective;
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 52px; }
+      // Stats Pills INSIDE the Card
+      renderHeroCardStats();
 
-.btn-primary {
-  background: var(--accent); color: #fff;
-  padding: 13px 28px; border-radius: 10px;
-  font-weight: 700; font-size: .95rem;
-  box-shadow: 0 4px 20px var(--accentMid);
-  transition: background .2s, transform .15s, box-shadow .2s;
-}
-.btn-primary:hover {
-  background: var(--accent2); transform: translateY(-2px);
-  box-shadow: 0 8px 32px var(--accentMid);
-}
-.btn-outline {
-  color: var(--txt); padding: 12px 28px;
-  border-radius: 10px; font-weight: 600; font-size: .95rem;
-  border: 1.5px solid var(--border2);
-  transition: border-color .2s, color .2s, transform .15s;
-}
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+      // Floating Badges outside the card
+      renderFloatingBadges();
 
-.hero-stats { display: flex; flex-wrap: wrap; gap: 36px; }
-.stat-num {
-  font-family: var(--display); font-size: 2rem;
-  font-weight: 800; line-height: 1;
-  font-variant-numeric: tabular-nums; color: var(--txt);
-}
-.stat-num em { font-style: normal; color: var(--accent); }
-.stat-label {
-  font-size: .72rem; font-weight: 600; color: var(--txt3);
-  letter-spacing: .06em; text-transform: uppercase; margin-top: 4px;
-}
+      // 5 Professional Summary Key Facts
+      renderKeyFactsSummary();
 
-/* ═══════════════════════════════
-   MARQUEE
-═══════════════════════════════ */
-.marquee-strip {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-  padding-block: 14px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.marquee-inner {
-  display: inline-flex; gap: 0;
-  animation: marquee 28s linear infinite;
-}
-@keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
-.marquee-item {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding-inline: 32px;
-  font-size: .78rem; font-weight: 700; color: var(--txt3);
-  letter-spacing: .08em; text-transform: uppercase;
-}
-.marquee-item .sep { color: var(--accent); font-size: .6rem; }
+      // Categorized Skills (4 categories with descriptions)
+      renderCategorizedSkills();
 
-/* ═══════════════════════════════
-   SECTIONS
-═══════════════════════════════ */
-section { padding-block: 96px; padding-inline: clamp(16px, 8vw, 120px); }
-section.alt { background: var(--bg2); }
+      // Added Value & ROI
+      renderAddedValueSection();
 
-.sec-eyebrow {
-  font-size: .72rem; font-weight: 700; color: var(--accent);
-  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px;
-}
-.sec-title {
-  font-family: var(--display);
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
-  font-weight: 800; letter-spacing: -.03em;
-  color: var(--txt); line-height: 1.1; margin-bottom: 14px;
-  text-wrap: balance;
-}
-.sec-sub {
-  font-size: 1rem; color: var(--txt2);
-  max-width: 520px; line-height: 1.75; margin-bottom: 56px;
-}
+      // Projects
+      renderProjects();
 
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-  margin-inline: clamp(16px, 8vw, 120px);
-}
+      // Experience & Education
+      renderExperience();
+      renderEducation();
 
-/* ═══════════════════════════════
-   ABOUT
-═══════════════════════════════ */
-.about-layout {
-  display: grid; grid-template-columns: 1.1fr 1fr;
-  gap: 64px; align-items: start;
-}
-.about-text p { color: var(--txt2); line-height: 1.85; margin-bottom: 18px; }
-.about-text strong { color: var(--txt); font-weight: 600; }
+      lucide.createIcons();
+    }
 
-.avail-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.3);
-  color: #4ADE80; font-size: .78rem; font-weight: 700;
-  padding: 6px 14px; border-radius: 100px; margin-bottom: 22px;
-}
-.avail-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #22C55E; animation: blink 1.8s infinite; }
+    // Hero Card Stat Pills
+    function renderHeroCardStats() {
+      const grid = document.getElementById('cardHeroStatsGrid');
+      grid.innerHTML = '';
+      const stats = data.stats || [];
+      const isAr = currentLang === 'ar';
 
-.info-stack { display: flex; flex-direction: column; gap: 14px; }
-.info-row {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--r); padding: 18px 20px;
-  display: flex; align-items: center; gap: 14px;
-  transition: border-color .2s;
-}
-.info-row:hover { border-color: var(--border2); }
-.info-ico {
-  width: 38px; height: 38px; min-width: 38px;
-  background: var(--accentLow); border-radius: 9px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-}
-.info-lbl { font-size: .68rem; color: var(--txt3); font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 2px; }
-.info-val { font-size: .88rem; color: var(--txt); font-weight: 500; }
+      stats.forEach(s => {
+        const pill = document.createElement('div');
+        pill.className = 'stat-pill';
+        pill.innerHTML = `
+          <div class="stat-number">${s.number}</div>
+          <div class="stat-label">${isAr && s.labelAr ? s.labelAr : s.label}</div>
+        `;
+        grid.appendChild(pill);
+      });
+    }
 
-/* ═══════════════════════════════
-   SKILLS — TABBED
-═══════════════════════════════ */
-.skill-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-.skill-tab {
-  font-size: .78rem; font-weight: 700; padding: 7px 16px;
-  border-radius: 8px; border: 1px solid var(--border);
-  background: none; color: var(--txt2); cursor: pointer;
-  transition: background .2s, border-color .2s, color .2s;
-}
-.skill-tab:hover { border-color: var(--border2); color: var(--txt); }
-.skill-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    // Interactive Closer Floating Badges
+    function renderFloatingBadges() {
+      const container = document.getElementById('heroFloatingBadgesContainer');
+      container.innerHTML = '';
+      const badges = data.floatingBadges || [];
+      const isAr = currentLang === 'ar';
 
-.skill-panel { display: none; }
-.skill-panel.active { display: block; }
+      badges.forEach((b, idx) => {
+        const a = document.createElement('a');
+        a.className = 'floating-badge badge-pos-' + (idx % 6);
+        a.href = b.targetSection || '#skills';
+        a.onclick = (e) => handleBadgeClick(e, b);
 
-.skill-groups-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-.skill-group {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--r); padding: 22px;
-  transition: border-color .2s, transform .2s;
-}
-.skill-group:hover { border-color: var(--border2); transform: translateY(-2px); }
-.skill-group-name {
-  font-size: .68rem; font-weight: 800; color: var(--accent);
-  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px;
-}
-.chips { display: flex; flex-wrap: wrap; gap: 7px; }
-.chip {
-  background: var(--bg3); color: var(--txt);
-  font-size: .74rem; font-weight: 500;
-  padding: 4px 11px; border-radius: 100px;
-  border: 1px solid var(--border);
-  transition: background .2s, border-color .2s, color .2s;
-  cursor: default;
-}
-.chip:hover { background: var(--accentLow); border-color: var(--accent); color: var(--accent); }
+        const iconName = b.icon || 'cpu';
+        a.innerHTML = `
+          <i data-lucide="${iconName}" style="color: var(--accent-cyan); width: 20px; height: 20px; flex-shrink: 0;"></i>
+          <div>
+            <div class="badge-cat" style="font-size: 0.72rem; color: var(--text-tertiary);">${isAr && b.categoryAr ? b.categoryAr : b.category}</div>
+            <div class="badge-title" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">${isAr && b.titleAr ? b.titleAr : b.title}</div>
+          </div>
+          <i data-lucide="arrow-up-right" class="badge-arrow" style="width: 14px; height: 14px; opacity: 0.5; margin-left: 0.25rem; transition: all 0.2s ease;"></i>
+        `;
+        container.appendChild(a);
+      });
+    }
 
-/* ═══════════════════════════════
-   EXPERIENCE TIMELINE
-═══════════════════════════════ */
-.timeline { position: relative; padding-left: 24px; }
-.timeline::before {
-  content: ''; position: absolute;
-  left: 0; top: 8px; bottom: 8px;
-  width: 1.5px;
-  background: linear-gradient(to bottom, var(--accent) 0%, var(--border) 100%);
-}
-.exp-item { position: relative; padding: 0 0 44px 36px; }
-.exp-dot {
-  position: absolute; left: -30px; top: 6px;
-  width: 13px; height: 13px; border-radius: 50%;
-  border: 2px solid var(--accent);
-  background: var(--bg);
-  box-shadow: 0 0 0 4px var(--accentLow);
-}
-.exp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-bottom: 6px; }
-.exp-co { font-size: .72rem; font-weight: 800; color: var(--accent); letter-spacing: .07em; text-transform: uppercase; }
-.exp-date { font-size: .72rem; color: var(--txt3); font-weight: 500; }
-.exp-badge {
-  font-size: .65rem; padding: 2px 8px; border-radius: 100px;
-  border: 1px solid var(--border); color: var(--txt3);
-}
-.exp-freelance { border-color: var(--accentMid); color: var(--accent); background: var(--accentLow); }
-.exp-title { font-family: var(--display); font-size: 1.08rem; font-weight: 700; color: var(--txt); margin-bottom: 12px; line-height: 1.3; }
-.exp-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-.exp-list li { font-size: .88rem; color: var(--txt2); line-height: 1.7; padding-left: 16px; position: relative; }
-.exp-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: .76rem; top: 2px; }
+    function handleBadgeClick(e, badge) {
+      e.preventDefault();
+      const target = badge.targetSection || '#skills';
+      const el = document.querySelector(target);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (badge.targetId) {
+          setTimeout(() => {
+            const p = (data.projects || []).find(x => x.id === badge.targetId);
+            if (p) openProjectModal(p);
+          }, 600);
+        } else {
+          el.style.transition = 'box-shadow 0.4s ease';
+          el.style.boxShadow = '0 0 35px var(--primary-glow)';
+          setTimeout(() => { el.style.boxShadow = ''; }, 1600);
+        }
+      }
+    }
 
-/* ═══════════════════════════════
-   PROJECTS
-═══════════════════════════════ */
-.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 22px; }
-.proj-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 18px; padding: 26px;
-  display: flex; flex-direction: column; gap: 14px;
-  transition: border-color .25s, transform .25s, box-shadow .25s;
-  position: relative; overflow: hidden;
-}
-.proj-card::after {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 2.5px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform .35s;
-}
-.proj-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.35); }
-.proj-card:hover::after { transform: scaleX(1); }
-.proj-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.proj-icon { width: 42px; height: 42px; background: var(--accentLow); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-.proj-type { font-size: .65rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); background: var(--accentLow); border: 1px solid var(--accentMid); padding: 3px 10px; border-radius: 100px; }
-.proj-name { font-family: var(--display); font-size: 1.1rem; font-weight: 700; color: var(--txt); letter-spacing: -.02em; }
-.proj-desc { font-size: .87rem; color: var(--txt2); line-height: 1.72; flex: 1; }
-.proj-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.proj-chip { font-size: .7rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; background: var(--bg3); color: var(--txt2); border: 1px solid var(--border); }
-.proj-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-.proj-link { font-size: .72rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; background: var(--accentLow); color: var(--accent); border: 1px solid var(--accentMid); transition: background .2s, color .2s; text-decoration: none; }
-.proj-link:hover { background: var(--accent); color: #fff; }
+    // Key Facts (5 Professional Summary items)
+    function renderKeyFactsSummary() {
+      const list = document.getElementById('keyFactsList');
+      list.innerHTML = '';
+      const items = data.professionalSummary || [];
+      const isAr = currentLang === 'ar';
 
-/* ═══════════════════════════════
-   CONTACT
-═══════════════════════════════ */
-.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-.contact-lead { font-size: 1rem; color: var(--txt2); line-height: 1.8; margin-bottom: 32px; }
-.contact-links { display: flex; flex-direction: column; gap: 12px; }
-.contact-row {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--r); padding: 15px 18px;
-  transition: border-color .2s, transform .2s;
-}
-.contact-row:hover { border-color: var(--border2); transform: translateX(4px); }
-.contact-ico { width: 40px; height: 40px; min-width: 40px; background: var(--accentLow); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-.contact-lbl { font-size: .68rem; color: var(--txt3); font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 2px; }
-.contact-val { font-size: .88rem; color: var(--txt); font-weight: 500; }
-.contact-arr { color: var(--txt3); margin-left: auto; transition: color .2s, transform .2s; }
-.contact-row:hover .contact-arr { color: var(--accent); transform: translateX(3px); }
+      items.forEach(it => {
+        const row = document.createElement('div');
+        row.className = 'fact-item';
+        row.innerHTML = `
+          <div class="fact-icon">
+            <i data-lucide="${it.icon || 'award'}" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div>
+            <div class="fact-label">${isAr && it.labelAr ? it.labelAr : it.label}</div>
+            <div class="fact-value">${isAr && it.valueAr ? it.valueAr : it.value}</div>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+    }
 
-.open-card {
-  background: var(--accentLow); border: 1.5px solid var(--accentMid);
-  border-radius: 18px; padding: 28px;
-}
-.open-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.open-dot { width: 9px; height: 9px; border-radius: 50%; background: #22C55E; animation: blink 1.8s infinite; }
-.open-title { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--txt); }
-.open-body { font-size: .88rem; color: var(--txt2); line-height: 1.75; margin-bottom: 20px; }
-.open-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.open-tag { font-size: .75rem; font-weight: 600; padding: 5px 12px; border-radius: 100px; background: var(--card); color: var(--txt); border: 1px solid var(--border); }
+    // Categorized Skills (4 categories with descriptions)
+    function renderCategorizedSkills() {
+      const container = document.getElementById('skillsContainer');
+      container.innerHTML = '';
+      const cats = data.skillsCategories || [];
+      const isAr = currentLang === 'ar';
 
-/* ═══════════════════════════════
-   FOOTER
-═══════════════════════════════ */
-footer {
-  padding-block: 28px; padding-inline: clamp(16px, 8vw, 120px);
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 14px;
-}
-.footer-copy { font-size: .82rem; color: var(--txt3); }
-.footer-copy strong { color: var(--txt2); }
-.footer-links { display: flex; gap: 18px; }
-.footer-links a { font-size: .82rem; color: var(--txt3); transition: color .2s; }
-.footer-links a:hover { color: var(--accent); }
+      cats.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'skill-card';
 
-/* ═══════════════════════════════
-   ANIMATIONS
-═══════════════════════════════ */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .hero-blob, .dot, .hero-cursor, .open-dot { animation: none; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(0); } }
-}
+        let skillsHtml = '';
+        (cat.skills || []).forEach(sk => {
+          skillsHtml += `
+            <div class="skill-item">
+              <div class="skill-item-header">
+                <span class="skill-name">${sk.name} ${sk.badge ? `<span class="skill-badge">${sk.badge}</span>` : ''}</span>
+                <span class="skill-level">${sk.level}%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" style="width: ${sk.level}%;"></div>
+              </div>
+              ${sk.desc ? `<p class="skill-desc">${sk.desc}</p>` : ''}
+            </div>
+          `;
+        });
 
-/* ═══════════════════════════════
-   RESPONSIVE
-═══════════════════════════════ */
-@media (max-width: 1050px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
-}
-@media (max-width: 900px) {
-  .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
-}
-@media (max-width: 768px) {
-  .nav-links, .cta-btn { display: none; }
-  .hamburger { display: flex; }
-  section { padding-block: 64px; }
-  footer { flex-direction: column; align-items: flex-start; }
-}
-@media (max-width: 480px) {
-  .proj-grid, .skill-groups-grid { grid-template-columns: 1fr; }
-}
+        card.innerHTML = `
+          <div class="skill-card-header">
+            <i data-lucide="${cat.icon || 'workflow'}" style="color: var(--accent-cyan); width: 22px; height: 22px;"></i>
+            <h3>${isAr && cat.categoryNameAr ? cat.categoryNameAr : cat.categoryName}</h3>
+          </div>
+          <div class="skill-card-body">
+            ${skillsHtml}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
 
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-</style>
+    // Added Value & ROI
+    function renderAddedValueSection() {
+      const av = data.addedValue || {};
+      const isAr = currentLang === 'ar';
 
-<!-- ── PROGRESS BAR ── -->
-<div id="progress"></div>
+      document.getElementById('roiMainTitle').textContent = isAr && av.sectionTitleAr ? av.sectionTitleAr : (av.sectionTitle || 'Client Added Value & ROI Matrix');
+      document.getElementById('roiMainSubtitle').textContent = isAr && av.sectionSubtitleAr ? av.sectionSubtitleAr : (av.sectionSubtitle || 'Quantitative comparison showing the monumental shift from manual labor to intelligent autonomous workflows.');
+      if (av.driveReportsUrl) {
+        document.getElementById('roiDriveBtn').href = av.driveReportsUrl;
+      }
 
-<!-- ── NAV ── -->
-<nav>
-  <a href="#" class="nav-logo">Ahmed<span>.</span>dev</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
-    <a href="mailto:ahmedemadm90@gmail.com" class="cta-btn">Hire Me</a>
-    <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu">☰</button>
-  </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about"      onclick="closeMenu()">About</a>
-  <a href="#skills"     onclick="closeMenu()">Skills</a>
-  <a href="#experience" onclick="closeMenu()">Experience</a>
-  <a href="#projects"   onclick="closeMenu()">Projects</a>
-  <a href="#contact"    onclick="closeMenu()">Contact</a>
-  <a href="mailto:ahmedemadm90@gmail.com" style="color:var(--accent);font-weight:700;">✉ Hire Me</a>
-</div>
+      const modelsGrid = document.getElementById('roiModelsGrid');
+      modelsGrid.innerHTML = '';
+      (av.models || []).forEach((m, idx) => {
+        const card = document.createElement('div');
+        card.className = 'roi-model-card' + (idx === 2 ? ' featured' : '');
+        card.innerHTML = `
+          <div>
+            <span class="roi-tag-badge" style="background: ${m.badgeColor || '#6366f1'}22; color: ${m.badgeColor || '#818cf8'};">${isAr && m.tagAr ? m.tagAr : m.tag}</span>
+            <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem;">${isAr && m.titleAr ? m.titleAr : m.title}</h3>
+            
+            <div class="roi-item-row">
+              <div class="roi-item-label">${isAr ? 'التكلفة التشغيلية' : 'Estimated Cost'}</div>
+              <div class="roi-item-val">${isAr && m.costAr ? m.costAr : m.cost}</div>
+              <div class="roi-item-sub">${isAr && m.costDetailAr ? m.costDetailAr : m.costDetail}</div>
+            </div>
 
-<!-- ══════════════════════════════════════════
-   HERO
-══════════════════════════════════════════ -->
-<section class="hero" id="home">
-  <!-- Circuit-trace SVG pattern -->
-  <div class="hero-bg" aria-hidden="true">
-    <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 200 H400 V100 H800 V300 H1100 V150 H1440" stroke="#F97316" stroke-width="1"/>
-      <path d="M200 800 V500 H500 V650 H900 V400 H1200 V600 H1440" stroke="#F97316" stroke-width="1"/>
-      <path d="M600 0 V200 H300 V400 H700 V600" stroke="#F97316" stroke-width="1"/>
-      <path d="M1000 0 V300 H1300 V200 H1440" stroke="#F97316" stroke-width="1"/>
-      <circle cx="400" cy="200" r="4" fill="#F97316"/>
-      <circle cx="800" cy="100" r="4" fill="#F97316"/>
-      <circle cx="800" cy="300" r="4" fill="#F97316"/>
-      <circle cx="1100" cy="300" r="4" fill="#F97316"/>
-      <circle cx="500" cy="650" r="4" fill="#F97316"/>
-      <circle cx="900" cy="400" r="4" fill="#F97316"/>
-      <circle cx="600" cy="200" r="4" fill="#F97316"/>
-      <circle cx="300" cy="400" r="4" fill="#F97316"/>
-      <circle cx="1000" cy="300" r="4" fill="#F97316"/>
-      <circle cx="1300" cy="200" r="4" fill="#F97316"/>
-    </svg>
-  </div>
-  <div class="hero-blob"></div>
+            <div class="roi-item-row">
+              <div class="roi-item-label">${isAr ? 'زمن التنفيذ والاستجابة' : 'Turnaround Time'}</div>
+              <div class="roi-item-val">${isAr && m.timeAr ? m.timeAr : m.time}</div>
+              <div class="roi-item-sub">${isAr && m.timeDetailAr ? m.timeDetailAr : m.timeDetail}</div>
+            </div>
 
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      Available for Remote Roles
-    </div>
-    <h1 class="hero-name">Ahmed<br><span class="accent">Emad</span></h1>
-    <div class="hero-role-wrap">
-      <span id="heroRole">Senior PHP/Laravel Developer</span><span class="hero-cursor"></span>
-    </div>
-    <p class="hero-desc">
-      I design and ship production-grade backend systems and full-stack web applications —
-      from RESTful API ecosystems and event-driven queues to reactive Vue.js interfaces.
-      Based in Cairo, working with global remote teams.
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact"  class="btn-outline">Get In Touch</a>
-      <a href="https://ahmedemadm90.github.io/ahmed_emad_cv.pdf" target="_blank" rel="noopener" class="btn-outline">⬇ Download CV</a>
-    </div>
-    <div class="hero-stats">
-      <div><div class="stat-num">10<em>+</em></div><div class="stat-label">Years Experience</div></div>
-      <div><div class="stat-num">99<em>%</em></div><div class="stat-label">Uptime Maintained</div></div>
-      <div><div class="stat-num">30K<em>+</em></div><div class="stat-label">Daily API Requests</div></div>
-      <div><div class="stat-num">12<em>+</em></div><div class="stat-label">Shipped Products</div></div>
-    </div>
-  </div>
+            <div class="roi-item-row">
+              <div class="roi-item-label">${isAr ? 'الدقة والموثوقية' : 'Accuracy & Reliability'}</div>
+              <div class="roi-item-val">${isAr && m.accuracyAr ? m.accuracyAr : m.accuracy}</div>
+              <div class="roi-item-sub">${isAr && m.accuracyDetailAr ? m.accuracyDetailAr : m.accuracyDetail}</div>
+            </div>
+          </div>
 
-  <!-- ── Hero Visual ── -->
-  <div class="hero-visual" aria-hidden="true">
-    <div class="code-glow"></div>
+          <div class="roi-item-row" style="margin-top: 1rem; border-bottom: none;">
+            <div class="roi-item-label">${isAr ? 'قابلية التوسع والنمو' : 'Scalability'}</div>
+            <div class="roi-item-sub" style="font-weight: 700; color: var(--text-primary);">${isAr && m.scalabilityAr ? m.scalabilityAr : m.scalability}</div>
+          </div>
+        `;
+        modelsGrid.appendChild(card);
+      });
 
-    <!-- Floating tech badges -->
-    <div class="tech-float tf1">🐘 PHP 8.4</div>
-    <div class="tech-float tf2">🔴 Laravel 12</div>
-    <div class="tech-float tf3">⚡ Redis</div>
-    <div class="tech-float tf4">💚 Vue.js 3</div>
-    <div class="tech-float tf5">🐳 Docker</div>
+      const metricsGrid = document.getElementById('roiMetricsSummary');
+      metricsGrid.innerHTML = '';
+      (av.metrics || []).forEach(met => {
+        const box = document.createElement('div');
+        box.className = 'roi-summary-box';
+        box.innerHTML = `
+          <div class="roi-summary-num">${met.value}</div>
+          <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); margin-top: 0.25rem;">${isAr && met.labelAr ? met.labelAr : met.label}</div>
+        `;
+        metricsGrid.appendChild(box);
+      });
+    }
 
-    <!-- Animated code window -->
-    <div class="code-window">
-      <div class="code-bar">
-        <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-        <span class="code-filename">OrderController.php</span>
-      </div>
-      <pre class="code-body"><span class="c-cm">// WassalX · Multi-tenant Delivery SaaS</span>
-<span class="c-kw">class</span> <span class="c-cl">OrderController</span> <span class="c-kw">extends</span> <span class="c-cl">Controller</span>
-<span class="c-op">{</span>
-  <span class="c-kw">public function</span> <span class="c-fn">dispatch</span><span class="c-op">(</span><span class="c-cl">Request</span> <span class="c-var">$req</span><span class="c-op">)</span>
-  <span class="c-op">{</span>
-    <span class="c-var">$order</span> <span class="c-op">=</span> <span class="c-cl">Order</span><span class="c-op">::</span><span class="c-fn">create</span><span class="c-op">([</span>
-      <span class="c-str">'tenant_id'</span>  <span class="c-op">=></span> <span class="c-fn">tenant</span><span class="c-op">()-></span><span class="c-fn">id</span><span class="c-op">(),</span>
-      <span class="c-str">'driver_id'</span>  <span class="c-op">=></span> <span class="c-var">$req</span><span class="c-op">-></span><span class="c-fn">driver_id</span><span class="c-op">(),</span>
-      <span class="c-str">'status'</span>     <span class="c-op">=></span> <span class="c-str">'queued'</span><span class="c-op">,</span>
-    <span class="c-op">]);</span>
+    // Projects
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+      const list = data.projects || [];
+      const isAr = currentLang === 'ar';
 
-    <span class="c-cl">DispatchOrderJob</span><span class="c-op">::</span><span class="c-fn">dispatch</span><span class="c-op">(</span><span class="c-var">$order</span><span class="c-op">)</span>
-      <span class="c-op">-></span><span class="c-fn">onQueue</span><span class="c-op">(</span><span class="c-str">'orders'</span><span class="c-op">)</span>
-      <span class="c-op">-></span><span class="c-fn">delay</span><span class="c-op">(</span><span class="c-fn">now</span><span class="c-op">()-></span><span class="c-fn">addSeconds</span><span class="c-op">(</span><span class="c-num">3</span><span class="c-op">));</span>
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.onclick = () => openProjectModal(p);
 
-    <span class="c-kw">return</span> <span class="c-fn">response</span><span class="c-op">()-></span><span class="c-fn">json</span><span class="c-op">([</span>
-      <span class="c-str">'status'</span> <span class="c-op">=></span> <span class="c-str">'dispatched'</span><span class="c-op">,</span>
-      <span class="c-str">'ulid'</span>   <span class="c-op">=></span> <span class="c-var">$order</span><span class="c-op">-></span><span class="c-fn">ulid</span><span class="c-op">(),</span>
-    <span class="c-op">]);</span>
-  <span class="c-op">}</span><span class="code-cursor-inline"></span>
-<span class="c-op">}</span></pre>
-    </div>
-  </div>
-</section>
+        let tagsHtml = '';
+        (p.technologies || []).forEach(t => {
+          tagsHtml += `<span class="project-tag">${t}</span>`;
+        });
 
-<!-- ── MARQUEE ── -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-inner" id="marqueeInner">
-    <span class="marquee-item">PHP 8.4 <span class="sep">◆</span></span>
-    <span class="marquee-item">Laravel 12 <span class="sep">◆</span></span>
-    <span class="marquee-item">Vue.js 3 <span class="sep">◆</span></span>
-    <span class="marquee-item">Redis &amp; Horizon <span class="sep">◆</span></span>
-    <span class="marquee-item">RESTful APIs <span class="sep">◆</span></span>
-    <span class="marquee-item">MySQL &amp; PostgreSQL <span class="sep">◆</span></span>
-    <span class="marquee-item">Docker &amp; Linux <span class="sep">◆</span></span>
-    <span class="marquee-item">Pinia &amp; Vite <span class="sep">◆</span></span>
-    <span class="marquee-item">PHPUnit &amp; Pest <span class="sep">◆</span></span>
-    <span class="marquee-item">Event-Driven Architecture <span class="sep">◆</span></span>
-    <span class="marquee-item">Multi-Tenancy <span class="sep">◆</span></span>
-    <span class="marquee-item">Flutter &amp; Dart <span class="sep">◆</span></span>
-    <span class="marquee-item">n8n Automation <span class="sep">◆</span></span>
-    <span class="marquee-item">CI/CD Pipelines <span class="sep">◆</span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item">PHP 8.4 <span class="sep">◆</span></span>
-    <span class="marquee-item">Laravel 12 <span class="sep">◆</span></span>
-    <span class="marquee-item">Vue.js 3 <span class="sep">◆</span></span>
-    <span class="marquee-item">Redis &amp; Horizon <span class="sep">◆</span></span>
-    <span class="marquee-item">RESTful APIs <span class="sep">◆</span></span>
-    <span class="marquee-item">MySQL &amp; PostgreSQL <span class="sep">◆</span></span>
-    <span class="marquee-item">Docker &amp; Linux <span class="sep">◆</span></span>
-    <span class="marquee-item">Pinia &amp; Vite <span class="sep">◆</span></span>
-    <span class="marquee-item">PHPUnit &amp; Pest <span class="sep">◆</span></span>
-    <span class="marquee-item">Event-Driven Architecture <span class="sep">◆</span></span>
-    <span class="marquee-item">Multi-Tenancy <span class="sep">◆</span></span>
-    <span class="marquee-item">Flutter &amp; Dart <span class="sep">◆</span></span>
-    <span class="marquee-item">n8n Automation <span class="sep">◆</span></span>
-    <span class="marquee-item">CI/CD Pipelines <span class="sep">◆</span></span>
-  </div>
-</div>
+        const bannerMarkup = p.imageUrl ? `
+          <div class="project-header-banner has-custom-image" style="background-image: url('${p.imageUrl}');">
+            <span class="project-img-pill"><i data-lucide="image" style="width:12px;height:12px;"></i> ${isAr ? 'معاينة' : 'Preview'}</span>
+          </div>
+        ` : `
+          <div class="project-header-banner">
+            <i data-lucide="sparkles"></i>
+          </div>
+        `;
 
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="reveal">
-    <div class="sec-eyebrow">About Me</div>
-    <h2 class="sec-title">Engineering systems that scale,<br>interfaces that delight</h2>
-  </div>
-  <div class="about-layout">
-    <div class="about-text reveal">
-      <div class="avail-pill"><span class="dot"></span> Open to new opportunities</div>
-      <p>
-        I'm a <strong>Senior PHP/Laravel Developer</strong> with over a decade of experience shipping
-        production-grade systems — from event-driven API platforms and multi-tenant SaaS backends,
-        to full reactive interfaces built in <strong>Vue.js 3</strong>.
-      </p>
-      <p>
-        At <strong>CEMEX Egypt</strong> I lead backend engineering for enterprise applications
-        handling 1,000+ concurrent users and 10K–30K API requests per day at 99%+ uptime.
-        Across freelance engagements I've owned entire product stacks end-to-end —
-        designing database schemas, building queue pipelines, and wiring up Composition API
-        frontends with Pinia state management and Vite build tooling.
-      </p>
-      <p>
-        I care deeply about <strong>clean architecture, testability, and performance</strong>.
-        Outside of Laravel I build cross-platform mobile apps with Flutter, automate
-        operational workflows in n8n, and integrate complex third-party ecosystems
-        (Paymob, Fawry, XPay, Stripe, Firebase, AWS S3, Google APIs).
-      </p>
-    </div>
-    <div class="info-stack reveal">
-      <div class="info-row">
-        <div class="info-ico">📍</div>
-        <div><div class="info-lbl">Location</div><div class="info-val">Cairo, Egypt — Remote Worldwide</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico">🏢</div>
-        <div><div class="info-lbl">Current Role</div><div class="info-val">Senior Backend Developer @ CEMEX Egypt</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico">⚡</div>
-        <div><div class="info-lbl">Primary Stack</div><div class="info-val">PHP 8.4 · Laravel 12 · Vue.js 3 · Redis</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico">🧪</div>
-        <div><div class="info-lbl">Testing</div><div class="info-val">PHPUnit · Pest · TDD · Feature + Unit</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico">🎓</div>
-        <div><div class="info-lbl">Education</div><div class="info-val">B.Sc. Commerce — Assiut University</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico">🌐</div>
-        <div><div class="info-lbl">Languages</div><div class="info-val">Arabic (Native) · English (Professional)</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+        card.innerHTML = `
+          ${bannerMarkup}
+          <div class="project-card-body">
+            <div class="project-category">${isAr && p.categoryAr ? p.categoryAr : p.category}</div>
+            <h3 class="project-title">${isAr && p.nameAr ? p.nameAr : p.name}</h3>
+            <p class="project-desc">${isAr && p.shortDescriptionAr ? p.shortDescriptionAr : p.shortDescription}</p>
+            <div class="project-tags">${tagsHtml}</div>
+            <div class="project-footer">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-emerald);">${isAr && p.metricAr ? p.metricAr : p.metric}</span>
+              <span style="font-size: 0.85rem; color: var(--primary-light); display: inline-flex; align-items: center; gap: 0.25rem;">
+                ${isAr ? 'عرض التفاصيل' : 'Explore'} <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+              </span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
 
-<div class="divider"></div>
+    function openProjectModal(p) {
+      const isAr = currentLang === 'ar';
+      const body = document.getElementById('modalBody');
+      let tagsHtml = '';
+      (p.technologies || []).forEach(t => tagsHtml += `<span class="project-tag" style="padding:0.35rem 0.75rem; font-size:0.85rem;">${t}</span>`);
 
-<!-- ── SKILLS ── -->
-<section id="skills" class="alt">
-  <div class="reveal">
-    <div class="sec-eyebrow">Technical Skills</div>
-    <h2 class="sec-title">Full toolkit — from data layer<br>to reactive interface</h2>
-    <p class="sec-sub">Filter by category to explore the stack.</p>
-  </div>
-
-  <div class="skill-tabs reveal" role="tablist">
-    <button class="skill-tab active" onclick="showTab('all')"     role="tab">All</button>
-    <button class="skill-tab"        onclick="showTab('backend')"  role="tab">Backend</button>
-    <button class="skill-tab"        onclick="showTab('frontend')" role="tab">Frontend</button>
-    <button class="skill-tab"        onclick="showTab('infra')"    role="tab">DevOps</button>
-    <button class="skill-tab"        onclick="showTab('data')"     role="tab">Databases</button>
-    <button class="skill-tab"        onclick="showTab('mobile')"   role="tab">Mobile &amp; Tools</button>
-  </div>
-
-  <!-- ALL -->
-  <div class="skill-panel active" id="tab-all">
-    <div class="skill-groups-grid">
-      <div class="skill-group reveal">
-        <div class="skill-group-name">Backend Core</div>
-        <div class="chips">
-          <span class="chip">PHP 8.4</span><span class="chip">Laravel 12</span><span class="chip">Laravel Horizon</span>
-          <span class="chip">Laravel Sanctum</span><span class="chip">PHP-FPM</span><span class="chip">Artisan CLI</span>
+      const modalImageMarkup = p.imageUrl ? `
+        <div style="width: 100%; max-height: 280px; height: 220px; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--border-card); box-shadow: 0 8px 24px rgba(0,0,0,0.35); position: relative;">
+          <img src="${p.imageUrl}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">Frontend</div>
-        <div class="chips">
-          <span class="chip">Vue.js 3</span><span class="chip">Composition API</span><span class="chip">Pinia</span>
-          <span class="chip">Vue Router</span><span class="chip">Vite</span><span class="chip">Inertia.js</span>
-          <span class="chip">Livewire</span><span class="chip">Alpine.js</span><span class="chip">TypeScript</span>
-          <span class="chip">Tailwind CSS</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">API &amp; Architecture</div>
-        <div class="chips">
-          <span class="chip">RESTful APIs</span><span class="chip">GraphQL</span><span class="chip">WebSockets</span>
-          <span class="chip">Webhooks</span><span class="chip">Event-Driven</span><span class="chip">Microservices</span>
-          <span class="chip">SOLID</span><span class="chip">DDD</span><span class="chip">Repository Pattern</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">Databases &amp; Caching</div>
-        <div class="chips">
-          <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span>
-          <span class="chip">Eloquent ORM</span><span class="chip">Query Optimization</span>
-          <span class="chip">Indexing</span><span class="chip">Multi-Tenancy</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">Queue &amp; Async</div>
-        <div class="chips">
-          <span class="chip">Laravel Horizon</span><span class="chip">Redis Queues</span>
-          <span class="chip">Job Chaining</span><span class="chip">Retry Strategies</span>
-          <span class="chip">Laravel Scheduler</span><span class="chip">Concurrency Control</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">DevOps</div>
-        <div class="chips">
-          <span class="chip">Docker</span><span class="chip">Linux (Ubuntu)</span>
-          <span class="chip">Nginx</span><span class="chip">Supervisor</span>
-          <span class="chip">CI/CD</span><span class="chip">GitHub Actions</span><span class="chip">SSL/TLS</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">Auth &amp; Security</div>
-        <div class="chips">
-          <span class="chip">OAuth2</span><span class="chip">JWT</span><span class="chip">RBAC</span>
-          <span class="chip">OWASP</span><span class="chip">Rate Limiting</span><span class="chip">API Security</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">Testing &amp; Quality</div>
-        <div class="chips">
-          <span class="chip">PHPUnit</span><span class="chip">Pest</span><span class="chip">TDD</span>
-          <span class="chip">Feature Testing</span><span class="chip">Postman</span><span class="chip">Static Analysis</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-name">Mobile &amp; Integrations</div>
-        <div class="chips">
-          <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase</span>
-          <span class="chip">FCM</span><span class="chip">n8n Automation</span><span class="chip">Paymob</span>
-          <span class="chip">Fawry</span><span class="chip">XPay</span><span class="chip">Stripe API</span>
-          <span class="chip">Payment Webhooks</span><span class="chip">Transaction Verification</span>
-          <span class="chip">Refunds</span><span class="chip">Payment Reconciliation</span>
-          <span class="chip">AWS S3</span><span class="chip">Google APIs</span>
-        </div>
-      </div>
-    </div>
-  </div>
+      ` : '';
 
-  <!-- BACKEND -->
-  <div class="skill-panel" id="tab-backend">
-    <div class="skill-groups-grid">
-      <div class="skill-group"><div class="skill-group-name">Languages &amp; Frameworks</div><div class="chips"><span class="chip">PHP 8.4</span><span class="chip">Laravel 12</span><span class="chip">Laravel Horizon</span><span class="chip">Laravel Sanctum</span><span class="chip">Laravel Scout</span><span class="chip">Composer</span><span class="chip">PHP-FPM</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Architecture</div><div class="chips"><span class="chip">RESTful API Design</span><span class="chip">GraphQL</span><span class="chip">Event-Driven</span><span class="chip">Microservices</span><span class="chip">SOLID Principles</span><span class="chip">Clean Architecture</span><span class="chip">DDD</span><span class="chip">Repository Pattern</span><span class="chip">Observer Pattern</span><span class="chip">MVC</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Auth &amp; Security</div><div class="chips"><span class="chip">OAuth2</span><span class="chip">JWT</span><span class="chip">RBAC</span><span class="chip">Laravel Gates &amp; Policies</span><span class="chip">OWASP</span><span class="chip">Rate Limiting</span><span class="chip">API Security</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Queue &amp; Async</div><div class="chips"><span class="chip">Laravel Horizon</span><span class="chip">Redis Queues</span><span class="chip">Laravel Jobs</span><span class="chip">Job Chaining</span><span class="chip">Retry Strategies</span><span class="chip">Concurrency Control</span></div></div>
-    </div>
-  </div>
-
-  <!-- FRONTEND -->
-  <div class="skill-panel" id="tab-frontend">
-    <div class="skill-groups-grid">
-      <div class="skill-group"><div class="skill-group-name">Vue.js Ecosystem</div><div class="chips"><span class="chip">Vue.js 3</span><span class="chip">Composition API</span><span class="chip">Pinia</span><span class="chip">Vue Router</span><span class="chip">Vite</span><span class="chip">Inertia.js</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Laravel Frontend</div><div class="chips"><span class="chip">Livewire</span><span class="chip">Alpine.js</span><span class="chip">Blade Templates</span><span class="chip">Tailwind CSS</span><span class="chip">Bootstrap</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Languages</div><div class="chips"><span class="chip">JavaScript ES6+</span><span class="chip">TypeScript</span><span class="chip">HTML5</span><span class="chip">CSS3</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Patterns</div><div class="chips"><span class="chip">SPA</span><span class="chip">PWA</span><span class="chip">Responsive Design</span><span class="chip">Accessibility (WCAG)</span></div></div>
-    </div>
-  </div>
-
-  <!-- INFRA -->
-  <div class="skill-panel" id="tab-infra">
-    <div class="skill-groups-grid">
-      <div class="skill-group"><div class="skill-group-name">Infrastructure</div><div class="chips"><span class="chip">Docker</span><span class="chip">Linux (Ubuntu/CentOS)</span><span class="chip">Nginx</span><span class="chip">Supervisor</span><span class="chip">SSL/TLS</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">CI/CD &amp; Source Control</div><div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">GitLab</span><span class="chip">GitHub Actions</span><span class="chip">Deployment Automation</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Testing</div><div class="chips"><span class="chip">PHPUnit</span><span class="chip">Pest</span><span class="chip">TDD</span><span class="chip">Feature Testing</span><span class="chip">Integration Testing</span><span class="chip">Static Analysis</span></div></div>
-    </div>
-  </div>
-
-  <!-- DATA -->
-  <div class="skill-panel" id="tab-data">
-    <div class="skill-groups-grid">
-      <div class="skill-group"><div class="skill-group-name">Databases</div><div class="chips"><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">Redis</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Query &amp; ORM</div><div class="chips"><span class="chip">Eloquent ORM</span><span class="chip">Raw SQL</span><span class="chip">Query Optimization</span><span class="chip">Indexing</span><span class="chip">Full-Text Search</span><span class="chip">Database Transactions</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Patterns</div><div class="chips"><span class="chip">Multi-Tenancy</span><span class="chip">Connection Pooling</span><span class="chip">Schema Migrations</span><span class="chip">Database Views</span></div></div>
-    </div>
-  </div>
-
-  <!-- MOBILE -->
-  <div class="skill-panel" id="tab-mobile">
-    <div class="skill-groups-grid">
-      <div class="skill-group"><div class="skill-group-name">Mobile</div><div class="chips"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase Auth</span><span class="chip">FCM Push Notifications</span><span class="chip">Google Sign-In</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Integrations</div><div class="chips"><span class="chip">Stripe API</span><span class="chip">AWS S3</span><span class="chip">n8n Automation</span><span class="chip">Payment Gateways</span><span class="chip">SMS APIs</span><span class="chip">Google APIs</span><span class="chip">Webhook Processing</span></div></div>
-      <div class="skill-group"><div class="skill-group-name">Real-Time</div><div class="chips"><span class="chip">Laravel Reverb</span><span class="chip">WebSockets</span><span class="chip">Broadcasting</span><span class="chip">Server-Sent Events</span></div></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── EXPERIENCE ── -->
-<section id="experience">
-  <div class="reveal">
-    <div class="sec-eyebrow">Experience</div>
-    <h2 class="sec-title">10+ years shipping systems<br>that people rely on</h2>
-    <p class="sec-sub">From ISP internals to enterprise SaaS platforms and freelance full-stack products.</p>
-  </div>
-
-  <div class="timeline">
-
-    <div class="exp-item reveal">
-      <div class="exp-dot"></div>
-      <div class="exp-meta">
-        <span class="exp-co">CEMEX Egypt</span>
-        <span class="exp-date">Oct 2017 – Present</span>
-        <span class="exp-badge">Full-time</span>
-      </div>
-      <div class="exp-title">Senior Backend Developer / Full-Stack Solutions Engineer</div>
-      <ul class="exp-list">
-        <li>Engineered enterprise Laravel applications supporting business-critical workflows for 1,000+ concurrent users, combining scalable backend architecture with reliable operational delivery.</li>
-        <li>Architected RESTful API ecosystems processing 10K–30K requests/day with Flutter clients, Firebase services, webhooks, and external platforms.</li>
-        <li>Delivered ERP and HR modules with secure RBAC, audit-ready workflows, event-driven queue pipelines, and automated notification systems.</li>
-        <li>Re-engineered critical execution paths and MySQL schemas — improving performance 25–35% across high-value workflows.</li>
-        <li>Managed Docker + Linux production infrastructure: Nginx, PHP-FPM, Supervisor queue workers, SSL/TLS, CI/CD, monitoring — maintaining 99%+ uptime.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-dot"></div>
-      <div class="exp-meta">
-        <span class="exp-co">Freelance — Property SaaS</span>
-        <span class="exp-date">Apr 2023 – Mar 2024</span>
-        <span class="exp-badge exp-freelance">Freelance</span>
-      </div>
-      <div class="exp-title">Full-Stack Developer — Property Management SaaS</div>
-      <ul class="exp-list">
-        <li>Built a multi-tenant property management platform (Vue.js 3 + Pinia + Laravel) with landlord, tenant, and agent portals — lease lifecycle, rent tracking, and maintenance workflows.</li>
-        <li>Designed a Vue.js 3 dashboard (Composition API, Vue Router, Vite) with real-time occupancy metrics, drag-and-drop unit boards, and multi-step lease renewal flows with client-side diff review.</li>
-        <li>Engineered a Laravel Event + Observer pipeline for lease transitions: automated PDF contracts, e-signature requests, audit-logged status changes — all via Redis-backed Horizon queues.</li>
-        <li>Optimized multi-join analytics queries (occupancy, revenue forecasting, arrears aging) with indexed DB views and Redis caching — reducing P95 query time from 3.2s to under 300ms.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-dot"></div>
-      <div class="exp-meta">
-        <span class="exp-co">Exception Tech Group</span>
-        <span class="exp-date">Jan 2017 – Present</span>
-        <span class="exp-badge exp-freelance">Project-Based</span>
-      </div>
-      <div class="exp-title">Mobile Developer (Flutter) — Full-Stack Integration</div>
-      <ul class="exp-list">
-        <li>Delivered cross-platform Flutter apps integrated with Laravel REST APIs, Firebase Auth, FCM notifications — adopted by 500+ active users.</li>
-        <li>Owned mobile-to-API data contracts, payload handling, and end-to-end integration testing across user journeys.</li>
-        <li>Integrated Paymob, Fawry, XPay, and Stripe payment gateways across web and mobile applications, including secure checkout, verified webhooks, transaction synchronization, refunds, and failure handling.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-dot"></div>
-      <div class="exp-meta">
-        <span class="exp-co">Contract / Internal</span>
-        <span class="exp-date">Sep 2025 – Present</span>
-        <span class="exp-badge exp-freelance">Contract</span>
-      </div>
-      <div class="exp-title">Automation &amp; Integration Engineer — n8n</div>
-      <ul class="exp-list">
-        <li>Orchestrated n8n workflows for HR, reporting, and operational processes — reducing manual effort by ~40–60%.</li>
-        <li>Connected systems via REST APIs and webhooks with structured data transformation, error handling, retries, and notification pipelines for unattended execution.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-dot"></div>
-      <div class="exp-meta">
-        <span class="exp-co">Ibnsina Pharma</span>
-        <span class="exp-date">Nov 2015 – Dec 2016</span>
-        <span class="exp-badge">Full-time</span>
-      </div>
-      <div class="exp-title">Backend Developer</div>
-      <ul class="exp-list">
-        <li>Developed PHP/MySQL services, internal APIs, and business-logic modules for pharmaceutical operational applications.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item reveal" style="padding-bottom:0">
-      <div class="exp-dot"></div>
-      <div class="exp-meta">
-        <span class="exp-co">TE Data</span>
-        <span class="exp-date">Oct 2014 – Oct 2015</span>
-        <span class="exp-badge">Full-time</span>
-      </div>
-      <div class="exp-title">Backend Developer</div>
-      <ul class="exp-list">
-        <li>Built PHP backend components, database operations, and feature enhancements for internal platforms at Egypt's leading ISP.</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── PROJECTS ── -->
-<section id="projects" class="alt">
-  <div class="reveal">
-    <div class="sec-eyebrow">Projects</div>
-    <h2 class="sec-title">Systems built to scale,<br>designed to last</h2>
-    <p class="sec-sub">SaaS platforms, APIs, and full-stack products shipped to production.</p>
-  </div>
-  <div class="proj-grid">
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🚚</div><span class="proj-type">SaaS</span></div>
-      <div class="proj-name">WassalX — Delivery SaaS</div>
-      <p class="proj-desc">Multi-tenant delivery platform with platform/company roles, subscription management, order routing, driver and vehicle assignment, GPS tracking, settlement wallets, and operational dashboards. Event-driven queues handle notifications and asynchronous processing.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Flutter</span><span class="proj-chip">MySQL</span><span class="proj-chip">Redis</span><span class="proj-chip">Multi-Tenancy</span><span class="proj-chip">REST API</span></div>
-      <div class="proj-links"><a href="https://wassalx.com/en" target="_blank" rel="noopener" class="proj-link">🌐 Live Platform</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🚗</div><span class="proj-type">Platform</span></div>
-      <div class="proj-name">Safrne — Carpooling Platform</div>
-      <p class="proj-desc">Carpooling platform with secure booking APIs, device-token management, FCM notifications, Google Sign-In, and one-to-one real-time chat through Laravel Reverb, supported by a production Nginx, SSL, queue-worker, and API-versioning setup.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel API</span><span class="proj-chip">Flutter</span><span class="proj-chip">Sanctum</span><span class="proj-chip">Reverb</span><span class="proj-chip">FCM</span><span class="proj-chip">Redis</span></div>
-      <div class="proj-links"><a href="https://safrne.com/" target="_blank" rel="noopener" class="proj-link">🌐 Website</a><a href="https://play.google.com/store/apps/details?id=com.safrne.app&hl=en" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🏠</div><span class="proj-type">Freelance</span></div>
-      <div class="proj-name">Property Management SaaS</div>
-      <p class="proj-desc">Multi-tenant property platform with landlord/tenant/agent portals, lease lifecycle pipelines, automated expiry notifications, drag-and-drop Vue.js dashboards, Redis-cached analytics (P95 3.2s → 300ms), and AWS S3 signed document management.</p>
-      <div class="proj-chips"><span class="proj-chip">Vue.js 3</span><span class="proj-chip">Pinia</span><span class="proj-chip">Laravel</span><span class="proj-chip">Redis</span><span class="proj-chip">AWS S3</span><span class="proj-chip">Horizon</span></div>
-      <div class="proj-links"><a href="https://vidadevelopments.ca/" target="_blank" rel="noopener" class="proj-link">🌐 Live Platform</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">📦</div><span class="proj-type">Mobile App</span></div>
-      <div class="proj-name">Ultrapal — Delivery Management</div>
-      <p class="proj-desc">Full delivery management mobile app with real-time order tracking, driver assignment, push notifications, and backend-connected workflows built with Flutter and Laravel REST API.</p>
-      <div class="proj-chips"><span class="proj-chip">Flutter</span><span class="proj-chip">Laravel API</span><span class="proj-chip">Firebase</span><span class="proj-chip">FCM</span></div>
-      <div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.ultra.palestine&hl=ar" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a><a href="https://github.com/ahmedemadm90/Ultra-Palestine" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🛒</div><span class="proj-type">Marketplace</span></div>
-      <div class="proj-name">Meza — Multi-Vendor Marketplace</div>
-      <p class="proj-desc">Multi-vendor marketplace platform with product listings, order management, and seller dashboards backed by a Laravel REST API.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Flutter</span><span class="proj-chip">MySQL</span><span class="proj-chip">REST API</span></div>
-      <div class="proj-links"><a href="https://github.com/ahmedemadm90/meza" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🔒</div><span class="proj-type">Security</span></div>
-      <div class="proj-name">Fence Monitor — Security Patrol &amp; Inspection SaaS</div>
-      <p class="proj-desc">Factory patrol system with map-defined checkpoints, server-side GPS proximity validation, QR verification, structured inspection records, audit logs, and role-based reporting integrated with a Flutter field application.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel 12</span><span class="proj-chip">Flutter</span><span class="proj-chip">Blade</span><span class="proj-chip">GPS</span><span class="proj-chip">QR Code</span><span class="proj-chip">RBAC</span><span class="proj-chip">Multi-Tenancy</span></div>
-      <div class="proj-links"><a href="https://github.com/ahmedemadm90/FenceMonitor" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🎙️</div><span class="proj-type">Mobile App</span></div>
-      <div class="proj-name">SayDone — Offline Voice-to-Task</div>
-      <p class="proj-desc">Offline-first Flutter voice assistant that converts spoken input into structured tasks using on-device speech-to-text, local persistence, and bilingual onboarding.</p>
-      <div class="proj-chips"><span class="proj-chip">Flutter</span><span class="proj-chip">Dart</span><span class="proj-chip">Local Storage</span><span class="proj-chip">On-Device STT</span><span class="proj-chip">Offline-First</span></div>
-      <div class="proj-links"><a href="https://github.com/ahmedemadm90/saydone-offline" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">🎠</div><span class="proj-type">Mobile App</span></div>
-      <div class="proj-name">Oscar Park — Kids Area Management</div>
-      <p class="proj-desc">Production Flutter application for kids-area operations, built with clean architecture, reactive state management, Firebase services, local storage, and a modern Material interface.</p>
-      <div class="proj-chips"><span class="proj-chip">Flutter</span><span class="proj-chip">Dart</span><span class="proj-chip">Firebase</span><span class="proj-chip">Local Storage</span></div>
-      <div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.oscarkidspark&hl=en" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a><a href="https://github.com/ahmedemadm90/oscarpark" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">📰</div><span class="proj-type">Web Platform</span></div>
-      <div class="proj-name">Newsmes — SME Content &amp; Business Platform</div>
-      <p class="proj-desc">Scalable SME-focused content platform with dynamic categorization, secure administration workflows, and a responsive production interface.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">PHP</span><span class="proj-chip">MySQL</span><span class="proj-chip">Blade</span><span class="proj-chip">Tailwind CSS</span></div>
-      <div class="proj-links"><a href="https://smesworld.com/" target="_blank" rel="noopener" class="proj-link">🌐 Live Site</a><a href="https://github.com/ahmedemadm90/newsmes" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">📋</div><span class="proj-type">Enterprise</span></div>
-      <div class="proj-name">Attendance &amp; Compliance System</div>
-      <p class="proj-desc">Queued XLSX imports for large employee datasets with validation, violation detection, and automated compliance reporting for shifts exceeding 12 hours and seven consecutive working days without rest.</p>
-      <div class="proj-chips"><span class="proj-chip">Laravel</span><span class="proj-chip">Blade</span><span class="proj-chip">MySQL</span><span class="proj-chip">Redis Queues</span><span class="proj-chip">XLSX</span></div>
-      <div class="proj-links"><a href="https://github.com/ahmedemadm90/attendance_cards" target="_blank" rel="noopener" class="proj-link">🐙 GitHub</a></div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-head"><div class="proj-icon">⚽</div><span class="proj-type">Mobile App</span></div>
-      <div class="proj-name">CEMEX Academy — Football Academy App</div>
-      <p class="proj-desc">Bilingual mobile workflows for academy participants, coaches, parents, and administrators with role-based access, Firebase services, and operational notifications.</p>
-      <div class="proj-chips"><span class="proj-chip">Flutter</span><span class="proj-chip">Dart</span><span class="proj-chip">Laravel REST API</span><span class="proj-chip">Firebase</span></div>
-      <div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.cemex.app&hl=en" target="_blank" rel="noopener" class="proj-link">📱 Google Play</a></div>
-    </div>
-
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="reveal">
-    <div class="sec-eyebrow">Contact</div>
-    <h2 class="sec-title">Let's build something<br>great together</h2>
-  </div>
-  <div class="contact-layout">
-    <div class="reveal">
-      <p class="contact-lead">
-        I'm actively seeking remote senior backend or full-stack roles. Whether you have a
-        position, a project, or just want to connect — my inbox is always open.
-      </p>
-      <div class="contact-links">
-        <a href="mailto:ahmedemadm90@gmail.com" class="contact-row">
-          <div class="contact-ico">✉️</div>
-          <div><div class="contact-lbl">Email</div><div class="contact-val">ahmedemadm90@gmail.com</div></div>
-          <span class="contact-arr">→</span>
-        </a>
-        <a href="https://www.linkedin.com/in/ahmed-emad-m90/" target="_blank" rel="noopener" class="contact-row">
-          <div class="contact-ico">💼</div>
-          <div><div class="contact-lbl">LinkedIn</div><div class="contact-val">linkedin.com/in/ahmed-emad-m90</div></div>
-          <span class="contact-arr">→</span>
-        </a>
-        <a href="https://github.com/ahmedemadm90" target="_blank" rel="noopener" class="contact-row">
-          <div class="contact-ico">🐙</div>
-          <div><div class="contact-lbl">GitHub</div><div class="contact-val">github.com/ahmedemadm90</div></div>
-          <span class="contact-arr">→</span>
-        </a>
-        <a href="tel:+201000803545" class="contact-row">
-          <div class="contact-ico">📱</div>
-          <div><div class="contact-lbl">WhatsApp / Phone</div><div class="contact-val">+20 100 080 3545</div></div>
-          <span class="contact-arr">→</span>
-        </a>
-      </div>
-    </div>
-    <div class="reveal">
-      <div class="open-card">
-        <div class="open-head"><div class="open-dot"></div><div class="open-title">Open to Opportunities</div></div>
-        <p class="open-body">
-          Actively looking for full-time remote positions as a Senior PHP/Laravel Developer
-          or Full-Stack Engineer (Backend + Vue.js). Comfortable with async collaboration,
-          international teams, and all time zones.
+      body.innerHTML = `
+        ${modalImageMarkup}
+        <span class="project-category">${isAr && p.categoryAr ? p.categoryAr : p.category}</span>
+        <h2 style="font-size: 1.75rem; margin: 0.5rem 0 1rem 0;">${isAr && p.nameAr ? p.nameAr : p.name}</h2>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
+          ${isAr && p.overviewAr ? p.overviewAr : (p.overview || p.shortDescription)}
         </p>
-        <div class="open-tags">
-          <span class="open-tag">🌍 Remote Worldwide</span>
-          <span class="open-tag">⏱ Full-time</span>
-          <span class="open-tag">🛠 PHP · Laravel</span>
-          <span class="open-tag">🖥 Vue.js 3</span>
-          <span class="open-tag">📱 Flutter</span>
-          <span class="open-tag">🤖 n8n</span>
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.5rem;">${isAr ? 'التقنيات المستخدمة' : 'Technologies & Tools'}</h4>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">${tagsHtml}</div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        ${p.liveDemo ? `
+          <a href="${p.liveDemo}" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
+            <span>${isAr ? 'زيارة المشروع الحي' : 'Launch Live Demo'}</span>
+            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+          </a>
+        ` : ''}
+      `;
+      document.getElementById('projectModal').classList.add('open');
+      lucide.createIcons();
+    }
 
-<!-- ── FOOTER ── -->
-<footer>
-  <p class="footer-copy">© 2026 <strong>Ahmed Emad</strong> · Senior PHP/Laravel &amp; Full-Stack Developer · Cairo, Egypt</p>
-  <div class="footer-links">
-    <a href="https://github.com/ahmedemadm90"            target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/ahmed-emad-m90/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="mailto:ahmedemadm90@gmail.com">Email</a>
-  </div>
-</footer>
+    function closeProjectModal(e) {
+      if (!e || e.target === document.getElementById('projectModal') || e.target.classList.contains('modal-close-btn')) {
+        document.getElementById('projectModal').classList.remove('open');
+      }
+    }
 
-<script>
-// ── Progress bar ──
-const progress = document.getElementById('progress');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  progress.style.width = Math.min(pct, 100) + '%';
-}, { passive: true });
+    // Experience & Education
+    function renderExperience() {
+      const container = document.getElementById('experienceTimeline');
+      container.innerHTML = '';
+      const list = data.experience || [];
+      const isAr = currentLang === 'ar';
 
-// ── Theme toggle ──
-const root = document.documentElement;
-const themeBtn = document.getElementById('themeBtn');
-const saved = (() => { try { return localStorage.getItem('theme'); } catch(e){} })();
-if (saved) { root.dataset.theme = saved; themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙'; }
-themeBtn.addEventListener('click', () => {
-  const isDark = root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme:dark)').matches);
-  const next = isDark ? 'light' : 'dark';
-  root.dataset.theme = next;
-  themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-  try { localStorage.setItem('theme', next); } catch(e){}
-});
+      list.forEach(ex => {
+        const item = document.createElement('div');
+        item.className = 'timeline-item';
+        item.innerHTML = `
+          <div class="timeline-marker"></div>
+          <div class="timeline-card">
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">${isAr && ex.startDateAr ? ex.startDateAr : ex.startDate} - ${isAr && ex.endDateAr ? ex.endDateAr : ex.endDate}</span>
+            <h3 style="font-size: 1.25rem; margin: 0.25rem 0;">${isAr && ex.jobTitleAr ? ex.jobTitleAr : ex.jobTitle}</h3>
+            <div style="font-size: 0.9rem; color: var(--primary-light); font-weight: 600; margin-bottom: 0.75rem;">${isAr && ex.companyAr ? ex.companyAr : ex.company} (${isAr && ex.employmentTypeAr ? ex.employmentTypeAr : ex.employmentType})</div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">${isAr && ex.responsibilitiesAr ? ex.responsibilitiesAr : ex.responsibilities}</p>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
 
-// ── Mobile menu ──
-const hamburger = document.getElementById('hamburger');
-const mm = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  mm.classList.toggle('open');
-  hamburger.textContent = mm.classList.contains('open') ? '✕' : '☰';
-});
-function closeMenu() { mm.classList.remove('open'); hamburger.textContent = '☰'; }
+    function renderEducation() {
+      const eduCard = document.getElementById('educationMainCard');
+      const certsList = document.getElementById('certificationsList');
+      eduCard.innerHTML = '';
+      certsList.innerHTML = '';
+      const isAr = currentLang === 'ar';
 
-// ── Skill tabs ──
-function showTab(id) {
-  document.querySelectorAll('.skill-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.skill-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
-}
+      const edu = (data.education || [])[0] || {};
+      eduCard.innerHTML = `
+        <div class="key-facts-card" style="height: 100%;">
+          <span class="project-category">${isAr ? 'الدرجة الأكاديمية' : 'Higher Degree'}</span>
+          <h3 style="font-size: 1.4rem; margin: 0.5rem 0;">${isAr && edu.degreeAr ? edu.degreeAr : edu.degree}</h3>
+          <p style="font-size: 0.95rem; color: var(--primary-light); font-weight: 600; margin-bottom: 0.75rem;">${isAr && edu.institutionAr ? edu.institutionAr : edu.institution}</p>
+          <div style="display:inline-block; padding:0.25rem 0.75rem; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:var(--radius-full); font-size:0.85rem; font-weight:700; color:var(--accent-emerald); margin-bottom:1.25rem;">
+            ${isAr && edu.gpaAr ? edu.gpaAr : edu.gpa} • ${isAr && edu.graduationDateAr ? edu.graduationDateAr : edu.graduationDate}
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">${isAr && edu.highlightsAr ? edu.highlightsAr : edu.highlights}</p>
+        </div>
+      `;
 
-// ── Scroll reveal ──
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      (data.courses || []).forEach(c => {
+        const item = document.createElement('div');
+        item.className = 'cert-card';
+        item.innerHTML = `
+          <div class="cert-icon"><i data-lucide="award"></i></div>
+          <div>
+            <h4 style="font-size: 1rem; font-weight: 700;">${c.name}</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">${c.platform} • ${c.completionDate}</p>
+          </div>
+        `;
+        certsList.appendChild(item);
+      });
+    }
 
-// ── Active nav ──
-const secs = [...document.querySelectorAll('section[id]')];
-const links = [...document.querySelectorAll('.nav-links a')];
-window.addEventListener('scroll', () => {
-  let cur = '';
-  secs.forEach(s => { if (scrollY >= s.offsetTop - 80) cur = s.id; });
-  links.forEach(a => {
-    const match = a.getAttribute('href') === '#' + cur;
-    a.classList.toggle('active', match);
-  });
-}, { passive: true });
+    async function fetchLatestFromCloud() {
+      if (!CLOUD_URL) return;
+      try {
+        const res = await fetch(CLOUD_URL, { cache: 'no-store' });
+        if (res.ok) {
+          const json = await res.json();
+          if (json && json.fields && json.fields.payload && json.fields.payload.stringValue) {
+            const parsed = JSON.parse(json.fields.payload.stringValue);
+            if (parsed && parsed.personal) {
+              data = parsed;
+              localStorage.setItem('portfolio_cache', JSON.stringify(data));
+              renderAll();
+            }
+          }
+        }
+      } catch (err) {}
+    }
 
-// ── Typewriter ──
-const roles = [
-  'Senior PHP/Laravel Developer',
-  'Full-Stack Engineer',
-  'Vue.js 3 + Laravel',
-  'Backend Architect',
-  'API & SaaS Builder',
-];
-let ri = 0, ci = 0, deleting = false;
-const roleEl = document.getElementById('heroRole');
-function type() {
-  const word = roles[ri];
-  if (!deleting) {
-    roleEl.textContent = word.slice(0, ++ci);
-    if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
-  } else {
-    roleEl.textContent = word.slice(0, --ci);
-    if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; setTimeout(type, 300); return; }
-  }
-  setTimeout(type, deleting ? 40 : 70);
-}
-setTimeout(type, 1200);
-</script>
-<script>
-  window.addEventListener('load', function () {
-    fetch('http://198.23.249.129:7070/api/visit', {
-      method: 'POST',
-      keepalive: true
-    }).catch(function () {
-      // Tracking failures should not affect the page.
-    });
-  });
-</script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      alert(currentLang === 'ar' ? 'شكراً لتواصلك! سيتم الرد عليك في أقرب وقت.' : 'Thank you for your message! I will respond promptly.');
+      e.target.reset();
+    }
+
+    async function downloadOfficialCv(e) {
+      if (e) e.preventDefault();
+      const fileName = 'ahmed_emad_cv.pdf';
+      const fileUrl = (data && data.personal && data.personal.cvUrl) ? data.personal.cvUrl : fileName;
+
+      try {
+        const response = await fetch(fileUrl, { cache: 'no-cache' });
+        if (!response.ok) throw new Error('Fetch failed');
+        const blob = await response.blob();
+        const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+        const blobUrl = window.URL.createObjectURL(pdfBlob);
+
+        const tempLink = document.createElement('a');
+        tempLink.style.display = 'none';
+        tempLink.href = blobUrl;
+        tempLink.setAttribute('download', fileName);
+        document.body.appendChild(tempLink);
+        tempLink.click();
+
+        setTimeout(() => {
+          document.body.removeChild(tempLink);
+          window.URL.revokeObjectURL(blobUrl);
+        }, 1000);
+      } catch (err) {
+        const fallbackLink = document.createElement('a');
+        fallbackLink.href = fileUrl;
+        fallbackLink.setAttribute('download', fileName);
+        document.body.appendChild(fallbackLink);
+        fallbackLink.click();
+        document.body.removeChild(fallbackLink);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
 </html>
