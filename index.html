@@ -1,1896 +1,49 @@
-<!DOCTYPE html>
-<html lang="en" class="dark" dir="ltr">
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmed Emad | Senior Full-Stack Developer</title>
-  <meta name="description" content="Portfolio of Ahmed Emad, Senior Full-Stack Developer (PHP/Laravel · Vue.js · Flutter): RESTful APIs, multi-tenant SaaS, Vue.js 3, Redis, Flutter. Cairo, remote worldwide.">
-  <meta name="keywords" content="Ahmed Emad, Laravel, PHP, Vue.js, Redis, REST API, SaaS, Flutter, Cairo, Portfolio">
-  <meta name="author" content="Ahmed Emad">
-  <link rel="canonical" href="https://ahmedemadm90.github.io/">
-
-  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Tajawal, JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Portfolio Config -->
-  <script src="config.js"></script>
-
-  <style>
-    /* ==========================================================================
-       DESIGN TOKENS & ROBUST AESTHETICS
-       ========================================================================== */
-    :root {
-      --bg-base: #060913;
-      --bg-surface: #0c1222;
-      --bg-surface-elevated: #131d36;
-      --bg-glass: rgba(12, 18, 34, 0.85);
-      --bg-glass-card: rgba(19, 29, 54, 0.7);
-      
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-card: rgba(255, 255, 255, 0.12);
-      --border-focus: rgba(99, 102, 241, 0.6);
-
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-tertiary: #64748b;
-
-      --primary: #6366f1;
-      --primary-light: #818cf8;
-      --primary-glow: rgba(99, 102, 241, 0.35);
-      --accent-cyan: #06b6d4;
-      --accent-emerald: #10b981;
-      --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #10b981 100%);
-      --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-
-      --font-display: 'Outfit', sans-serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 18px;
-      --radius-xl: 24px;
-      --radius-full: 9999px;
-
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-      --shadow-glow: 0 0 35px var(--primary-glow);
-
-      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    html.light {
-      --bg-base: #f8fafc;
-      --bg-surface: #ffffff;
-      --bg-surface-elevated: #f1f5f9;
-      --bg-glass: rgba(255, 255, 255, 0.88);
-      --bg-glass-card: rgba(255, 255, 255, 0.8);
-      
-      --border-subtle: rgba(0, 0, 0, 0.08);
-      --border-card: rgba(0, 0, 0, 0.1);
-      --border-focus: rgba(99, 102, 241, 0.7);
-
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-tertiary: #64748b;
-
-      --primary: #4f46e5;
-      --primary-light: #6366f1;
-      --primary-glow: rgba(79, 70, 229, 0.2);
-      --accent-cyan: #0891b2;
-      --accent-emerald: #059669;
-      --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 50%, #059669 100%);
-      --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 100%);
-
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      background-color: var(--bg-base);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-      transition: background-color var(--transition-normal), color var(--transition-normal);
-    }
-
-    html[dir="rtl"] {
-      font-family: 'Tajawal', var(--font-sans);
-    }
-
-    /* Ambient Glow & Grid */
-    .ambient-glow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .ambient-blob-1 {
-      position: absolute;
-      top: -15%;
-      left: -10%;
-      width: 60vw;
-      height: 60vw;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
-      filter: blur(80px);
-    }
-    .ambient-blob-2 {
-      position: absolute;
-      top: 30%;
-      right: -15%;
-      width: 50vw;
-      height: 50vw;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0) 70%);
-      filter: blur(90px);
-    }
-    .bg-grid-pattern {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    html.light .bg-grid-pattern {
-      background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1360px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Typography */
-    h1, h2, h3, h4, h5, h6 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.2;
-    }
-    .text-gradient {
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: all var(--transition-normal);
-    }
-    .btn-primary {
-      background: var(--gradient-accent);
-      color: #ffffff;
-      box-shadow: 0 4px 20px var(--primary-glow);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(99, 102, 241, 0.5);
-    }
-    .btn-glass {
-      background: var(--bg-glass);
-      border: 1px solid var(--border-card);
-      color: var(--text-primary);
-      backdrop-filter: blur(12px);
-    }
-    .btn-glass:hover {
-      background: var(--bg-surface-elevated);
-      border-color: var(--primary);
-      color: var(--primary-light);
-      transform: translateY(-2px);
-    }
-    .btn-sm {
-      padding: 0.45rem 1rem;
-      font-size: 0.85rem;
-    }
-    .btn-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      padding: 0;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Top Navigation */
-    .site-header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: var(--bg-glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-subtle);
-      z-index: 100;
-      transition: background-color var(--transition-normal);
-    }
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 4.5rem;
-    }
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text-primary);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.25rem;
-    }
-    .brand-avatar {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--primary);
-      box-shadow: 0 0 12px var(--primary-glow);
-    }
-    .brand-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-      list-style: none;
-    }
-    .nav-link {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      position: relative;
-      padding: 0.25rem 0;
-      transition: color var(--transition-fast);
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--text-primary);
-    }
-    .nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--gradient-accent);
-      border-radius: var(--radius-full);
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      flex-shrink: 0;
-    }
-    .mobile-menu-btn {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 2.4rem;
-      height: 2.4rem;
-      border-radius: var(--radius-md);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      color: var(--text-primary);
-      cursor: pointer;
-      padding: 0;
-      transition: all var(--transition-fast);
-    }
-    .mobile-menu-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary-light);
-    }
-    @media (max-width: 1180px) {
-      .nav-links {
-        display: none !important;
-      }
-      .mobile-menu-btn {
-        display: inline-flex !important;
-      }
-    }
-    @media (max-width: 900px) {
-      .btn-get-in-touch {
-        display: none !important;
-      }
-    }
-    @media (max-width: 640px) {
-      .nav-container {
-        height: 3.8rem;
-        gap: 0.4rem;
-      }
-      .brand-avatar {
-        width: 2.1rem;
-        height: 2.1rem;
-      }
-      .brand-logo span {
-        font-size: 1rem;
-      }
-      .nav-actions {
-        gap: 0.25rem;
-      }
-      #topCvDownloadBtn {
-        padding: 0.35rem 0.5rem;
-        font-size: 0.75rem;
-      }
-      #topCvDownloadBtn .cv-text-long {
-        display: none !important;
-      }
-      #topCvDownloadBtn .cv-text-short {
-        display: inline !important;
-      }
-      #langToggleBtn {
-        padding: 0.35rem 0.5rem;
-        font-size: 0.75rem;
-      }
-      #langToggleBtn .lang-text-long {
-        display: none !important;
-      }
-      #langToggleBtn .lang-text-short {
-        display: inline !important;
-      }
-      #themeToggleBtn {
-        width: 2rem;
-        height: 2rem;
-      }
-      .mobile-menu-btn {
-        width: 2rem;
-        height: 2rem;
-      }
-    }
-    @media (max-width: 420px) {
-      .brand-logo span {
-        display: none;
-      }
-    }
-    .mobile-drawer {
-      display: none;
-      position: fixed;
-      top: 4.5rem;
-      left: 0;
-      width: 100%;
-      background: var(--bg-surface-elevated);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.5rem;
-      flex-direction: column;
-      gap: 1rem;
-      z-index: 99;
-      box-shadow: var(--shadow-lg);
-    }
-    .mobile-drawer.open {
-      display: flex;
-    }
-
-    /* Page Sections */
-    .page-section {
-      padding: 5rem 0;
-      position: relative;
-    }
-    .section-border-top {
-      border-top: 1px solid var(--border-subtle);
-    }
-    .section-title-wrap {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 3.5rem auto;
-    }
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent-cyan);
-      margin-bottom: 0.75rem;
-      padding: 0.35rem 0.85rem;
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid rgba(6, 182, 212, 0.25);
-      border-radius: var(--radius-full);
-    }
-    .section-heading {
-      font-size: 2.25rem;
-      margin-bottom: 0.75rem;
-    }
-    .section-subheading {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-    }
-
-    /* ==========================================================================
-       HERO SECTION (THE BELOVED CAMERA CARD WITH STATS & SAFE FLOATING BADGES)
-       ========================================================================== */
-    .hero-section {
-      padding: 4.5rem 0 3.5rem 0;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-    @media (max-width: 992px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-    }
-    .hero-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: var(--accent-emerald);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-    }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--accent-emerald);
-      box-shadow: 0 0 8px var(--accent-emerald);
-      animation: pulseAnim 2s infinite;
-    }
-    @keyframes pulseAnim {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.8; }
-    }
-    .hero-title {
-      font-size: 3.25rem;
-      margin-bottom: 1rem;
-      line-height: 1.15;
-    }
-    .hero-headline {
-      font-size: 1.25rem;
-      color: var(--primary-light);
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-      line-height: 1.4;
-    }
-    .hero-intro {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-      max-width: 580px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 2.5rem;
-    }
-    .hero-socials {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .social-icon-btn {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-fast);
-      text-decoration: none;
-    }
-    .social-icon-btn:hover {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      transform: translateY(-3px);
-    }
-
-    /* THE HERO CARD */
-    .hero-visual-wrap {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 520px;
-    }
-    .hero-main-card {
-      position: relative;
-      z-index: 2;
-      background: var(--bg-glass-card);
-      border: 1px solid var(--border-card);
-      border-radius: 28px;
-      padding: 2rem 1.75rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-    .hero-avatar-frame {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      margin: 0 auto 1.25rem auto;
-      position: relative;
-      padding: 5px;
-      background: var(--gradient-accent);
-      box-shadow: 0 0 35px var(--primary-glow);
-    }
-    .hero-avatar-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      background: var(--bg-surface);
-    }
-    .hero-online-status {
-      position: absolute;
-      bottom: 8px;
-      right: 12px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--accent-emerald);
-      border: 3px solid var(--bg-surface);
-    }
-    .card-hero-name {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-    .card-hero-title {
-      font-size: 0.875rem;
-      color: var(--accent-cyan);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .card-location {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.8rem;
-      color: var(--text-tertiary);
-      margin-bottom: 1.25rem;
-    }
-    .hero-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-      margin-top: 1rem;
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 1.25rem;
-    }
-    .stat-pill {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 0.75rem 0.5rem;
-      text-align: center;
-      transition: all var(--transition-fast);
-    }
-    .stat-pill:hover {
-      border-color: var(--primary);
-      background: rgba(99, 102, 241, 0.08);
-      transform: translateY(-2px);
-    }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1.1;
-    }
-    .stat-label {
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      margin-top: 0.25rem;
-      line-height: 1.3;
-    }
-
-    /* CLOSER INTERACTIVE FLOATING BADGES (NEVER OVERLAPS CARD PHOTO/TEXT) */
-    #heroFloatingBadgesContainer {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 400px;
-      height: 100%;
-      pointer-events: none;
-      z-index: 5;
-    }
-    .floating-badge {
-      pointer-events: auto;
-      position: absolute;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 0.65rem 1rem;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      white-space: nowrap;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--text-primary);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      animation: floatBadge 6s ease-in-out infinite;
-    }
-    .floating-badge:hover {
-      transform: translateY(-4px) scale(1.05) !important;
-      border-color: var(--primary-light);
-      box-shadow: 0 16px 36px var(--primary-glow);
-      background: var(--bg-surface-elevated);
-    }
-    .floating-badge:hover .badge-arrow {
-      transform: translate(2px, -2px);
-      opacity: 1 !important;
-      color: var(--primary-light);
-    }
-    html.light .floating-badge {
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      color: #0f172a;
-    }
-    html.light .floating-badge .badge-cat {
-      color: #64748b !important;
-    }
-    html.light .floating-badge .badge-title {
-      color: #0f172a !important;
-    }
-    html.light .floating-badge:hover {
-      border-color: var(--primary);
-      box-shadow: 0 14px 32px rgba(99, 102, 241, 0.25);
-    }
-    @keyframes floatBadge {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
-    }
-
-    /* DESKTOP (1200px+): Badges hug the card closely (12px-14px from card border) */
-    @media (min-width: 1200px) {
-      /* LTR */
-      html[dir="ltr"] .badge-pos-0 {
-        top: 25px;
-        left: calc(100% + 14px);
-        right: auto;
-        animation-delay: 0s;
-      }
-      html[dir="ltr"] .badge-pos-1 {
-        bottom: 35px;
-        right: calc(100% + 14px);
-        left: auto;
-        animation-delay: 2.5s;
-      }
-      html[dir="ltr"] .badge-pos-2 {
-        top: 25px;
-        right: calc(100% + 14px);
-        left: auto;
-        animation-delay: 1.2s;
-      }
-      html[dir="ltr"] .badge-pos-3 {
-        bottom: 35px;
-        left: calc(100% + 14px);
-        right: auto;
-        animation-delay: 3.7s;
-      }
-      html[dir="ltr"] .badge-pos-4 {
-        top: 48%;
-        right: calc(100% + 14px);
-        left: auto;
-      }
-      html[dir="ltr"] .badge-pos-5 {
-        top: 48%;
-        left: calc(100% + 14px);
-        right: auto;
-      }
-
-      /* RTL (Arabic) Outside Placement */
-      html[dir="rtl"] .badge-pos-0 {
-        top: 25px;
-        right: calc(100% + 14px);
-        left: auto;
-        animation-delay: 0s;
-      }
-      html[dir="rtl"] .badge-pos-1 {
-        bottom: 35px;
-        left: calc(100% + 14px);
-        right: auto;
-        animation-delay: 2.5s;
-      }
-      html[dir="rtl"] .badge-pos-2 {
-        top: 25px;
-        left: calc(100% + 14px);
-        right: auto;
-        animation-delay: 1.2s;
-      }
-      html[dir="rtl"] .badge-pos-3 {
-        bottom: 35px;
-        right: calc(100% + 14px);
-        left: auto;
-        animation-delay: 3.7s;
-      }
-      html[dir="rtl"] .badge-pos-4 {
-        top: 48%;
-        left: calc(100% + 14px);
-        right: auto;
-      }
-      html[dir="rtl"] .badge-pos-5 {
-        top: 48%;
-        right: calc(100% + 14px);
-        left: auto;
-      }
-    }
-
-    /* SCREENS UNDER 1200px: Badges neatly sit underneath the card in an organized row */
-    /* MOBILE & TABLET HERO (<= 1199px): Hero Card First, Badges Below in Clean 2x2 Grid */
-    @media (max-width: 1199px) {
-      .hero-visual-wrap {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        min-height: auto !important;
-        width: 100% !important;
-        overflow: visible !important;
-      }
-      .hero-main-card {
-        order: 1 !important;
-        margin: 0 auto !important;
-        width: 100% !important;
-        max-width: 400px !important;
-      }
-      #heroFloatingBadgesContainer {
-        order: 2 !important;
-        position: static !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.65rem !important;
-        margin: 1.5rem auto 0 auto !important;
-        width: 100% !important;
-        max-width: 400px !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-      }
-      .floating-badge {
-        position: static !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        animation: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        white-space: normal !important;
-        padding: 0.65rem 0.85rem !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 0.5rem !important;
-        justify-content: flex-start !important;
-      }
-      .floating-badge .badge-arrow {
-        margin-left: auto !important;
-      }
-      html[dir="rtl"] .floating-badge .badge-arrow {
-        margin-left: 0 !important;
-        margin-right: auto !important;
-      }
-    }
-    @media (max-width: 440px) {
-      #heroFloatingBadgesContainer {
-        grid-template-columns: 1fr !important;
-        max-width: 330px !important;
-      }
-      .hero-main-card {
-        padding: 1.5rem 1.15rem !important;
-      }
-    }
-
-    /* ==========================================================================
-       ABOUT SECTION & 5 PROFESSIONAL SUMMARY ITEMS
-       ========================================================================== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: flex-start;
-    }
-    @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .about-text p {
-      margin-bottom: 1.25rem;
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .key-facts-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-    }
-    .fact-item {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .fact-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .fact-icon {
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 50%;
-      background: rgba(99, 102, 241, 0.12);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .fact-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-tertiary);
-      margin-bottom: 0.25rem;
-    }
-    .fact-value {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    /* ==========================================================================
-       SKILLS SECTION (RESPONSIVE: 4 -> 3 -> 2 -> 1 WITH COMPLETE DESCRIPTIONS)
-       ========================================================================== */
-    .skills-categories-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-    }
-    @media (max-width: 1099px) and (min-width: 840px) {
-      .skills-categories-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    @media (max-width: 839px) and (min-width: 580px) {
-      .skills-categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 579px) {
-      .skills-categories-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .skill-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      transition: all var(--transition-normal);
-    }
-    .skill-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-    .skill-card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .skill-card-header h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-    .skill-item {
-      margin-bottom: 1.25rem;
-    }
-    .skill-item:last-child {
-      margin-bottom: 0;
-    }
-    .skill-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.4rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    .skill-badge {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.45rem;
-      border-radius: var(--radius-full);
-      background: rgba(99, 102, 241, 0.15);
-      color: var(--primary-light);
-      margin-left: 0.4rem;
-    }
-    html[dir="rtl"] .skill-badge {
-      margin-left: 0;
-      margin-right: 0.4rem;
-    }
-    .skill-progress-bar {
-      width: 100%;
-      height: 6px;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-    }
-    .skill-progress-fill {
-      height: 100%;
-      border-radius: var(--radius-full);
-      background: var(--gradient-accent);
-      transition: width 1s ease-in-out;
-    }
-    .skill-desc {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-      margin-top: 0.4rem;
-    }
-
-    /* ==========================================================================
-       ADDED VALUE & ROI MATRIX
-       ========================================================================== */
-    .roi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 900px) {
-      .roi-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .roi-model-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      transition: all var(--transition-normal);
-    }
-    .roi-model-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.45);
-    }
-    .roi-model-card.featured {
-      border-color: var(--accent-emerald);
-      box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
-    }
-    .roi-model-card.featured::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-accent);
-    }
-    .roi-tag-badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-full);
-      margin-bottom: 0.75rem;
-    }
-    .roi-item-row {
-      border-top: 1px solid var(--border-subtle);
-      padding: 0.85rem 0;
-    }
-    .roi-item-label {
-      font-size: 0.75rem;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.25rem;
-    }
-    .roi-item-val {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text-primary);
-    }
-    .roi-item-sub {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-    }
-    .roi-metrics-summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-    @media (max-width: 768px) {
-      .roi-metrics-summary {
-        grid-template-columns: 1fr;
-      }
-    }
-    .roi-summary-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .roi-summary-num {
-      font-family: var(--font-display);
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: var(--accent-emerald);
-    }
-
-    /* ==========================================================================
-       PROJECTS SECTION
-       ========================================================================== */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 2rem;
-    }
-    @media (max-width: 600px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .project-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all var(--transition-normal);
-      cursor: pointer;
-    }
-    .project-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-    .project-header-banner {
-      height: 130px;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-header-banner.has-custom-image {
-      height: 170px;
-      background-size: cover;
-      background-position: center;
-    }
-    .project-header-banner.has-custom-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(6,9,19,0.1) 0%, rgba(12,18,34,0.88) 100%);
-    }
-    .project-img-pill {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(12, 18, 34, 0.8);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 6px;
-      padding: 4px 8px;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.75rem;
-      z-index: 2;
-    }
-    .project-header-banner i {
-      width: 48px;
-      height: 48px;
-      color: #ffffff;
-      opacity: 0.85;
-    }
-    .project-card-body {
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .project-category {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent-cyan);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .project-title {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-    .project-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.5rem;
-    }
-    .project-tag {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-tertiary);
-    }
-    .project-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 1rem;
-    }
-
-    /* ==========================================================================
-       TIMELINE & EXPERIENCE
-       ========================================================================== */
-    .timeline {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 2rem;
-      width: 2px;
-      background: var(--border-card);
-    }
-    html[dir="rtl"] .timeline::before {
-      left: auto;
-      right: 2rem;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2.5rem;
-      padding-left: 5rem;
-    }
-    html[dir="rtl"] .timeline-item {
-      padding-left: 0;
-      padding-right: 5rem;
-    }
-    .timeline-marker {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.35rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 4px solid var(--bg-base);
-      box-shadow: 0 0 12px var(--primary-glow);
-    }
-    html[dir="rtl"] .timeline-marker {
-      left: auto;
-      right: 1.35rem;
-    }
-    .timeline-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .timeline-bullets {
-      list-style: none;
-      margin-top: 1rem;
-    }
-    .timeline-bullets li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-    html[dir="rtl"] .timeline-bullets li {
-      padding-left: 0;
-      padding-right: 1.5rem;
-    }
-    .timeline-bullets li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-    html[dir="rtl"] .timeline-bullets li::before {
-      left: auto;
-      right: 0;
-    }
-
-    /* ==========================================================================
-       EDUCATION & CERTIFICATIONS
-       ========================================================================== */
-    .edu-cert-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-    }
-    @media (max-width: 900px) {
-      .edu-cert-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .cert-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .cert-icon {
-      width: 2.75rem;
-      height: 2.75rem;
-      border-radius: 50%;
-      background: rgba(6, 182, 212, 0.1);
-      color: var(--accent-cyan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* ==========================================================================
-       CONTACT SECTION
-       ========================================================================== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3.5rem;
-    }
-    @media (max-width: 900px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .contact-method-card {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      margin-bottom: 1rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all var(--transition-fast);
-    }
-    .contact-method-card:hover {
-      border-color: var(--primary);
-      transform: translateX(4px);
-    }
-    html[dir="rtl"] .contact-method-card:hover {
-      transform: translateX(-4px);
-    }
-    .contact-icon-box {
-      width: 3rem;
-      height: 3rem;
-      border-radius: var(--radius-md);
-      background: rgba(99, 102, 241, 0.1);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-    .form-label {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-    .form-input, .form-textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color var(--transition-fast);
-    }
-    .form-input:focus, .form-textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-    }
-
-    /* Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(6, 9, 19, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-    .modal-overlay.open {
-      display: flex;
-    }
-    .modal-content {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      max-width: 650px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 2rem;
-      position: relative;
-    }
-    .modal-close-btn {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      background: none;
-      border: none;
-      color: var(--text-secondary);
-      cursor: pointer;
-      font-size: 1.5rem;
-    }
-    html[dir="rtl"] .modal-close-btn {
-      right: auto;
-      left: 1.25rem;
-    }
-
-    /* Print Styles */
-    @media print {
-      @page { margin: 1cm; size: A4 portrait; }
-      body { background: #fff !important; color: #000 !important; }
-      .site-header, .ambient-glow, .bg-grid-pattern, .hero-actions, .hero-socials, 
-      .btn, #heroFloatingBadgesContainer, .modal-overlay { display: none !important; }
-      .page-section { padding: 1rem 0 !important; page-break-inside: avoid !important; }
-      .hero-grid { grid-template-columns: 1fr 200px !important; }
-      .hero-main-card { max-width: 200px !important; box-shadow: none !important; border: 1px solid #ccc !important; }
-      .hero-avatar-frame { width: 90px !important; height: 90px !important; }
-      .skill-card, .roi-model-card, .project-card, .timeline-card, .key-facts-card {
-        background: #fff !important; border: 1px solid #ddd !important; box-shadow: none !important; color: #000 !important;
-      }
-      h1, h2, h3, h4, p, span { color: #000 !important; }
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ahmed Emad | Senior PHP / Laravel Engineer</title>
+<meta name="description" content="Ahmed Emad, Senior PHP / Laravel Engineer. 11+ years building enterprise applications, multi-tenant SaaS, APIs, payroll and business systems.">
+<meta name="theme-color" content="#101917"><meta property="og:title" content="Ahmed Emad | Backend engineering. Business understanding."><meta property="og:description" content="Senior PHP / Laravel Engineer | ERP & Business Systems. Explore selected work and download my CV."><meta property="og:type" content="website"><meta property="og:url" content="https://ahmedemadm90.github.io/">
+<link rel="canonical" href="https://ahmedemadm90.github.io/"><link rel="icon" href="profile.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#101917;--panel:#18221f;--panel2:#1d2b25;--ink:#f2f0e8;--muted:#b1bcb4;--line:#34443b;--accent:#c3f27e;--on-accent:#192512;--soft:#243326;--display:'Manrope','Tajawal',sans-serif;--body:'DM Sans','Tajawal',sans-serif}
+[data-theme=light]{color-scheme:light;--bg:#f5f4ee;--panel:#eaece2;--panel2:#e1e7d8;--ink:#17271f;--muted:#52645a;--line:#c6cfc0;--accent:#315f20;--on-accent:#fff;--soft:#e3ebd9}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--body);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}a,button{touch-action:manipulation}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:5px}::selection{background:var(--accent);color:var(--on-accent)}.wrap{width:min(1140px,calc(100% - 64px));margin:auto}.skip{position:fixed;top:-100px;z-index:99;background:var(--accent);color:var(--on-accent);padding:12px}.skip:focus{top:8px}header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:20}.nav{height:84px;display:flex;align-items:center;gap:28px}.brand{font:800 20px var(--display);letter-spacing:-.8px;white-space:nowrap}.brand span{color:var(--accent)}nav{display:flex;gap:26px;margin-inline-start:auto;font-size:13px}nav a{color:var(--muted)}nav a:hover,.text-link:hover{color:var(--accent)}.tools{display:flex;gap:9px;align-items:center}.icon-btn{background:none;border:1px solid var(--line);border-radius:50%;height:38px;min-width:38px;padding:0 9px;font-size:13px}.icon-btn:hover{background:var(--soft)}.cv-small{font-size:13px;border:1px solid var(--line);padding:8px 14px;border-radius:30px;white-space:nowrap}.hero{padding:84px 0 54px;display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center}.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin:0 0 22px;display:block}.status{display:inline-flex;align-items:center;gap:9px;font-size:12px;color:var(--muted);margin-bottom:24px}.status:before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--soft)}h1,h2,h3,h4,p{margin-top:0}h1{font:700 clamp(44px,5.2vw,69px)/1.08 var(--display);letter-spacing:-3px;margin-bottom:24px}h1 span{color:var(--accent)}.hero-title{font-size:16px;margin-bottom:14px;font-weight:600}.intro{color:var(--muted);max-width:540px;font-size:16px;line-height:1.8;margin-bottom:28px}.actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.btn{display:inline-flex;justify-content:center;align-items:center;gap:22px;border-radius:6px;padding:13px 20px;font-size:13px;font-weight:700;background:var(--accent);color:var(--on-accent);border:1px solid var(--accent)}.btn:hover{filter:brightness(1.08)}.text-link{font-size:13px;font-weight:600;display:inline-flex;gap:12px;align-items:center}.location{margin-top:25px;font-size:12px;color:var(--muted)}.architecture{position:relative;min-width:0;padding:26px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(155deg,var(--panel2),var(--bg));box-shadow:0 24px 65px #0002}.arch-top{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--muted);letter-spacing:1.4px;border-bottom:1px solid var(--line);padding-bottom:17px}.dots{display:flex;gap:5px}.dots i{height:5px;width:5px;background:var(--line);border-radius:50%}.arch-layer{padding:16px 18px;border:1px solid var(--line);border-radius:7px;margin-top:17px;background:var(--bg)}.arch-layer small{display:block;font-size:9px;letter-spacing:1.3px;color:var(--muted);margin-bottom:5px}.arch-layer strong{font:600 17px var(--display)}.arch-layer.highlight{border-color:var(--accent)}.arch-layer.highlight strong{color:var(--accent)}.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.connector{text-align:center;color:var(--muted);height:14px;line-height:25px;font-size:12px}.arch-note{display:flex;gap:8px;margin-top:20px;font-size:11px;color:var(--muted)}.arch-note span{color:var(--accent)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);padding:26px 0;margin-bottom:10px}.metric{padding-inline:30px;border-inline-start:1px solid var(--line)}.metric:first-child{padding-inline-start:0;border:0}.metric strong{font:600 31px var(--display);letter-spacing:-1px;display:block;margin-bottom:3px}.metric span{font-size:11px;color:var(--muted)}section{padding:72px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:32px}.section-head .eyebrow{margin-bottom:12px}h2{font:600 clamp(30px,3.3vw,43px)/1.2 var(--display);letter-spacing:-1.6px;margin:0}h2 span{color:var(--muted)}.section-note{font-size:12px;color:var(--muted);max-width:285px;margin:0}.projects{display:grid;grid-template-columns:1fr 1fr;gap:20px}.project{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}.project:hover{border-color:var(--muted)}.project-top{padding:28px;position:relative;min-height:147px;background:var(--soft);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:start;gap:12px}.project-number{font:500 11px monospace;color:var(--muted)}.project-mark{position:absolute;inset-inline-start:28px;bottom:17px;font:800 43px var(--display);letter-spacing:-2px;color:var(--accent);align-self:end}.project-top .mini-diagram{position:absolute;inset-inline-end:28px;bottom:25px;display:flex;gap:5px;align-items:center}.mini-diagram i{display:block;border:1px solid var(--muted);width:23px;height:23px;border-radius:5px;opacity:.55}.mini-diagram i:nth-child(2){height:40px;border-color:var(--accent);opacity:1}.project-body{padding:26px;display:flex;flex:1;flex-direction:column}.kicker{font-size:9px;color:var(--accent);letter-spacing:1.4px;margin-bottom:10px}h3{font:700 23px/1.3 var(--display);letter-spacing:-.6px;margin-bottom:12px}.project p{font-size:14px;color:var(--muted);margin-bottom:19px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{font-size:10px;border:1px solid var(--line);padding:3px 9px;border-radius:4px;color:var(--muted)}.project details{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}.project summary{font-size:12px;font-weight:600;cursor:pointer}.project details p{margin:14px 0 0;font-size:13px}.project-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;font-size:10px;color:var(--muted);gap:15px}.project-foot a{font-size:12px;color:var(--accent)}.expertise{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px}.expertise p{color:var(--muted);font-size:14px;margin:24px 0}.domains{list-style:none;padding:0;margin:25px 0 0}.domains li{border-top:1px solid var(--line);padding:13px 0;font-size:13px;display:flex;justify-content:space-between}.domains span{color:var(--muted);font-size:11px}.skill{padding-bottom:23px;margin-bottom:23px;border-bottom:1px solid var(--line)}.skill:last-child{border:0;margin:0;padding:0}.skill h3{font-size:15px;margin-bottom:12px;letter-spacing:0}.skill .chip{font-size:11px;padding:4px 9px;background:var(--panel)}.career{display:grid;grid-template-columns:.55fr 1.45fr;gap:70px}.career-head p{color:var(--muted);font-size:13px;margin-top:20px}.role{display:grid;grid-template-columns:140px 1fr;gap:22px;padding:0 0 28px;margin-bottom:28px;border-bottom:1px solid var(--line)}.role:last-child{border:0;margin:0;padding:0}.date{font-size:11px;color:var(--muted);padding-top:4px}.role h3{font-size:17px;margin-bottom:5px;letter-spacing:-.3px}.role h4{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:11px}.role p{font-size:13px;line-height:1.8;color:var(--muted);margin-bottom:0}.freelance{padding-top:30px;margin-top:30px;border-top:1px solid var(--line)}.freelance-note{color:var(--muted);font-size:12px;margin:12px 0 25px}.education{margin-top:30px;background:var(--panel);padding:22px;border-radius:8px}.education p{font-size:12px;color:var(--muted);margin:8px 0 0}.contact{padding:64px 0 72px}.contact-box{background:var(--accent);color:var(--on-accent);padding:45px;border-radius:10px;display:flex;gap:35px;align-items:center;justify-content:space-between}.contact-box .eyebrow{color:inherit;opacity:.7;margin-bottom:12px}.contact-box h2{font-size:37px;max-width:540px}.contact-box p{font-size:13px;opacity:.8;margin:16px 0 0}.contact-box .btn{background:var(--on-accent);color:var(--accent);border-color:var(--on-accent);white-space:nowrap}.contact-links{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:26px;font-size:12px;color:var(--muted)}.socials{display:flex;gap:22px}footer{padding:25px 0;font-size:11px;color:var(--muted)}.footer-inner{display:flex;justify-content:space-between;gap:20px}.footer-inner a{text-decoration:underline;text-underline-offset:4px}[dir=rtl] h1,[dir=rtl] h2,[dir=rtl] h3{letter-spacing:0}[dir=rtl] body{font-family:'Tajawal',sans-serif}[dir=rtl] .eyebrow,[dir=rtl] .kicker{letter-spacing:0}.arrow{font-family:Arial,sans-serif}[dir=rtl] .arrow{display:inline-block;transform:scaleX(-1)}
+@media(min-width:1500px){.hero{padding-top:100px;padding-bottom:75px}}@media(max-width:1000px){.wrap{width:calc(100% - 44px)}.nav{gap:15px}nav{gap:17px}.hero{gap:35px;padding-top:60px}h1{font-size:51px}.architecture{padding:20px}.expertise{gap:40px}.career{gap:35px}.role{grid-template-columns:110px 1fr}.metric{padding-inline:18px}}@media(max-width:750px){.wrap{width:calc(100% - 36px)}.nav{height:70px;justify-content:space-between;gap:10px}.brand{font-size:18px}nav{display:none}.tools{gap:7px}.cv-small{padding:7px 10px;font-size:11px}.icon-btn{height:33px;min-width:33px}.hero{grid-template-columns:1fr;padding:43px 0 34px;gap:33px}h1{font-size:clamp(38px,12.3vw,48px);letter-spacing:-2.3px;max-width:540px}.hero-title{font-size:14px}.intro{font-size:14px}.status{font-size:11px;margin-bottom:19px}.architecture{max-width:100%;padding:20px}.arch-grid{grid-template-columns:1fr 1fr}.arch-layer{padding:12px 15px;margin-top:12px}.arch-layer strong{font-size:16px}.arch-note{margin-top:16px}.metrics{grid-template-columns:1fr 1fr;padding:0;margin:0}.metric{padding:22px 15px!important;border:0}.metric:nth-child(even){border-inline-start:1px solid var(--line)}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.metric strong{font-size:29px}.metric span{font-size:10px}section{padding:48px 0}.section-head{align-items:start;flex-direction:column;gap:15px;margin-bottom:24px}h2{font-size:31px;letter-spacing:-1px}.section-note{max-width:none}.projects{grid-template-columns:1fr;gap:17px}.project-top{min-height:130px;padding:23px}.project-body{padding:23px}.expertise,.career{grid-template-columns:1fr;gap:30px}.expertise p{margin-top:18px}.role{grid-template-columns:1fr;gap:8px;padding-bottom:24px;margin-bottom:24px}.date{padding:0}.role h3{font-size:17px}.contact{padding:45px 0}.contact-box{padding:27px;display:block}.contact-box h2{font-size:29px}.contact-box .btn{margin-top:23px}.contact-links{align-items:start;flex-direction:column;gap:17px}.socials{gap:23px}.footer-inner{flex-direction:column;gap:8px}.eyebrow{font-size:10px}.education{margin-top:24px}}@media(max-width:360px){.tools .cv-small{display:none}.arch-layer strong{font-size:14px}.actions{gap:14px}.btn{padding:12px 16px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{header,.tools,.actions,.contact,.socials,details{display:none!important}body{background:white;color:black}.wrap{width:100%}.hero{padding-top:0}.architecture{display:none}.hero,.career,.expertise{display:block}section{padding:25px 0}.project,.role{break-inside:avoid}.metrics{margin-bottom:20px}.projects{gap:12px}.project-top{min-height:80px}.chip,p,.date,.metric span{color:#333!important}a{color:inherit!important}.project-foot a:after{content:' (' attr(href) ')';font-size:9px}}
+</style>
 </head>
 <body>
-  <div class="ambient-glow">
-    <div class="ambient-blob-1"></div>
-    <div class="ambient-blob-2"></div>
-  </div>
-  <div class="bg-grid-pattern"></div>
-
-  <!-- SITE HEADER -->
-  <header class="site-header">
-    <div class="container nav-container">
-      <a href="#hero" class="brand-logo">
-        <div class="brand-avatar">
-          <img src="profile.svg" alt="Ahmed Emad" id="navBrandAvatarImg">
-        </div>
-        <span id="navBrandName">Ahmed Emad</span>
-      </a>
-
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Home</a></li>
-          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
-          <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
-          <li><a href="#added-value" class="nav-link" data-i18n="nav_added_value">Added Value</a></li>
-          <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li>
-          <li><a href="#experience" class="nav-link" data-i18n="nav_experience">Experience</a></li>
-          <li><a href="#education" class="nav-link" data-i18n="nav_education">Credentials</a></li>
-          <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-actions">
-        <!-- Top bar Official CV PDF download -->
-        <a href="ahmed_emad_cv.pdf" download="ahmed_emad_cv.pdf" onclick="downloadOfficialCv(event)" class="btn btn-glass btn-sm" id="topCvDownloadBtn" title="Download Official CV (PDF)">
-          <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
-          <span class="cv-text-long" data-i18n="nav_download_cv">Official CV</span>
-          <span class="cv-text-short" style="display:none;">CV</span>
-        </a>
-
-        <!-- Language toggle -->
-        <button id="langToggleBtn" class="btn btn-glass btn-sm" onclick="toggleLanguage()" title="Switch Language">
-          <i data-lucide="globe" style="width: 16px; height: 16px;"></i>
-          <span id="langBtnText">العربية</span>
-        </button>
-
-        <!-- Theme toggle -->
-        <button id="themeToggleBtn" class="btn btn-glass btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
-          <i data-lucide="moon" id="themeIcon" style="width: 18px; height: 18px;"></i>
-        </button>
-
-        <a href="#contact" class="btn btn-primary btn-sm btn-get-in-touch">
-          <span data-i18n="btn_get_in_touch">Get in Touch</span>
-          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-        </a>
-
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
-          <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="mobile-drawer" id="mobileDrawer">
-      <a href="#hero" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_home">Home</a>
-      <a href="#about" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_about">About</a>
-      <a href="#skills" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_skills">Skills</a>
-      <a href="#added-value" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_added_value">Added Value</a>
-      <a href="#projects" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_projects">Projects</a>
-      <a href="#experience" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_experience">Experience</a>
-      <a href="#education" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_education">Credentials</a>
-      <a href="#contact" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_contact">Contact</a>
-      <div style="padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 0.75rem;">
-        <a href="#contact" class="btn btn-primary" onclick="closeMobileMenu()" style="justify-content: center;">
-          <span data-i18n="btn_get_in_touch">Get in Touch</span>
-          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO SECTION (THE BELOVED CAMERA CARD WITH STATS & SAFE FLOATING BADGES) -->
-    <section id="hero" class="page-section hero-section">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge-pill">
-            <span class="pulse-dot"></span>
-            <span id="heroAvailabilityPill">Available for High-Impact Projects & Roles</span>
-          </div>
-
-          <h1 class="hero-title">
-            <span data-i18n="hero_greeting">Hi, I'm</span> <span class="text-gradient" id="heroFullName">Ahmed Emad</span>
-          </h1>
-
-          <p class="hero-headline" id="heroHeadline">
-            Senior Full-Stack Developer
-          </p>
-
-          <p class="hero-intro" id="heroIntro">
-            I design and ship production-grade backend systems and full-stack web applications.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">
-              <span data-i18n="hero_explore_btn">Explore Projects</span>
-              <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
-            </a>
-
-            <!-- Print Clean Portfolio Button in Hero -->
-            <button onclick="window.print()" class="btn btn-glass" title="Print Clean Portfolio PDF">
-              <i data-lucide="printer" style="width: 18px; height: 18px;"></i>
-              <span data-i18n="hero_print_btn">Print Portfolio</span>
-            </button>
-          </div>
-
-          <div class="hero-socials">
-            <a href="https://www.linkedin.com/in/ahmed-emad-m90/" id="heroSocialLinkedin" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="https://github.com/ahmedemadm90" id="heroSocialGithub" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            </a>
-            <a href="https://wa.me/201000803545" id="heroSocialWhatsapp" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Chat on WhatsApp" style="color:#25d366;">
-              <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
-            </a>
-            <a href="mailto:ahmedemadm90@gmail.com" id="heroSocialEmail" class="social-icon-btn" title="Email Direct">
-              <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- HERO VISUAL PORTRAIT (THE BELOVED CAMERA CARD WITH STATS & SAFE FLOATING BADGES) -->
-        <div class="hero-visual-wrap" id="heroVisualWrap">
-          <!-- Floating Badges dynamically inserted with SAFE classes -->
-          <div id="heroFloatingBadgesContainer"></div>
-
-          <div class="hero-main-card">
-            <div class="hero-avatar-frame">
-              <img src="profile.svg" alt="Ahmed Emad" id="heroAvatarCardImg">
-              <span class="hero-online-status" title="Active & Ready"></span>
-            </div>
-
-            <h3 class="card-hero-name" id="cardHeroName">Ahmed Emad</h3>
-            <p class="card-hero-title" id="cardHeroTitle">Senior Full-Stack Developer</p>
-            <div class="card-location">
-              <i data-lucide="map-pin" style="width:14px; height:14px;"></i>
-              <span id="cardHeroLocation">New Damietta, Damietta, Egypt (Remote Ready)</span>
-            </div>
-
-            <div class="hero-stats-grid" id="cardHeroStatsGrid">
-              <!-- 4 stat pills inside the camera card -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION (WITH 5 PROFESSIONAL SUMMARY KEY FACTS) -->
-    <section id="about" class="page-section section-border-top">
-      <div class="container">
-        <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="user" style="width: 14px; height: 14px;"></i> <span data-i18n="about_eyebrow">About Me</span></span>
-          <h2 class="section-heading"><span data-i18n="about_heading_1">Engineering Mindset Applied to</span> <span class="text-gradient" data-i18n="about_heading_2">Scalable Systems</span></h2>
-          <p class="section-subheading" data-i18n="about_subheading">A synthesis of software orchestration, AI models, and biomedical precision.</p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <h3 style="font-size: 1.75rem; margin-bottom: 1.25rem;" id="aboutHeadlineText">Building Scalable, Zero-Failure Workflows</h3>
-            <p id="aboutMeP1"></p>
-            
-            <div style="margin-top: 2rem; padding: 1.25rem; background: var(--bg-surface-elevated); border-radius: var(--radius-md); border-left: 4px solid var(--primary);">
-              <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--primary-light); margin-bottom: 0.35rem;" data-i18n="career_vision_label">Career Vision</h4>
-              <p id="careerObjectiveText" style="font-size: 0.95rem; margin: 0;"></p>
-            </div>
-          </div>
-
-          <!-- Key Facts Card (All 5 Professional Summary items) -->
-          <div class="key-facts-card">
-            <h4 style="font-size: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="sparkles" style="color: var(--primary); width: 18px; height: 18px;"></i>
-              <span data-i18n="summary_card_title">Professional Summary</span>
-            </h4>
-            
-            <div id="keyFactsList">
-              <!-- 5 synchronized summary items injected here -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS SECTION (OPTIMIZED: 4 COLUMNS ON DESKTOP, 3 ON MEDIUM, 2 ON TABLET, 1 ON MOBILE) -->
-    <section id="skills" class="page-section section-border-top">
-      <div class="container">
-        <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="cpu" style="width: 14px; height: 14px;"></i> <span data-i18n="skills_eyebrow">Technical Mastery</span></span>
-          <h2 class="section-heading"><span data-i18n="skills_heading_1">Categorized Technical</span> <span class="text-gradient" data-i18n="skills_heading_2">Competencies</span></h2>
-          <p class="section-subheading" data-i18n="skills_subheading">Structured across workflow automation, backend AI systems, embedded IoT, and operational optimization.</p>
-        </div>
-
-        <div class="skills-categories-grid" id="skillsContainer">
-          <!-- 4 Category skill cards injected dynamically with complete descriptions -->
-        </div>
-      </div>
-    </section>
-
-    <!-- CLIENT ADDED VALUE & ROI MATRIX -->
-    <section id="added-value" class="page-section section-border-top">
-      <div class="container">
-        <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="trending-up" style="width: 14px; height: 14px;"></i> <span data-i18n="roi_eyebrow">Quantitative Value</span></span>
-          <h2 class="section-heading"><span id="roiMainTitle">Client Added Value & ROI Matrix</span></h2>
-          <p class="section-subheading" id="roiMainSubtitle">Quantitative comparison showing the monumental shift from manual labor to intelligent autonomous workflows.</p>
-        </div>
-
-        <!-- 3 Comparative Models -->
-        <div class="roi-grid" id="roiModelsGrid">
-          <!-- Injected dynamically -->
-        </div>
-
-        <!-- Impact Summary Boxes -->
-        <div class="roi-metrics-summary" id="roiMetricsSummary">
-          <!-- Injected dynamically -->
-        </div>
-
-        <!-- Google Drive Button -->
-        <div style="text-align: center; margin-top: 2.5rem;">
-          <a href="https://drive.google.com/" target="_blank" class="btn btn-primary" id="roiDriveBtn">
-            <i data-lucide="folder" style="width: 18px; height: 18px;"></i>
-            <span data-i18n="roi_drive_text">View Detailed ROI Files & Statistics on Google Drive</span>
-            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="page-section section-border-top">
-      <div class="container">
-        <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="folder-git-2" style="width: 14px; height: 14px;"></i> <span data-i18n="projects_eyebrow">Engineering Portfolio</span></span>
-          <h2 class="section-heading"><span data-i18n="projects_heading_1">Featured Systems &</span> <span class="text-gradient" data-i18n="projects_heading_2">Products</span></h2>
-          <p class="section-subheading" data-i18n="projects_subheading">Real-world production automations, health-tech hardware prototypes, and interactive cloud applications.</p>
-        </div>
-
-        <div class="projects-grid" id="projectsGrid">
-          <!-- Project cards injected dynamically -->
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="page-section section-border-top">
-      <div class="container">
-        <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="briefcase" style="width: 14px; height: 14px;"></i> <span data-i18n="exp_eyebrow">Work History</span></span>
-          <h2 class="section-heading"><span data-i18n="exp_heading_1">Professional Experience &</span> <span class="text-gradient" data-i18n="exp_heading_2">Roles</span></h2>
-          <p class="section-subheading" data-i18n="exp_subheading">Practical track record in enterprise process automation and system deployment.</p>
-        </div>
-
-        <div class="timeline" id="experienceTimeline">
-          <!-- Experience items injected dynamically -->
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION & CERTIFICATIONS -->
-    <section id="education" class="page-section section-border-top">
-      <div class="container">
-        <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="graduation-cap" style="width: 14px; height: 14px;"></i> <span data-i18n="edu_eyebrow">Academic Foundation</span></span>
-          <h2 class="section-heading"><span data-i18n="edu_heading_1">Education &</span> <span class="text-gradient" data-i18n="edu_heading_2">Background</span></h2>
-          <p class="section-subheading" data-i18n="edu_subheading">Rigorous medical-technical foundation coupled with continuous technology upskilling.</p>
-        </div>
-
-        <div class="edu-cert-grid">
-          <div id="educationMainCard">
-            <!-- Education degree card -->
-          </div>
-
-          <div>
-            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="award" style="color: var(--accent-cyan); width: 22px; height: 22px;"></i>
-              <span data-i18n="cert_heading">Specialized Certifications</span>
-            </h3>
-            <div id="certificationsList">
-              <!-- Cert cards -->
-            </div>
-
-            <div style="margin-top: 1.5rem;">
-              <a href="https://drive.google.com/" target="_blank" class="btn btn-glass" style="width: 100%; justify-content: center;" id="eduCertFolderBtn">
-                <i data-lucide="folder-check" style="width: 18px; height: 18px;"></i>
-                <span data-i18n="view_certificates_drive">View All Certificate Files in Google Drive</span>
-                <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="page-section section-border-top">
-      <div class="container">
-        <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="send" style="width: 14px; height: 14px;"></i> <span data-i18n="contact_eyebrow">Direct Outreach</span></span>
-          <h2 class="section-heading"><span data-i18n="contact_heading_1">Let's Discuss Your</span> <span class="text-gradient" data-i18n="contact_heading_2">Next Project</span></h2>
-          <p class="section-subheading" data-i18n="contact_subheading">Ready to streamline your business pipelines or collaborate on innovative systems.</p>
-        </div>
-
-        <div class="contact-grid">
-          <div>
-            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;" data-i18n="contact_channel_title">Direct Channels</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="contact_channel_desc">Feel free to connect via WhatsApp, email, or schedule a technical call.</p>
-
-            <a href="https://wa.me/201000803545" target="_blank" rel="noopener noreferrer" class="contact-method-card">
-              <div class="contact-icon-box" style="color:#25d366; background:rgba(37,211,102,0.1);">
-                <i data-lucide="message-circle"></i>
-              </div>
-              <div>
-                <div class="fact-label" data-i18n="contact_whatsapp_label">WhatsApp & Phone</div>
-                <div class="fact-value" id="contactPhoneText">+20 100 080 3545</div>
-              </div>
-            </a>
-
-            <a href="mailto:ahmedemadm90@gmail.com" class="contact-method-card">
-              <div class="contact-icon-box">
-                <i data-lucide="mail"></i>
-              </div>
-              <div>
-                <div class="fact-label" data-i18n="contact_email_label">Email Address</div>
-                <div class="fact-value" id="contactEmailText">ahmedemadm90@gmail.com</div>
-              </div>
-            </a>
-
-            <div class="contact-method-card">
-              <div class="contact-icon-box" style="color:var(--accent-cyan); background:rgba(6,182,212,0.1);">
-                <i data-lucide="map-pin"></i>
-              </div>
-              <div>
-                <div class="fact-label" data-i18n="contact_location_label">Location</div>
-                <div class="fact-value" id="contactLocationText">New Damietta, Damietta, Egypt</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="key-facts-card">
-            <h4 style="font-size: 1.25rem; margin-bottom: 1.5rem;" data-i18n="form_title">Send a Direct Message</h4>
-            <form onsubmit="handleContactSubmit(event)">
-              <div class="form-group">
-                <label class="form-label" data-i18n="form_name">Your Name</label>
-                <input type="text" class="form-input" required placeholder="John Doe">
-              </div>
-              <div class="form-group">
-                <label class="form-label" data-i18n="form_email">Your Email</label>
-                <input type="email" class="form-input" required placeholder="john@example.com">
-              </div>
-              <div class="form-group">
-                <label class="form-label" data-i18n="form_msg">Project Overview / Inquiry</label>
-                <textarea class="form-textarea" rows="4" required placeholder="Describe your automation requirements or inquiry..."></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                <span data-i18n="form_send">Transmit Message</span>
-                <i data-lucide="send" style="width: 16px; height: 16px;"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer style="border-top: 1px solid var(--border-subtle); padding: 2.5rem 0; background: var(--bg-surface); text-align: center;">
-    <div class="container" style="display:flex; flex-direction:column; align-items:center; gap:1.25rem;">
-      <div class="hero-socials" style="margin-bottom:0;">
-        <a href="https://www.linkedin.com/in/ahmed-emad-m90/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="https://github.com/ahmedemadm90" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-        </a>
-        <a href="https://wa.me/201000803545" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Chat on WhatsApp" style="color:#25d366;">
-          <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
-        </a>
-        <a href="mailto:ahmedemadm90@gmail.com" class="social-icon-btn" title="Email Direct">
-          <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
-        </a>
-      </div>
-      <p style="color: var(--text-secondary); font-size: 0.9rem;">
-        © 2026 <span id="footerBrandName">Ahmed Emad</span>. <span data-i18n="footer_rights">All rights reserved.</span>
-      </p>
-    </div>
-  </footer>
-
-  <!-- PROJECT MODAL -->
-  <div class="modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
-      <div id="modalBody"></div>
-    </div>
-  </div>
-
-  <script>
-    const INITIAL_DATA = {
+<a href="#main" class="skip">Skip to content</a>
+<header><div class="wrap nav"><a class="brand" href="#hero" aria-label="Ahmed Emad home">Ahmed Emad<span>.</span></a><nav aria-label="Main"><a href="#projects" data-t="work">Selected work</a><a href="#skills" data-t="expertise">Expertise</a><a href="#experience" data-t="career">Experience</a><a href="#contact" data-t="contact">Contact</a></nav><div class="tools"><button class="icon-btn" id="lang" aria-label="Switch to Arabic">ع</button><button class="icon-btn" id="theme" aria-label="Switch color theme">◐</button><a class="cv-small cv-link" href="ahmed_emad_cv.pdf" data-t="cv">Download CV ↗</a></div></div></header>
+<main id="main"><div class="wrap">
+<div class="hero" id="hero"><div><div class="status" id="availability"></div><h1 data-t="hero">Backend engineering.<br><span>Business understanding.</span></h1><p class="hero-title" id="title"></p><p class="intro" id="intro"></p><div class="actions"><a class="btn" href="#projects"><span data-t="explore">Explore my work</span><span class="arrow">↗</span></a><a class="text-link cv-link" href="ahmed_emad_cv.pdf"><span data-t="pdf">Download CV</span><span class="arrow">↓</span></a></div><div class="location" id="location"></div></div>
+<aside class="architecture" aria-label="Engineering focus"><div class="arch-top"><span data-t="archLabel">HOW I CONNECT THE DOTS</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div><div class="arch-layer"><small data-t="business">01 / THE BUSINESS</small><strong data-t="businessValue">Payroll · Finance · Operations</strong></div><div class="connector" aria-hidden="true">↓</div><div class="arch-layer highlight"><small data-t="engine">02 / THE ENGINEERING</small><strong>PHP + Laravel</strong></div><div class="connector" aria-hidden="true">↓</div><div class="arch-grid"><div class="arch-layer"><small>DATA & SCALE</small><strong>MySQL · Redis</strong></div><div class="arch-layer"><small>WEB & MOBILE</small><strong>Vue · Flutter</strong></div></div><div class="arch-note"><span>●</span><span data-t="archNote">From business rules to production systems.</span></div></aside></div>
+<div class="metrics" id="metrics"></div>
+<section id="projects"><div class="section-head"><div><span class="eyebrow" data-t="workEyebrow">01 / SELECTED WORK</span><h2 data-t="workHeading">Real problems.<br><span>Purpose-built systems.</span></h2></div><p class="section-note" data-t="workNote">A focused selection of SaaS platforms, business systems and mobile backends.</p></div><div class="projects" id="projectGrid"></div></section>
+<section id="skills"><div class="expertise"><div><span class="eyebrow" data-t="skillEyebrow">02 / MY EDGE</span><h2 data-t="skillHeading">I speak code.<br><span>And business.</span></h2><p data-t="skillIntro">A commerce background and years inside enterprise operations help me translate business rules into practical software, not just database tables.</p><ul class="domains"><li><b data-t="payroll">Payroll & HR</b><span data-t="payrollMeta">Attendance / settlements</span></li><li><b data-t="finance">Finance & accounting</b><span data-t="financeMeta">Budgets / period closing</span></li><li><b data-t="procurement">Procurement & invoicing</b><span data-t="procurementMeta">Approvals / VAT</span></li></ul></div><div id="skillGrid"></div></div></section>
+<section id="experience"><div class="career"><div class="career-head"><span class="eyebrow" data-t="careerEyebrow">03 / EXPERIENCE</span><h2 data-t="careerHeading">Built over<br><span>11+ years.</span></h2><p data-t="careerNote">From internal platforms to enterprise operations and multi-tenant products.</p><div class="education"><strong data-t="education">Business foundation</strong><p data-t="degree">Bachelor's Degree, Faculty of Commerce<br>Assiut University · 2013</p><p>Mini MBA · Swiss eLearning Institute · 2015</p><p data-t="languages">Arabic: Native<br>English: Professional Working Proficiency</p></div></div><div><div id="roleList"></div><div class="freelance"><h3 data-t="freelance">Freelance & part-time</h3><p class="freelance-note" data-t="freelanceNote">Delivered alongside full-time employment, outside working hours. Property Management SaaS is featured above.</p><div id="freelanceList"></div></div></div></div></section>
+<div class="contact" id="contact"><div class="contact-box"><div><span class="eyebrow" data-t="contactEyebrow">04 / LET'S TALK</span><h2 data-t="contactHeading">Complex business problem?<br>Let's build the right system.</h2><p data-t="contactNote">Senior backend roles, Laravel projects and business systems.</p></div><a class="btn email-link" href="mailto:ahmedemadm90@gmail.com"><span data-t="email">Email Ahmed</span><span class="arrow">↗</span></a></div><div class="contact-links"><a class="email-link" id="emailText" href="mailto:ahmedemadm90@gmail.com">ahmedemadm90@gmail.com</a><div class="socials"><a id="linkedin" href="https://www.linkedin.com/in/ahmed-emad-m90/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a id="github" href="https://github.com/ahmedemadm90" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="tel:+201000803545" id="phone">+20 100 080 3545</a></div></div></div>
+</div></main><footer><div class="wrap footer-inner"><span>© 2026 Ahmed Emad · <span data-t="footer">Engineering with business in mind.</span></span><a href="ahmed_emad_cv.docx" data-t="word">Editable CV (.docx) ↓</a></div></footer>
+<script>
+const INITIAL_DATA = {
   "personal": {
     "fullName": "Ahmed Emad",
     "fullNameAr": "أحمد عماد",
-    "professionalTitle": "Senior Full-Stack Developer",
-    "professionalTitleAr": "مطور Full-Stack أول",
-    "professionalHeadline": "PHP/Laravel · Vue.js · Flutter | RESTful APIs, Queues & Multi-Tenant SaaS",
-    "professionalHeadlineAr": "PHP/Laravel · Vue.js · Flutter | واجهات RESTful API وطوابير المعالجة ومنصات SaaS متعددة المستأجرين",
-    "shortIntroduction": "I design and ship production-grade backend systems and full-stack web applications, from RESTful API ecosystems and event-driven queues to reactive Vue.js interfaces. Based in Cairo, working with global remote teams.",
-    "shortIntroductionAr": "أصمم وأطلق أنظمة Backend وتطبيقات ويب متكاملة جاهزة للإنتاج، من منظومات RESTful API وطوابير المعالجة المعتمدة على الأحداث إلى واجهات Vue.js التفاعلية. مقيم في القاهرة وأعمل مع فرق عالمية عن بُعد.",
-    "aboutMe": "Senior Full-Stack Developer with 11+ years of experience building web platforms, APIs, and mobile apps, with deep backend expertise in PHP/Laravel. On the backend: RESTful API design, event-driven and queue-based processing (Laravel Horizon + Redis), database optimization, and secure authentication (OAuth2, JWT, Laravel Sanctum). On the frontend: reactive interfaces and admin dashboards with Vue.js 3 (Composition API, Pinia, Vite), Inertia.js, Livewire, and Tailwind CSS, plus Flutter mobile apps connected to Laravel APIs. Experienced in leading digital transformation and process automation, from biometric attendance integration to n8n workflows. Proven track record of 25–35% performance improvements and sustained 99%+ uptime in Linux/Docker production environments.",
-    "aboutMeAr": "مطور Full-Stack أول بخبرة تتجاوز 11 عاماً في بناء منصات الويب وواجهات API وتطبيقات الموبايل، مع خبرة عميقة في PHP/Laravel. في الـ Backend: تصميم RESTful API، والمعالجة المعتمدة على الأحداث والطوابير (Laravel Horizon + Redis)، وتحسين قواعد البيانات، والمصادقة الآمنة (OAuth2 وJWT وLaravel Sanctum). في الـ Frontend: واجهات تفاعلية ولوحات تحكم بـ Vue.js 3 (Composition API وPinia وVite) وInertia.js وLivewire وTailwind CSS، بالإضافة إلى تطبيقات Flutter مرتبطة بـ Laravel APIs. خبرة في قيادة التحول الرقمي وأتمتة العمليات، من ربط أجهزة الحضور بالبصمة إلى مسارات n8n. سجل مثبت في تحسين الأداء بنسبة 25–35% وجاهزية تشغيل تتجاوز 99% في بيئات Linux/Docker.",
+    "professionalTitle": "Senior PHP / Laravel Engineer",
+    "professionalTitleAr": "مهندس PHP / Laravel أول",
+    "professionalHeadline": "ERP & Business Systems",
+    "professionalHeadlineAr": "أنظمة ERP وحلول الأعمال",
+    "shortIntroduction": "I build backend systems that understand the business. 11+ years turning complex payroll, finance and operations into reliable Laravel applications.",
+    "shortIntroductionAr": "أبني أنظمة Backend تفهم طبيعة العمل. خبرة أكثر من 11 سنة في تحويل تعقيدات المرتبات والمالية والتشغيل إلى تطبيقات Laravel يمكن الاعتماد عليها.",
+    "aboutMe": "I build backend systems that understand the business. 11+ years turning complex payroll, finance and operations into reliable Laravel applications.",
+    "aboutMeAr": "أبني أنظمة Backend تفهم طبيعة العمل. خبرة أكثر من 11 سنة في تحويل تعقيدات المرتبات والمالية والتشغيل إلى تطبيقات Laravel يمكن الاعتماد عليها.",
     "careerObjective": "Seeking remote senior backend or full-stack roles (Laravel + Vue.js) where clean architecture, testability, and performance matter.",
     "careerObjectiveAr": "أبحث عن أدوار Backend أو Full-Stack أولى عن بُعد (Laravel + Vue.js) حيث تهم المعمارية النظيفة وقابلية الاختبار والأداء.",
-    "currentLocation": "Cairo, Egypt — Remote Worldwide",
-    "currentLocationAr": "القاهرة، مصر — عن بُعد حول العالم",
+    "currentLocation": "Egypt · Remote",
+    "currentLocationAr": "مصر · عمل عن بُعد",
     "nationality": "Egyptian",
     "availability": "Available for Remote Roles",
     "availabilityAr": "متاح للعمل عن بُعد",
@@ -1909,1380 +62,333 @@
   },
   "stats": [
     {
-      "id": "s1",
       "number": "11+",
-      "label": "Years Experience",
+      "label": "years of experience",
       "labelAr": "سنوات خبرة"
     },
     {
-      "id": "s2",
-      "number": "99%",
-      "label": "Uptime Maintained",
-      "labelAr": "جاهزية تشغيل"
+      "number": "1,000+",
+      "label": "concurrent enterprise users",
+      "labelAr": "مستخدم متزامن في أنظمة المؤسسات"
     },
     {
-      "id": "s3",
-      "number": "30K+",
-      "label": "Daily API Requests",
+      "number": "10K–30K",
+      "label": "API requests per day",
       "labelAr": "طلب API يومياً"
     },
     {
-      "id": "s4",
-      "number": "12+",
-      "label": "Shipped Products",
-      "labelAr": "منتج تم إطلاقه"
+      "number": "25–35%",
+      "label": "workflow performance gain",
+      "labelAr": "تحسن في أداء مسارات العمل"
     }
   ],
-  "floatingBadges": [
+  "projects": [
     {
-      "id": "b1",
-      "icon": "server",
-      "category": "Stack",
-      "categoryAr": "التقنيات",
-      "title": "PHP 8.4 · Laravel 12",
-      "titleAr": "PHP 8.4 · Laravel 12",
-      "targetSection": "#skills"
+      "id": "wassalx",
+      "name": "WassalX",
+      "nameAr": "وصل إكس",
+      "category": "MULTI-TENANT SAAS",
+      "categoryAr": "منصة SaaS متعددة الشركات",
+      "shortDescription": "A delivery platform connecting orders, drivers and financial settlements in one system.",
+      "shortDescriptionAr": "منصة توصيل تجمع الطلبات والمناديب والتسويات المالية في نظام واحد.",
+      "technologies": [
+        "Laravel",
+        "MySQL",
+        "Flutter",
+        "Redis"
+      ],
+      "metric": "Tenant isolation",
+      "metricAr": "عزل بيانات الشركات",
+      "overview": "Designed tenant isolation, platform and company roles, subscriptions, order routing, driver assignment, GPS tracking and settlement wallets. Integrated online payments and Redis-backed queues.",
+      "overviewAr": "تصميم عزل بيانات الشركات والصلاحيات والاشتراكات وتوجيه الطلبات وتعيين المناديب وتتبع GPS ومحافظ التسويات، مع تكامل الدفع الإلكتروني وطوابير Redis.",
+      "liveDemo": "https://wassalx.com",
+      "githubUrl": "",
+      "imageUrl": ""
     },
     {
-      "id": "b2",
-      "icon": "building-2",
-      "category": "Current Role",
-      "categoryAr": "الوظيفة الحالية",
-      "title": "CEMEX Egypt",
-      "titleAr": "CEMEX مصر",
-      "targetSection": "#experience"
+      "id": "payroll",
+      "name": "Payroll & Invoicing",
+      "nameAr": "المرتبات والفواتير",
+      "category": "BUSINESS SYSTEMS",
+      "categoryAr": "أنظمة الأعمال",
+      "shortDescription": "From monthly Excel files to payroll rules modeled around real employee data.",
+      "shortDescriptionAr": "من ملفات Excel الشهرية إلى نظام مرتبات مبني على بيانات الموظفين الفعلية.",
+      "technologies": [
+        "Laravel",
+        "MySQL",
+        "Payroll",
+        "Reporting"
+      ],
+      "metric": "~290 employees",
+      "metricAr": "نحو 290 موظفاً",
+      "overview": "Replaced monthly payroll spreadsheets for a security services client. Modeled custom payroll periods, attendance deductions and group-specific tax brackets, and corrected the schema after real-data analysis.",
+      "overviewAr": "استبدال ملفات المرتبات الشهرية لعميل في خدمات الأمن. نمذجة فترات المرتبات وخصومات الحضور والشرائح الضريبية المختلفة، وتصحيح هيكل قاعدة البيانات بعد تحليل البيانات الفعلية.",
+      "liveDemo": "",
+      "githubUrl": "",
+      "imageUrl": ""
     },
     {
-      "id": "b3",
-      "icon": "truck",
-      "category": "SaaS",
-      "categoryAr": "منصة SaaS",
-      "title": "WassalX Delivery",
-      "titleAr": "منصة WassalX للتوصيل",
-      "targetSection": "#projects",
-      "targetId": "wassalx"
+      "id": "safrne",
+      "name": "Safrne",
+      "nameAr": "سافرني",
+      "category": "MOBILITY PLATFORM",
+      "categoryAr": "منصة مشاركة الرحلات",
+      "shortDescription": "Secure booking APIs, real-time updates and payment webhooks for carpooling.",
+      "shortDescriptionAr": "واجهات حجز آمنة وتحديثات لحظية وWebhooks للدفع في منصة مشاركة رحلات.",
+      "technologies": [
+        "Laravel",
+        "Sanctum",
+        "Reverb",
+        "FCM"
+      ],
+      "metric": "Real-time booking",
+      "metricAr": "حجز وتحديثات لحظية",
+      "overview": "Built Laravel/Sanctum booking APIs, Reverb broadcasting, FCM notifications and Kashier payment webhooks. Configured Supervisor workers, Nginx, SSL, rate limiting and API versioning.",
+      "overviewAr": "بناء واجهات الحجز باستخدام Laravel وSanctum، والبث اللحظي باستخدام Reverb، وإشعارات FCM وWebhooks لدفع Kashier. إعداد Supervisor وNginx وSSL وتحديد معدل الطلبات وإصدارات API.",
+      "liveDemo": "",
+      "githubUrl": "",
+      "imageUrl": ""
     },
     {
-      "id": "b4",
-      "icon": "smartphone",
-      "category": "Mobile",
-      "categoryAr": "موبايل",
-      "title": "Flutter & Vue.js 3",
-      "titleAr": "Flutter و Vue.js 3",
-      "targetSection": "#skills"
-    }
-  ],
-  "professionalSummary": [
-    {
-      "id": "ps1",
-      "icon": "map-pin",
-      "label": "Location",
-      "labelAr": "الموقع",
-      "value": "Cairo, Egypt — Remote Worldwide",
-      "valueAr": "القاهرة، مصر — عن بُعد حول العالم"
-    },
-    {
-      "id": "ps2",
-      "icon": "briefcase",
-      "label": "Current Role",
-      "labelAr": "الوظيفة الحالية",
-      "value": "Senior Backend Developer @ CEMEX Egypt",
-      "valueAr": "مطور Backend أول في CEMEX مصر"
-    },
-    {
-      "id": "ps3",
-      "icon": "layers",
-      "label": "Primary Stack",
-      "labelAr": "التقنيات الأساسية",
-      "value": "PHP 8.4 · Laravel 12 · Vue.js 3 · Redis",
-      "valueAr": "PHP 8.4 · Laravel 12 · Vue.js 3 · Redis"
-    },
-    {
-      "id": "ps4",
-      "icon": "graduation-cap",
-      "label": "Education",
-      "labelAr": "المؤهل",
-      "value": "B.Sc. Commerce — Assiut University",
-      "valueAr": "بكالوريوس التجارة — جامعة أسيوط"
-    },
-    {
-      "id": "ps5",
-      "icon": "languages",
-      "label": "Languages",
-      "labelAr": "اللغات",
-      "value": "Arabic (Native) · English (Professional)",
-      "valueAr": "العربية (اللغة الأم) · الإنجليزية (مهنية)"
-    }
-  ],
-  "skillsCategories": [
-    {
-      "categoryName": "Backend & Architecture",
-      "categoryNameAr": "الـ Backend والمعمارية",
-      "icon": "server",
-      "skills": [
-        {
-          "name": "PHP 8.4 & Laravel 12",
-          "level": 97,
-          "badge": "Mastery",
-          "desc": "Horizon, Sanctum, Scout, Reverb, Gates & Policies, Artisan, Composer."
-        },
-        {
-          "name": "RESTful APIs & GraphQL",
-          "level": 95,
-          "badge": "Expert",
-          "desc": "API design and versioning, webhooks, WebSockets, rate limiting, API security."
-        },
-        {
-          "name": "Event-Driven & Queues",
-          "level": 93,
-          "badge": "Core",
-          "desc": "Redis queues, Horizon, job chaining, retry strategies, concurrency control, scheduler."
-        },
-        {
-          "name": "Clean Architecture",
-          "level": 92,
-          "badge": "Architect",
-          "desc": "SOLID, DDD, repository and observer patterns, microservices, multi-tenancy."
-        },
-        {
-          "name": "Auth & Security",
-          "level": 90,
-          "badge": "Security",
-          "desc": "OAuth2, JWT, RBAC, OWASP practices, Laravel Gates & Policies."
-        }
-      ]
-    },
-    {
-      "categoryName": "Frontend",
-      "categoryNameAr": "الواجهات الأمامية",
-      "icon": "layout",
-      "skills": [
-        {
-          "name": "Vue.js 3 & Composition API",
-          "level": 90,
-          "badge": "Advanced",
-          "desc": "Pinia, Vue Router, Vite, Inertia.js, real-time dashboards."
-        },
-        {
-          "name": "Livewire & Alpine.js",
-          "level": 88,
-          "badge": "Laravel",
-          "desc": "Reactive Blade interfaces with Livewire, Alpine.js, and Blade templates."
-        },
-        {
-          "name": "TypeScript & JavaScript ES6+",
-          "level": 85,
-          "badge": "Core",
-          "desc": "Typed frontends, modern modules, SPA and PWA patterns."
-        },
-        {
-          "name": "Tailwind CSS & Bootstrap",
-          "level": 88,
-          "badge": "UI",
-          "desc": "Responsive, accessible (WCAG) interfaces."
-        }
-      ]
-    },
-    {
-      "categoryName": "Data & DevOps",
-      "categoryNameAr": "البيانات والـ DevOps",
-      "icon": "database",
-      "skills": [
-        {
-          "name": "MySQL & PostgreSQL",
-          "level": 94,
-          "badge": "Database",
-          "desc": "Schema design, indexing, query optimization, views, transactions, full-text search."
-        },
-        {
-          "name": "Redis",
-          "level": 92,
-          "badge": "Caching",
-          "desc": "Caching, queues, broadcasting, and analytics acceleration."
-        },
-        {
-          "name": "Docker & Linux",
-          "level": 90,
-          "badge": "Production",
-          "desc": "Nginx, PHP-FPM, Supervisor workers, SSL/TLS on Ubuntu and CentOS."
-        },
-        {
-          "name": "CI/CD & Git",
-          "level": 88,
-          "badge": "DevOps",
-          "desc": "GitHub Actions, GitLab, deployment automation, monitoring."
-        },
-        {
-          "name": "Testing",
-          "level": 88,
-          "badge": "Quality",
-          "desc": "PHPUnit, Pest, TDD, feature and integration tests, static analysis, Postman."
-        }
-      ]
-    },
-    {
-      "categoryName": "Mobile & Integrations",
-      "categoryNameAr": "الموبايل والتكاملات",
-      "icon": "smartphone",
-      "skills": [
-        {
-          "name": "Flutter & Dart",
-          "level": 88,
-          "badge": "Mobile",
-          "desc": "Cross-platform apps with Firebase Auth, FCM, Google Sign-In, local storage."
-        },
-        {
-          "name": "Payment Gateways",
-          "level": 92,
-          "badge": "Payments",
-          "desc": "Paymob, Fawry, XPay, Stripe: verified webhooks, refunds, reconciliation."
-        },
-        {
-          "name": "n8n Automation",
-          "level": 90,
-          "badge": "Automation",
-          "desc": "HR, reporting, and operations workflows with retries and error handling."
-        },
-        {
-          "name": "Cloud & Third-Party APIs",
-          "level": 88,
-          "badge": "Integrations",
-          "desc": "AWS S3, Firebase, Google APIs, SMS APIs, webhook processing."
-        }
-      ]
+      "id": "property-saas",
+      "name": "Property Management SaaS",
+      "nameAr": "إدارة العقارات",
+      "category": "FREELANCE · APR 2023 – MAR 2024",
+      "categoryAr": "عمل حر · أبريل 2023 – مارس 2024",
+      "shortDescription": "A multi-tenant platform for the full lease lifecycle, from onboarding to renewal.",
+      "shortDescriptionAr": "منصة متعددة المستأجرين لدورة حياة العقود، من تسجيل العملاء إلى التجديد.",
+      "technologies": [
+        "Laravel",
+        "Redis",
+        "Horizon",
+        "Events"
+      ],
+      "metric": "30 / 15 / 7",
+      "metricAr": "30 / 15 / 7",
+      "overview": "Built landlord, tenant and agent portals for leases, rent tracking and maintenance. Automated PDF contracts, e-signature dispatch, audit-logged lease changes, onboarding emails and 30/15/7-day expiry reminders.",
+      "overviewAr": "بناء بوابات للملاك والمستأجرين والوكلاء لإدارة العقود والإيجارات والصيانة، وأتمتة عقود PDF وإرسال التوقيع الإلكتروني وسجل تغييرات العقود ورسائل التسجيل وتذكيرات الانتهاء قبل 30 و15 و7 أيام.",
+      "liveDemo": "",
+      "githubUrl": "",
+      "imageUrl": ""
     }
   ],
   "experience": [
     {
-      "jobTitle": "Senior Full-Stack Developer & Automation Engineer",
-      "jobTitleAr": "مطور Full-Stack أول ومهندس أتمتة",
+      "jobTitle": "Backend Developer / Full-Stack Solutions Engineer",
+      "jobTitleAr": "مطور Backend / مهندس حلول Full-Stack",
       "company": "CEMEX Egypt",
-      "companyAr": "CEMEX مصر",
-      "employmentType": "Full-time",
-      "employmentTypeAr": "دوام كامل",
+      "companyAr": "سيمكس مصر",
       "startDate": "Oct 2018",
-      "startDateAr": "أكتوبر 2018",
       "endDate": "Present",
-      "endDateAr": "حتى الآن",
-      "responsibilities": "Engineered enterprise Laravel applications for 1,000+ concurrent users. Architected RESTful API ecosystems processing 10K–30K requests/day across Flutter apps, Firebase, webhooks, and external platforms. Automated recurring operational and reporting processes with scheduled Laravel jobs, queues, and integrations. Orchestrated n8n workflows for HR operations, notifications, and reporting with error handling and retries, reducing repetitive effort by about 40–60%. Optimized MySQL schemas and queries, improving performance 25–35%. Administered Linux production environments at 99%+ uptime.",
-      "responsibilitiesAr": "بناء تطبيقات Laravel مؤسسية لأكثر من 1,000 مستخدم متزامن. تصميم منظومات RESTful API تعالج 10–30 ألف طلب يومياً عبر تطبيقات Flutter وFirebase والـ Webhooks والمنصات الخارجية. أتمتة العمليات والتقارير الدورية بمهام Laravel المجدولة والطوابير والتكاملات. بناء مسارات n8n للموارد البشرية والتنبيهات والتقارير مع معالجة الأخطاء وإعادة المحاولة، مما خفّض المجهود المتكرر بنحو 40–60%. تحسين جداول واستعلامات MySQL بنسبة 25–35%. إدارة بيئات الإنتاج على Linux بجاهزية تتجاوز 99%.",
-      "technologies": [
-        "Laravel",
-        "PHP 8.4",
-        "MySQL",
-        "Redis",
-        "Docker",
-        "Flutter",
-        "Firebase",
-        "RBAC",
-        "n8n"
-      ]
-    },
-    {
-      "jobTitle": "Full-Stack Developer",
-      "jobTitleAr": "مطور Full-Stack",
-      "company": "Exception Tech Group",
-      "companyAr": "Exception Tech Group",
-      "employmentType": "Project-based, part-time",
-      "employmentTypeAr": "بالمشروع، دوام جزئي",
-      "startDate": "May 2019",
-      "startDateAr": "مايو 2019",
-      "endDate": "Dec 2024",
-      "endDateAr": "ديسمبر 2024",
-      "responsibilities": "Built production Flutter applications integrated with Laravel REST APIs, adopted by 500+ active users. Integrated Firebase authentication, push notifications, and Paymob, Fawry, XPay, and Stripe gateways with secure checkout, webhook verification, transaction sync, refunds, and failure handling. Property Management SaaS (Live): architected a multi-tenant platform with landlord, tenant, and agent portals, a full Vue.js 3 frontend (Pinia, Vite), and a Laravel Event + Observer pipeline for lease transitions, PDF contracts, e-signatures, and automated 30/15/7-day expiry reminders via Horizon queues.",
-      "responsibilitiesAr": "بناء تطبيقات Flutter إنتاجية مرتبطة بـ Laravel REST APIs يستخدمها أكثر من 500 مستخدم نشط. ربط Firebase Auth والإشعارات وبوابات الدفع Paymob وFawry وXPay وStripe مع دفع آمن وتحقق من الـ Webhooks ومزامنة المعاملات والاسترداد ومعالجة الأعطال. منصة إدارة عقارات SaaS (منشورة): تصميم منصة متعددة المستأجرين ببوابات للملاك والمستأجرين والوكلاء، وواجهة Vue.js 3 كاملة (Pinia وVite)، ومسار أحداث Laravel لتحولات العقود وعقود PDF والتوقيع الإلكتروني وتذكيرات انتهاء آلية 30/15/7 يوم عبر Horizon.",
-      "technologies": [
-        "Flutter",
-        "Dart",
-        "Laravel API",
-        "Firebase",
-        "FCM",
-        "Payments",
-        "Vue.js 3",
-        "Horizon"
-      ]
+      "responsibilities": "Enterprise Laravel applications for 1,000+ concurrent users. REST APIs serving 10K–30K requests/day. Improved workflow performance by approximately 25–35% through backend refactoring and MySQL optimization; maintained 99%+ uptime.",
+      "responsibilitiesAr": "تطبيقات Laravel مؤسسية لأكثر من 1,000 مستخدم متزامن وواجهات API تعالج 10–30 ألف طلب يومياً. تحسين أداء مسارات العمل بنحو 25–35% بإعادة هيكلة الـ Backend وتحسين MySQL، مع جاهزية تشغيل تتجاوز 99%.",
+      "employmentType": "Full-time",
+      "employmentTypeAr": "دوام كامل"
     },
     {
       "jobTitle": "Full-Stack Developer & Digital Transformation Supervisor",
       "jobTitleAr": "مطور Full-Stack ومشرف التحول الرقمي",
       "company": "New Valley University",
       "companyAr": "جامعة الوادي الجديد",
-      "employmentType": "Full-time",
-      "employmentTypeAr": "دوام كامل",
       "startDate": "Jan 2017",
-      "startDateAr": "يناير 2017",
       "endDate": "Sep 2018",
-      "endDateAr": "سبتمبر 2018",
-      "responsibilities": "Supervised the university's digital transformation program, moving paper-based administrative procedures to web-based systems across faculties and departments. Introduced biometric time-attendance devices integrated with a central system for attendance tracking, reporting, and payroll-ready exports. Built and maintained full-stack internal web applications (PHP/Laravel, MySQL, JavaScript). Coordinated rollout with department heads and trained staff to drive adoption.",
-      "responsibilitiesAr": "الإشراف على برنامج التحول الرقمي بالجامعة ونقل الإجراءات الإدارية الورقية إلى أنظمة ويب عبر الكليات والإدارات. إدخال أجهزة الحضور بالبصمة وربطها بنظام مركزي لمتابعة الحضور والتقارير وتصدير بيانات المرتبات. بناء وصيانة تطبيقات ويب داخلية متكاملة (PHP/Laravel وMySQL وJavaScript). تنسيق التطبيق مع رؤساء الأقسام وتدريب الموظفين على الأنظمة الجديدة.",
-      "technologies": [
-        "Laravel",
-        "PHP",
-        "MySQL",
-        "JavaScript",
-        "Biometric Integration"
-      ]
+      "responsibilities": "Replaced paper-based attendance, leave, payroll-input and supplier-account processes with Laravel/MySQL systems. Integrated biometric attendance devices with central reporting.",
+      "responsibilitiesAr": "تحويل إجراءات الحضور والإجازات ومدخلات المرتبات وحسابات الموردين الورقية إلى أنظمة Laravel/MySQL، وربط أجهزة البصمة بالتقارير المركزية.",
+      "employmentType": "Full-time",
+      "employmentTypeAr": "دوام كامل"
     },
     {
       "jobTitle": "Backend Developer",
       "jobTitleAr": "مطور Backend",
       "company": "Ibnsina Pharma",
       "companyAr": "ابن سينا فارما",
-      "employmentType": "Full-time",
-      "employmentTypeAr": "دوام كامل",
-      "startDate": "Oct 2015",
-      "startDateAr": "أكتوبر 2015",
+      "startDate": "Nov 2015",
       "endDate": "Dec 2016",
-      "endDateAr": "ديسمبر 2016",
-      "responsibilities": "Developed PHP/MySQL services, internal APIs, and business-logic modules for pharmaceutical operational applications.",
-      "responsibilitiesAr": "تطوير خدمات PHP/MySQL وواجهات API داخلية ووحدات منطق أعمال لتطبيقات التشغيل الدوائية.",
-      "technologies": [
-        "PHP",
-        "MySQL",
-        "APIs"
-      ]
+      "responsibilities": "Built PHP/MySQL services, internal APIs and business logic for pharmaceutical operations; maintained daily-use systems and resolved production issues.",
+      "responsibilitiesAr": "تطوير خدمات PHP/MySQL وواجهات API داخلية ومنطق أعمال لتشغيل العمليات الدوائية، وصيانة الأنظمة اليومية وحل مشكلات الإنتاج.",
+      "employmentType": "Full-time",
+      "employmentTypeAr": "دوام كامل"
     },
     {
       "jobTitle": "Backend Developer",
       "jobTitleAr": "مطور Backend",
       "company": "TE Data",
       "companyAr": "TE Data",
-      "employmentType": "Full-time",
-      "employmentTypeAr": "دوام كامل",
       "startDate": "Oct 2014",
-      "startDateAr": "أكتوبر 2014",
-      "endDate": "Sep 2015",
-      "endDateAr": "سبتمبر 2015",
-      "responsibilities": "Built PHP backend components, database operations, and feature enhancements for internal platforms at Egypt's leading ISP.",
-      "responsibilitiesAr": "بناء مكونات PHP وعمليات قواعد البيانات وتحسينات الخصائص للمنصات الداخلية لأكبر مزود إنترنت في مصر.",
-      "technologies": [
-        "PHP",
-        "MySQL"
+      "endDate": "Oct 2015",
+      "responsibilities": "Built PHP backend components and database operations for internal telecommunications platforms, improving reliability and maintainability.",
+      "responsibilitiesAr": "بناء مكونات Backend باستخدام PHP وعمليات قواعد البيانات للمنصات الداخلية في الاتصالات، وتحسين الاعتمادية وقابلية الصيانة.",
+      "employmentType": "Full-time",
+      "employmentTypeAr": "دوام كامل"
+    }
+  ],
+  "freelance": [
+    {
+      "jobTitle": "Mobile & Backend Developer",
+      "jobTitleAr": "مطور موبايل وBackend",
+      "company": "Exception Tech Group",
+      "companyAr": "Exception Tech Group",
+      "startDate": "Jan 2017",
+      "endDate": "Present",
+      "responsibilities": "Laravel REST APIs and Flutter apps for 500+ active users. Paymob, Fawry, XPay and Stripe integrations with webhook verification, refunds and failure handling.",
+      "responsibilitiesAr": "واجهات Laravel وتطبيقات Flutter لأكثر من 500 مستخدم نشط، مع ربط Paymob وFawry وXPay وStripe والتحقق من Webhooks والاسترداد ومعالجة الأعطال.",
+      "employmentType": "Part-time / Freelance",
+      "employmentTypeAr": "دوام جزئي / عمل حر"
+    },
+    {
+      "jobTitle": "Automation & Integration Engineer",
+      "jobTitleAr": "مهندس أتمتة وتكامل",
+      "company": "Freelance · n8n",
+      "companyAr": "عمل حر · n8n",
+      "startDate": "Sep 2025",
+      "endDate": "Present",
+      "responsibilities": "API and webhook workflows with retries and error handling reduced repetitive HR, notification and reporting effort by approximately 40–60%.",
+      "responsibilitiesAr": "مسارات API وWebhooks مع إعادة المحاولة ومعالجة الأخطاء، خفضت المجهود المتكرر في الموارد البشرية والإشعارات والتقارير بنحو 40–60%.",
+      "employmentType": "Freelance",
+      "employmentTypeAr": "عمل حر"
+    }
+  ],
+  "skillsCategories": [
+    {
+      "categoryName": "Backend & architecture",
+      "categoryNameAr": "الـ Backend والمعمارية",
+      "skills": [
+        {
+          "name": "PHP 8.1–8.4"
+        },
+        {
+          "name": "Laravel 10 / 11 / 12"
+        },
+        {
+          "name": "REST APIs"
+        },
+        {
+          "name": "Multi-tenancy"
+        },
+        {
+          "name": "SOLID"
+        },
+        {
+          "name": "Webhooks"
+        }
+      ]
+    },
+    {
+      "categoryName": "Data & processing",
+      "categoryNameAr": "البيانات والمعالجة",
+      "skills": [
+        {
+          "name": "MySQL"
+        },
+        {
+          "name": "PostgreSQL"
+        },
+        {
+          "name": "Redis"
+        },
+        {
+          "name": "Horizon"
+        },
+        {
+          "name": "Queues"
+        },
+        {
+          "name": "Concurrency control"
+        }
+      ]
+    },
+    {
+      "categoryName": "Quality & delivery",
+      "categoryNameAr": "الجودة والتشغيل",
+      "skills": [
+        {
+          "name": "PHPUnit / Pest"
+        },
+        {
+          "name": "Sanctum"
+        },
+        {
+          "name": "RBAC"
+        },
+        {
+          "name": "Docker"
+        },
+        {
+          "name": "GitHub Actions"
+        },
+        {
+          "name": "Linux / Nginx"
+        }
+      ]
+    },
+    {
+      "categoryName": "Interfaces & automation",
+      "categoryNameAr": "الواجهات والأتمتة",
+      "skills": [
+        {
+          "name": "Vue.js 3"
+        },
+        {
+          "name": "Inertia.js"
+        },
+        {
+          "name": "Livewire"
+        },
+        {
+          "name": "Blade"
+        },
+        {
+          "name": "Flutter"
+        },
+        {
+          "name": "n8n"
+        }
       ]
     }
   ],
-  "projects": [
-    {
-      "id": "wassalx",
-      "name": "WassalX — Delivery SaaS",
-      "nameAr": "WassalX — منصة SaaS للتوصيل",
-      "category": "Multi-Tenant SaaS",
-      "categoryAr": "منصة SaaS متعددة المستأجرين",
-      "shortDescription": "Multi-tenant delivery platform with subscriptions, order routing, driver and vehicle assignment, GPS tracking, settlement wallets, and operational dashboards.",
-      "shortDescriptionAr": "منصة توصيل متعددة المستأجرين بالاشتراكات وتوجيه الطلبات وتعيين السائقين والمركبات وتتبع GPS ومحافظ التسويات ولوحات تشغيلية.",
-      "technologies": [
-        "Laravel",
-        "Flutter",
-        "MySQL",
-        "Redis",
-        "Multi-Tenancy",
-        "REST API"
-      ],
-      "liveDemo": "https://wassalx.com/en",
-      "githubUrl": "",
-      "imageUrl": "",
-      "metric": "Event-Driven Queues",
-      "metricAr": "طوابير معالجة بالأحداث",
-      "overview": "Platform and company roles, subscription management, order routing, and GPS tracking. Event-driven queues handle notifications and asynchronous processing."
-    },
-    {
-      "id": "safrne",
-      "name": "Safrne — Carpooling Platform",
-      "nameAr": "Safrne — منصة مشاركة الرحلات",
-      "category": "Platform & Mobile",
-      "categoryAr": "منصة وتطبيق موبايل",
-      "shortDescription": "Carpooling platform with secure booking APIs, FCM notifications, Google Sign-In, and real-time one-to-one chat through Laravel Reverb.",
-      "shortDescriptionAr": "منصة مشاركة رحلات بواجهات حجز آمنة وإشعارات FCM وتسجيل دخول Google ودردشة لحظية عبر Laravel Reverb.",
-      "technologies": [
-        "Laravel API",
-        "Flutter",
-        "Sanctum",
-        "Reverb",
-        "FCM",
-        "Redis"
-      ],
-      "liveDemo": "https://safrne.com/",
-      "githubUrl": "",
-      "imageUrl": "",
-      "metric": "Real-Time Chat",
-      "metricAr": "دردشة لحظية",
-      "overview": "Production Nginx, SSL, queue workers, and API versioning. Also on Google Play: https://play.google.com/store/apps/details?id=com.safrne.app"
-    },
-    {
-      "id": "property-saas",
-      "name": "Property Management SaaS",
-      "nameAr": "منصة SaaS لإدارة العقارات",
-      "category": "Freelance SaaS",
-      "categoryAr": "منصة SaaS (عمل حر)",
-      "shortDescription": "Multi-tenant property platform with landlord, tenant, and agent portals, lease lifecycle pipelines, and drag-and-drop Vue.js dashboards.",
-      "shortDescriptionAr": "منصة عقارات متعددة المستأجرين ببوابات للملاك والمستأجرين والوكلاء ومسارات دورة حياة العقود ولوحات Vue.js بالسحب والإفلات.",
-      "technologies": [
-        "Vue.js 3",
-        "Pinia",
-        "Laravel",
-        "Redis",
-        "AWS S3",
-        "Horizon"
-      ],
-      "liveDemo": "https://vidadevelopments.ca/",
-      "githubUrl": "",
-      "imageUrl": "",
-      "metric": "P95 3.2s → 300ms",
-      "metricAr": "P95 من 3.2 ث إلى 300 مللي ث",
-      "overview": "Automated expiry notifications, Redis-cached analytics, and AWS S3 signed document management."
-    },
-    {
-      "id": "ultrapal",
-      "name": "Ultrapal — Delivery Management",
-      "nameAr": "Ultrapal — إدارة التوصيل",
-      "category": "Mobile App",
-      "categoryAr": "تطبيق موبايل",
-      "shortDescription": "Delivery management app with real-time order tracking, driver assignment, and push notifications on a Laravel REST API.",
-      "shortDescriptionAr": "تطبيق لإدارة التوصيل بتتبع لحظي للطلبات وتعيين السائقين وإشعارات فورية مع Laravel REST API.",
-      "technologies": [
-        "Flutter",
-        "Laravel API",
-        "Firebase",
-        "FCM"
-      ],
-      "liveDemo": "https://play.google.com/store/apps/details?id=com.ultra.palestine&hl=ar",
-      "githubUrl": "https://github.com/ahmedemadm90/Ultra-Palestine",
-      "imageUrl": "",
-      "metric": "Live Order Tracking",
-      "metricAr": "تتبع لحظي للطلبات",
-      "overview": "Full delivery workflow from order to driver, built with Flutter and Laravel."
-    },
-    {
-      "id": "fence-monitor",
-      "name": "Fence Monitor — Security Patrol SaaS",
-      "nameAr": "Fence Monitor — منصة دوريات الأمن والتفتيش",
-      "category": "Security & Enterprise",
-      "categoryAr": "أمن ومؤسسات",
-      "shortDescription": "Factory patrol system with map-defined checkpoints, server-side GPS proximity validation, QR verification, and audit logs.",
-      "shortDescriptionAr": "نظام دوريات للمصانع بنقاط تفتيش على الخريطة وتحقق من القرب عبر GPS ومسح QR وسجلات تدقيق.",
-      "technologies": [
-        "Laravel 12",
-        "Flutter",
-        "Blade",
-        "GPS",
-        "QR Code",
-        "RBAC",
-        "Multi-Tenancy"
-      ],
-      "liveDemo": "",
-      "githubUrl": "https://github.com/ahmedemadm90/FenceMonitor",
-      "imageUrl": "",
-      "metric": "GPS + QR Verified",
-      "metricAr": "تحقق GPS و QR",
-      "overview": "Structured inspection records and role-based reporting integrated with a Flutter field app."
-    },
-    {
-      "id": "meza",
-      "name": "Meza — Multi-Vendor Marketplace",
-      "nameAr": "Meza — سوق متعدد البائعين",
-      "category": "Marketplace",
-      "categoryAr": "سوق إلكتروني",
-      "shortDescription": "Multi-vendor marketplace with product listings, order management, and seller dashboards backed by a Laravel REST API.",
-      "shortDescriptionAr": "سوق متعدد البائعين بقوائم منتجات وإدارة طلبات ولوحات للبائعين مع Laravel REST API.",
-      "technologies": [
-        "Laravel",
-        "Flutter",
-        "MySQL",
-        "REST API"
-      ],
-      "liveDemo": "",
-      "githubUrl": "https://github.com/ahmedemadm90/meza",
-      "imageUrl": "",
-      "metric": "Multi-Vendor",
-      "metricAr": "متعدد البائعين",
-      "overview": "Seller dashboards and order management across web and mobile."
-    },
-    {
-      "id": "saydone",
-      "name": "SayDone — Offline Voice-to-Task",
-      "nameAr": "SayDone — تحويل الصوت لمهام بدون إنترنت",
-      "category": "Mobile App",
-      "categoryAr": "تطبيق موبايل",
-      "shortDescription": "Offline-first Flutter voice assistant that turns speech into structured tasks with on-device speech-to-text and bilingual onboarding.",
-      "shortDescriptionAr": "مساعد صوتي بـ Flutter يعمل بدون إنترنت ويحوّل الكلام لمهام منظمة بالتعرف على الكلام داخل الجهاز.",
-      "technologies": [
-        "Flutter",
-        "Dart",
-        "On-Device STT",
-        "Offline-First"
-      ],
-      "liveDemo": "",
-      "githubUrl": "https://github.com/ahmedemadm90/saydone-offline",
-      "imageUrl": "",
-      "metric": "100% Offline",
-      "metricAr": "يعمل بدون إنترنت",
-      "overview": "Local persistence and on-device speech recognition."
-    },
-    {
-      "id": "oscar-park",
-      "name": "Oscar Park — Kids Area Management",
-      "nameAr": "Oscar Park — إدارة منطقة ألعاب الأطفال",
-      "category": "Mobile App",
-      "categoryAr": "تطبيق موبايل",
-      "shortDescription": "Production Flutter app for kids-area operations with clean architecture, reactive state management, and Firebase services.",
-      "shortDescriptionAr": "تطبيق Flutter إنتاجي لتشغيل مناطق ألعاب الأطفال بمعمارية نظيفة وإدارة حالة تفاعلية وخدمات Firebase.",
-      "technologies": [
-        "Flutter",
-        "Dart",
-        "Firebase",
-        "Local Storage"
-      ],
-      "liveDemo": "https://play.google.com/store/apps/details?id=com.oscarkidspark&hl=en",
-      "githubUrl": "https://github.com/ahmedemadm90/oscarpark",
-      "imageUrl": "",
-      "metric": "On Google Play",
-      "metricAr": "على Google Play",
-      "overview": "Modern Material interface with local storage."
-    },
-    {
-      "id": "newsmes",
-      "name": "Newsmes — SME Content Platform",
-      "nameAr": "Newsmes — منصة محتوى للشركات الصغيرة",
-      "category": "Web Platform",
-      "categoryAr": "منصة ويب",
-      "shortDescription": "SME-focused content platform with dynamic categorization, secure administration workflows, and a responsive interface.",
-      "shortDescriptionAr": "منصة محتوى للشركات الصغيرة والمتوسطة بتصنيف ديناميكي ومسارات إدارة آمنة وواجهة متجاوبة.",
-      "technologies": [
-        "Laravel",
-        "PHP",
-        "MySQL",
-        "Blade",
-        "Tailwind CSS"
-      ],
-      "liveDemo": "https://smesworld.com/",
-      "githubUrl": "https://github.com/ahmedemadm90/newsmes",
-      "imageUrl": "",
-      "metric": "Live in Production",
-      "metricAr": "يعمل في الإنتاج",
-      "overview": "Scalable content platform for small and medium businesses."
-    },
-    {
-      "id": "attendance",
-      "name": "Attendance & Compliance System",
-      "nameAr": "نظام الحضور والامتثال",
-      "category": "Enterprise",
-      "categoryAr": "مؤسسي",
-      "shortDescription": "Queued XLSX imports for large employee datasets with validation, violation detection, and automated compliance reports.",
-      "shortDescriptionAr": "استيراد ملفات XLSX ضخمة عبر الطوابير مع التحقق واكتشاف المخالفات وتقارير امتثال تلقائية.",
-      "technologies": [
-        "Laravel",
-        "Blade",
-        "MySQL",
-        "Redis Queues",
-        "XLSX"
-      ],
-      "liveDemo": "",
-      "githubUrl": "https://github.com/ahmedemadm90/attendance_cards",
-      "imageUrl": "",
-      "metric": "Auto Compliance",
-      "metricAr": "امتثال تلقائي",
-      "overview": "Flags shifts over 12 hours and seven consecutive working days without rest."
-    },
-    {
-      "id": "cemex-academy",
-      "name": "CEMEX Academy — Football Academy App",
-      "nameAr": "CEMEX Academy — تطبيق أكاديمية كرة القدم",
-      "category": "Mobile App",
-      "categoryAr": "تطبيق موبايل",
-      "shortDescription": "Bilingual app for academy participants, coaches, parents, and administrators with role-based access and notifications.",
-      "shortDescriptionAr": "تطبيق ثنائي اللغة للاعبين والمدربين وأولياء الأمور والإداريين بصلاحيات حسب الدور وإشعارات تشغيلية.",
-      "technologies": [
-        "Flutter",
-        "Dart",
-        "Laravel REST API",
-        "Firebase"
-      ],
-      "liveDemo": "https://play.google.com/store/apps/details?id=com.cemex.app&hl=en",
-      "githubUrl": "",
-      "imageUrl": "",
-      "metric": "On Google Play",
-      "metricAr": "على Google Play",
-      "overview": "Role-based workflows with Firebase services."
-    }
-  ],
+  "floatingBadges": [],
+  "professionalSummary": [],
+  "courses": [],
+  "addedValue": {},
   "education": [
     {
-      "degree": "Bachelor of Commerce (B.Sc.)",
+      "degree": "Bachelor's Degree, Faculty of Commerce",
       "degreeAr": "بكالوريوس التجارة",
       "institution": "Assiut University",
       "institutionAr": "جامعة أسيوط",
-      "graduationDate": "",
-      "graduationDateAr": "",
-      "gpa": "",
-      "gpaAr": "",
-      "highlights": "Business foundation that informs ERP, HR, and payment-reconciliation systems design.",
-      "highlightsAr": "خلفية تجارية تدعم تصميم أنظمة ERP والموارد البشرية وتسويات المدفوعات.",
-      "certificatesFolderUrl": ""
+      "graduationDate": "2013",
+      "graduationDateAr": "2013"
     }
-  ],
-  "courses": [],
-  "addedValue": {
-    "sectionTitle": "Impact Delivered in Production",
-    "sectionTitleAr": "الأثر المحقق في بيئة الإنتاج",
-    "sectionSubtitle": "Before-and-after results from real systems I engineered.",
-    "sectionSubtitleAr": "نتائج قبل وبعد من أنظمة حقيقية قمت بهندستها.",
-    "driveReportsUrl": "",
-    "models": [
-      {
-        "id": "m1",
-        "title": "Analytics Queries",
-        "titleAr": "استعلامات التحليلات",
-        "tag": "Property SaaS",
-        "tagAr": "منصة العقارات",
-        "cost": "3.2s → 300ms",
-        "costAr": "3.2 ث ← 300 مللي ث",
-        "costDetail": "P95 query time with indexed views + Redis cache",
-        "costDetailAr": "زمن الاستعلام P95 مع فهارس و Redis",
-        "time": "~10x faster",
-        "timeAr": "أسرع ~10 مرات",
-        "timeDetail": "Occupancy, revenue forecasting, arrears aging",
-        "timeDetailAr": "الإشغال وتوقعات الإيراد والمتأخرات",
-        "accuracy": "Horizon queues",
-        "accuracyAr": "طوابير Horizon",
-        "accuracyDetail": "Async PDF contracts and e-signatures",
-        "accuracyDetailAr": "عقود PDF وتوقيع إلكتروني غير متزامن",
-        "scalability": "Multi-tenant",
-        "scalabilityAr": "متعدد المستأجرين",
-        "badgeColor": "#10b981"
-      },
-      {
-        "id": "m2",
-        "title": "Enterprise Workflows",
-        "titleAr": "مسارات العمل المؤسسية",
-        "tag": "CEMEX Egypt",
-        "tagAr": "CEMEX مصر",
-        "cost": "+25–35%",
-        "costAr": "+25–35%",
-        "costDetail": "Performance gain after re-engineering critical paths",
-        "costDetailAr": "تحسن الأداء بعد إعادة هندسة المسارات الحرجة",
-        "time": "10K–30K / day",
-        "timeAr": "10–30 ألف / يوم",
-        "timeDetail": "API requests served",
-        "timeDetailAr": "طلبات API",
-        "accuracy": "99%+",
-        "accuracyAr": "99%+",
-        "accuracyDetail": "Production uptime",
-        "accuracyDetailAr": "جاهزية التشغيل",
-        "scalability": "1,000+ concurrent users",
-        "scalabilityAr": "أكثر من 1,000 مستخدم متزامن",
-        "badgeColor": "#6366f1"
-      },
-      {
-        "id": "m3",
-        "title": "Operations Automation",
-        "titleAr": "أتمتة العمليات",
-        "tag": "n8n",
-        "tagAr": "n8n",
-        "cost": "−40–60%",
-        "costAr": "−40–60%",
-        "costDetail": "Manual effort removed from HR and reporting",
-        "costDetailAr": "تقليل المجهود اليدوي في الموارد البشرية والتقارير",
-        "time": "Unattended",
-        "timeAr": "بدون تدخل",
-        "timeDetail": "Retries, error handling, notifications",
-        "timeDetailAr": "إعادة محاولة ومعالجة أخطاء وتنبيهات",
-        "accuracy": "Webhooks + APIs",
-        "accuracyAr": "Webhooks و APIs",
-        "accuracyDetail": "Structured data transformation",
-        "accuracyDetailAr": "تحويل منظم للبيانات",
-        "scalability": "Cross-system",
-        "scalabilityAr": "بين الأنظمة",
-        "badgeColor": "#f59e0b"
-      }
-    ],
-    "metrics": [
-      {
-        "label": "Uptime",
-        "labelAr": "الجاهزية",
-        "value": "99%+",
-        "progress": 99
-      },
-      {
-        "label": "Manual Effort Cut",
-        "labelAr": "خفض المجهود اليدوي",
-        "value": "60%",
-        "progress": 60
-      },
-      {
-        "label": "Query Speedup (P95)",
-        "labelAr": "تسريع الاستعلامات",
-        "value": "90%",
-        "progress": 90
-      }
-    ]
-  }
+  ]
 };
-    const CLOUD_URL = typeof getPortfolioCloudUrl === 'function' ? getPortfolioCloudUrl() : null;
 
-    let data = INITIAL_DATA;
-    let currentLang = localStorage.getItem('portfolio_lang') || 'en';
-
-    // LocalStorage Initial Cache
-    try {
-      const cached = localStorage.getItem('portfolio_cache');
-      if (cached) {
-        data = JSON.parse(cached);
-      }
-    } catch(err) {}
-
-    // Live Cross-Tab BroadcastChannel listener for instant real-time updates!
-    try {
-      const bc = new BroadcastChannel('portfolio_sync');
-      bc.onmessage = (event) => {
-        if (event.data && event.data.type === 'DATA_UPDATED') {
-          data = event.data.data;
-          renderAll();
-        }
-      };
-    } catch(e) {}
-
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'portfolio_cache' && e.newValue) {
-        data = JSON.parse(e.newValue);
-        renderAll();
-      }
-    });
-
-    const I18N = {
-      en: {
-        nav_home: "Home",
-        nav_about: "About",
-        nav_skills: "Skills",
-        nav_added_value: "Added Value",
-        nav_projects: "Projects",
-        nav_experience: "Experience",
-        nav_education: "Credentials",
-        nav_contact: "Contact",
-        nav_download_cv: "Official CV",
-        btn_get_in_touch: "Get in Touch",
-        hero_greeting: "Hi, I'm",
-        hero_explore_btn: "Explore Projects",
-        hero_download_cv_btn: "Download CV",
-        hero_print_btn: "Print Portfolio",
-        about_eyebrow: "About Me",
-        about_heading_1: "Engineering Mindset Applied to",
-        about_heading_2: "Scalable Systems",
-        about_subheading: "Clean architecture, testability, and performance, shipped to production.",
-        career_vision_label: "Career Vision",
-        summary_card_title: "Professional Summary",
-        skills_eyebrow: "Technical Mastery",
-        skills_heading_1: "Categorized Technical",
-        skills_heading_2: "Competencies",
-        skills_subheading: "From the data layer to the reactive interface: backend, frontend, DevOps, mobile, and integrations.",
-        roi_eyebrow: "Measured Impact",
-        roi_drive_text: "View Details",
-        projects_eyebrow: "Engineering Portfolio",
-        projects_heading_1: "Featured Systems &",
-        projects_heading_2: "Products",
-        projects_subheading: "SaaS platforms, APIs, and full-stack products shipped to production.",
-        exp_eyebrow: "Work History",
-        exp_heading_1: "Professional Experience &",
-        exp_heading_2: "Roles",
-        exp_subheading: "11+ years shipping systems people rely on, from ISP internals to enterprise SaaS.",
-        edu_eyebrow: "Academic Foundation",
-        edu_heading_1: "Education &",
-        edu_heading_2: "Background",
-        edu_subheading: "Academic foundation plus 11+ years of hands-on engineering.",
-        cert_heading: "Specialized Certifications",
-        view_certificates_drive: "View All Certificate Files in Google Drive",
-        contact_eyebrow: "Direct Outreach",
-        contact_heading_1: "Let's Discuss Your",
-        contact_heading_2: "Next Project",
-        contact_subheading: "Actively seeking remote senior backend or full-stack roles. My inbox is always open.",
-        contact_channel_title: "Direct Channels",
-        contact_channel_desc: "Feel free to connect via WhatsApp, email, or schedule a technical call.",
-        contact_whatsapp_label: "WhatsApp & Phone",
-        contact_email_label: "Email Address",
-        contact_location_label: "Location",
-        form_title: "Send a Direct Message",
-        form_name: "Your Name",
-        form_email: "Your Email",
-        form_msg: "Project Overview / Inquiry",
-        form_send: "Transmit Message",
-        footer_rights: "All rights reserved.",
-        view_details_btn: "Explore Project",
-        live_demo_btn: "Live Demo"
-      },
-      ar: {
-        nav_home: "الرئيسية",
-        nav_about: "نبذة عني",
-        nav_skills: "المهارات",
-        nav_added_value: "القيمة المضافة",
-        nav_projects: "المشاريع",
-        nav_experience: "الخبرات",
-        nav_education: "المؤهلات",
-        nav_contact: "تواصل معي",
-        nav_download_cv: "السيرة الذاتية (CV)",
-        btn_get_in_touch: "تواصل معي",
-        hero_greeting: "مرحباً، أنا",
-        hero_explore_btn: "استعراض المشاريع",
-        hero_download_cv_btn: "تحميل السيرة الذاتية (CV)",
-        hero_print_btn: "طباعة البورتفوليو",
-        about_eyebrow: "نبذة عني",
-        about_heading_1: "عقلية هندسية لبناء",
-        about_heading_2: "أنظمة قابلة للتوسع",
-        about_subheading: "معمارية نظيفة وقابلية اختبار وأداء عالٍ في بيئة الإنتاج.",
-        career_vision_label: "الرؤية المهنية",
-        summary_card_title: "الملخص المهني والتنفيذي",
-        skills_eyebrow: "الكفاءات التقنية",
-        skills_heading_1: "المهارات التقنية",
-        skills_heading_2: "المصنفة بدقة",
-        skills_subheading: "من طبقة البيانات إلى الواجهة التفاعلية: Backend وFrontend وDevOps وموبايل وتكاملات.",
-        roi_eyebrow: "الأثر المحقق",
-        roi_drive_text: "عرض التفاصيل",
-        projects_eyebrow: "معرض المشاريع",
-        projects_heading_1: "أبرز الأنظمة الهندسية و",
-        projects_heading_2: "المنتجات",
-        projects_subheading: "منصات SaaS وواجهات API ومنتجات متكاملة تعمل في الإنتاج.",
-        exp_eyebrow: "المسار المهني",
-        exp_heading_1: "الخبرات العملية و",
-        exp_heading_2: "الأدوار المهنية",
-        exp_subheading: "أكثر من 10 سنوات في بناء أنظمة يعتمد عليها الناس، من مزودي الإنترنت إلى منصات SaaS المؤسسية.",
-        edu_eyebrow: "الأساس الأكاديمي",
-        edu_heading_1: "التعليم الجامعي و",
-        edu_heading_2: "الخلفية الأكاديمية",
-        edu_subheading: "أساس أكاديمي مع عقد من الخبرة الهندسية العملية.",
-        cert_heading: "الشهادات والاعتمادات الاحترافية",
-        view_certificates_drive: "عرض كافة الشهادات على Google Drive",
-        contact_eyebrow: "قنوات التواصل المباشر",
-        contact_heading_1: "لنبدأ التخطيط لـ",
-        contact_heading_2: "مشروعك القادم",
-        contact_subheading: "أبحث عن أدوار Backend أو Full-Stack أولى عن بُعد، وبريدي مفتوح دائماً.",
-        contact_channel_title: "التواصل السريع",
-        contact_channel_desc: "تواصل معي مباشرة عبر الواتساب أو البريد أو الهاتف.",
-        contact_whatsapp_label: "واتساب وهاتف",
-        contact_email_label: "البريد الإلكتروني",
-        contact_location_label: "الموقع الجغرافي",
-        form_title: "أرسل رسالة مباشرة",
-        form_name: "الاسم الكريم",
-        form_email: "البريد الإلكتروني",
-        form_msg: "تفاصيل المشروع أو الاستفسار",
-        form_send: "إرسال الرسالة الآن",
-        footer_rights: "جميع الحقوق محفوظة.",
-        view_details_btn: "تفاصيل المشروع",
-        live_demo_btn: "عرض حي"
-      }
-    };
-
-    function init() {
-      applyLanguage(currentLang);
-      renderAll();
-      fetchLatestFromCloud();
-    }
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'ar' : 'en';
-      localStorage.setItem('portfolio_lang', currentLang);
-      applyLanguage(currentLang);
-      renderAll();
-    }
-
-    function applyLanguage(lang) {
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      document.getElementById('langBtnText').textContent = lang === 'en' ? 'العربية' : 'English';
-      const shortLangEl = document.getElementById('langBtnTextShort');
-      if (shortLangEl) shortLangEl.textContent = lang === 'en' ? 'AR' : 'EN';
-
-      const dict = I18N[lang];
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.textContent = dict[key];
-      });
-    }
-
-    function toggleTheme() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
-      if (isDark) {
-        html.classList.remove('dark');
-        html.classList.add('light');
-        localStorage.setItem('portfolio_theme', 'light');
-      } else {
-        html.classList.remove('light');
-        html.classList.add('dark');
-        localStorage.setItem('portfolio_theme', 'dark');
-      }
-      lucide.createIcons();
-    }
-
-    function toggleMobileMenu() {
-      document.getElementById('mobileDrawer').classList.toggle('open');
-    }
-    function closeMobileMenu() {
-      document.getElementById('mobileDrawer').classList.remove('open');
-    }
-
-    function renderAll() {
-      const isAr = currentLang === 'ar';
-      const p = data.personal || {};
-      const c = data.contact || {};
-      const av = data.addedValue || {};
-
-      const displayName = isAr && p.fullNameAr ? p.fullNameAr : (p.fullName || 'Ahmed Emad');
-      const displayTitle = isAr && p.professionalTitleAr ? p.professionalTitleAr : (p.professionalTitle || 'Senior Full-Stack Developer');
-      
-      document.getElementById('navBrandName').textContent = isAr ? 'أحمد عماد' : 'Ahmed Emad';
-      document.getElementById('footerBrandName').textContent = displayName;
-
-      const profilePhoto = (p && p.profileImage) ? p.profileImage : 'profile.svg';
-      const heroAvatarImg = document.getElementById('heroAvatarCardImg');
-      if (heroAvatarImg) heroAvatarImg.src = profilePhoto;
-      const navAvatarImg = document.getElementById('navBrandAvatarImg');
-      if (navAvatarImg) navAvatarImg.src = profilePhoto;
-      document.getElementById('heroFullName').textContent = displayName;
-      document.getElementById('cardHeroName').textContent = displayName;
-      document.getElementById('heroHeadline').textContent = isAr && p.professionalHeadlineAr ? p.professionalHeadlineAr : p.professionalHeadline;
-      document.getElementById('cardHeroTitle').textContent = displayTitle;
-      document.getElementById('heroIntro').textContent = isAr && p.shortIntroductionAr ? p.shortIntroductionAr : p.shortIntroduction;
-      document.getElementById('heroAvailabilityPill').textContent = isAr && p.availabilityAr ? p.availabilityAr : p.availability;
-      document.getElementById('cardHeroLocation').textContent = isAr && p.currentLocationAr ? p.currentLocationAr : (p.currentLocation || 'Cairo, Egypt — Remote Worldwide');
-
-      // Contact Links
-      if (c.linkedin) document.getElementById('heroSocialLinkedin').href = c.linkedin;
-      if (c.github) document.getElementById('heroSocialGithub').href = c.github;
-      if (c.whatsappUrl) {
-        document.getElementById('heroSocialWhatsapp').href = c.whatsappUrl;
-        document.getElementById('contactPhoneText').parentElement.parentElement.href = c.whatsappUrl;
-      }
-      if (c.email) {
-        document.getElementById('heroSocialEmail').href = 'mailto:' + c.email;
-        document.getElementById('contactEmailText').parentElement.parentElement.href = 'mailto:' + c.email;
-        document.getElementById('contactEmailText').textContent = c.email;
-      }
-      if (c.phoneDisplay || c.phone) {
-        document.getElementById('contactPhoneText').textContent = c.phoneDisplay || c.phone;
-      }
-      if (p.currentLocation) {
-        document.getElementById('contactLocationText').textContent = isAr && p.currentLocationAr ? p.currentLocationAr : p.currentLocation;
-      }
-
-      const cvTarget = (p && p.cvUrl) ? p.cvUrl : 'ahmed_emad_cv.pdf';
-      const topCv = document.getElementById('topCvDownloadBtn');
-      if (topCv) topCv.href = cvTarget;
-
-      // About
-      document.getElementById('aboutMeP1').textContent = isAr && p.aboutMeAr ? p.aboutMeAr : p.aboutMe;
-      document.getElementById('careerObjectiveText').textContent = isAr && p.careerObjectiveAr ? p.careerObjectiveAr : p.careerObjective;
-
-      // Stats Pills INSIDE the Card
-      renderHeroCardStats();
-
-      // Floating Badges outside the card
-      renderFloatingBadges();
-
-      // 5 Professional Summary Key Facts
-      renderKeyFactsSummary();
-
-      // Categorized Skills (4 categories with descriptions)
-      renderCategorizedSkills();
-
-      // Added Value & ROI
-      renderAddedValueSection();
-
-      // Projects
-      renderProjects();
-
-      // Experience & Education
-      renderExperience();
-      renderEducation();
-
-      lucide.createIcons();
-    }
-
-    // Hero Card Stat Pills
-    function renderHeroCardStats() {
-      const grid = document.getElementById('cardHeroStatsGrid');
-      grid.innerHTML = '';
-      const stats = data.stats || [];
-      const isAr = currentLang === 'ar';
-
-      stats.forEach(s => {
-        const pill = document.createElement('div');
-        pill.className = 'stat-pill';
-        pill.innerHTML = `
-          <div class="stat-number">${s.number}</div>
-          <div class="stat-label">${isAr && s.labelAr ? s.labelAr : s.label}</div>
-        `;
-        grid.appendChild(pill);
-      });
-    }
-
-    // Interactive Closer Floating Badges
-    function renderFloatingBadges() {
-      const container = document.getElementById('heroFloatingBadgesContainer');
-      container.innerHTML = '';
-      const badges = data.floatingBadges || [];
-      const isAr = currentLang === 'ar';
-
-      badges.forEach((b, idx) => {
-        const a = document.createElement('a');
-        a.className = 'floating-badge badge-pos-' + (idx % 6);
-        a.href = b.targetSection || '#skills';
-        a.onclick = (e) => handleBadgeClick(e, b);
-
-        const iconName = b.icon || 'cpu';
-        a.innerHTML = `
-          <i data-lucide="${iconName}" style="color: var(--accent-cyan); width: 20px; height: 20px; flex-shrink: 0;"></i>
-          <div>
-            <div class="badge-cat" style="font-size: 0.72rem; color: var(--text-tertiary);">${isAr && b.categoryAr ? b.categoryAr : b.category}</div>
-            <div class="badge-title" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">${isAr && b.titleAr ? b.titleAr : b.title}</div>
-          </div>
-          <i data-lucide="arrow-up-right" class="badge-arrow" style="width: 14px; height: 14px; opacity: 0.5; margin-left: 0.25rem; transition: all 0.2s ease;"></i>
-        `;
-        container.appendChild(a);
-      });
-    }
-
-    function handleBadgeClick(e, badge) {
-      e.preventDefault();
-      const target = badge.targetSection || '#skills';
-      const el = document.querySelector(target);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (badge.targetId) {
-          setTimeout(() => {
-            const p = (data.projects || []).find(x => x.id === badge.targetId);
-            if (p) openProjectModal(p);
-          }, 600);
-        } else {
-          el.style.transition = 'box-shadow 0.4s ease';
-          el.style.boxShadow = '0 0 35px var(--primary-glow)';
-          setTimeout(() => { el.style.boxShadow = ''; }, 1600);
-        }
-      }
-    }
-
-    // Key Facts (5 Professional Summary items)
-    function renderKeyFactsSummary() {
-      const list = document.getElementById('keyFactsList');
-      list.innerHTML = '';
-      const items = data.professionalSummary || [];
-      const isAr = currentLang === 'ar';
-
-      items.forEach(it => {
-        const row = document.createElement('div');
-        row.className = 'fact-item';
-        row.innerHTML = `
-          <div class="fact-icon">
-            <i data-lucide="${it.icon || 'award'}" style="width: 18px; height: 18px;"></i>
-          </div>
-          <div>
-            <div class="fact-label">${isAr && it.labelAr ? it.labelAr : it.label}</div>
-            <div class="fact-value">${isAr && it.valueAr ? it.valueAr : it.value}</div>
-          </div>
-        `;
-        list.appendChild(row);
-      });
-    }
-
-    // Categorized Skills (4 categories with descriptions)
-    function renderCategorizedSkills() {
-      const container = document.getElementById('skillsContainer');
-      container.innerHTML = '';
-      const cats = data.skillsCategories || [];
-      const isAr = currentLang === 'ar';
-
-      cats.forEach(cat => {
-        const card = document.createElement('div');
-        card.className = 'skill-card';
-
-        let skillsHtml = '';
-        (cat.skills || []).forEach(sk => {
-          skillsHtml += `
-            <div class="skill-item">
-              <div class="skill-item-header">
-                <span class="skill-name">${sk.name} ${sk.badge ? `<span class="skill-badge">${sk.badge}</span>` : ''}</span>
-                <span class="skill-level">${sk.level}%</span>
-              </div>
-              <div class="skill-progress-bar">
-                <div class="skill-progress-fill" style="width: ${sk.level}%;"></div>
-              </div>
-              ${sk.desc ? `<p class="skill-desc">${sk.desc}</p>` : ''}
-            </div>
-          `;
-        });
-
-        card.innerHTML = `
-          <div class="skill-card-header">
-            <i data-lucide="${cat.icon || 'workflow'}" style="color: var(--accent-cyan); width: 22px; height: 22px;"></i>
-            <h3>${isAr && cat.categoryNameAr ? cat.categoryNameAr : cat.categoryName}</h3>
-          </div>
-          <div class="skill-card-body">
-            ${skillsHtml}
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // Added Value & ROI
-    function renderAddedValueSection() {
-      const av = data.addedValue || {};
-      const isAr = currentLang === 'ar';
-
-      document.getElementById('roiMainTitle').textContent = isAr && av.sectionTitleAr ? av.sectionTitleAr : (av.sectionTitle || 'Client Added Value & ROI Matrix');
-      document.getElementById('roiMainSubtitle').textContent = isAr && av.sectionSubtitleAr ? av.sectionSubtitleAr : (av.sectionSubtitle || 'Quantitative comparison showing the monumental shift from manual labor to intelligent autonomous workflows.');
-      if (av.driveReportsUrl) {
-        document.getElementById('roiDriveBtn').href = av.driveReportsUrl;
-      }
-
-      const modelsGrid = document.getElementById('roiModelsGrid');
-      modelsGrid.innerHTML = '';
-      (av.models || []).forEach((m, idx) => {
-        const card = document.createElement('div');
-        card.className = 'roi-model-card' + (idx === 2 ? ' featured' : '');
-        card.innerHTML = `
-          <div>
-            <span class="roi-tag-badge" style="background: ${m.badgeColor || '#6366f1'}22; color: ${m.badgeColor || '#818cf8'};">${isAr && m.tagAr ? m.tagAr : m.tag}</span>
-            <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem;">${isAr && m.titleAr ? m.titleAr : m.title}</h3>
-            
-            <div class="roi-item-row">
-              <div class="roi-item-label">${isAr ? 'التكلفة التشغيلية' : 'Estimated Cost'}</div>
-              <div class="roi-item-val">${isAr && m.costAr ? m.costAr : m.cost}</div>
-              <div class="roi-item-sub">${isAr && m.costDetailAr ? m.costDetailAr : m.costDetail}</div>
-            </div>
-
-            <div class="roi-item-row">
-              <div class="roi-item-label">${isAr ? 'زمن التنفيذ والاستجابة' : 'Turnaround Time'}</div>
-              <div class="roi-item-val">${isAr && m.timeAr ? m.timeAr : m.time}</div>
-              <div class="roi-item-sub">${isAr && m.timeDetailAr ? m.timeDetailAr : m.timeDetail}</div>
-            </div>
-
-            <div class="roi-item-row">
-              <div class="roi-item-label">${isAr ? 'الدقة والموثوقية' : 'Accuracy & Reliability'}</div>
-              <div class="roi-item-val">${isAr && m.accuracyAr ? m.accuracyAr : m.accuracy}</div>
-              <div class="roi-item-sub">${isAr && m.accuracyDetailAr ? m.accuracyDetailAr : m.accuracyDetail}</div>
-            </div>
-          </div>
-
-          <div class="roi-item-row" style="margin-top: 1rem; border-bottom: none;">
-            <div class="roi-item-label">${isAr ? 'قابلية التوسع والنمو' : 'Scalability'}</div>
-            <div class="roi-item-sub" style="font-weight: 700; color: var(--text-primary);">${isAr && m.scalabilityAr ? m.scalabilityAr : m.scalability}</div>
-          </div>
-        `;
-        modelsGrid.appendChild(card);
-      });
-
-      const metricsGrid = document.getElementById('roiMetricsSummary');
-      metricsGrid.innerHTML = '';
-      (av.metrics || []).forEach(met => {
-        const box = document.createElement('div');
-        box.className = 'roi-summary-box';
-        box.innerHTML = `
-          <div class="roi-summary-num">${met.value}</div>
-          <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); margin-top: 0.25rem;">${isAr && met.labelAr ? met.labelAr : met.label}</div>
-        `;
-        metricsGrid.appendChild(box);
-      });
-    }
-
-    // Projects
-    function renderProjects() {
-      const grid = document.getElementById('projectsGrid');
-      grid.innerHTML = '';
-      const list = data.projects || [];
-      const isAr = currentLang === 'ar';
-
-      list.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.onclick = () => openProjectModal(p);
-
-        let tagsHtml = '';
-        (p.technologies || []).forEach(t => {
-          tagsHtml += `<span class="project-tag">${t}</span>`;
-        });
-
-        const bannerMarkup = p.imageUrl ? `
-          <div class="project-header-banner has-custom-image" style="background-image: url('${p.imageUrl}');">
-            <span class="project-img-pill"><i data-lucide="image" style="width:12px;height:12px;"></i> ${isAr ? 'معاينة' : 'Preview'}</span>
-          </div>
-        ` : `
-          <div class="project-header-banner">
-            <i data-lucide="sparkles"></i>
-          </div>
-        `;
-
-        card.innerHTML = `
-          ${bannerMarkup}
-          <div class="project-card-body">
-            <div class="project-category">${isAr && p.categoryAr ? p.categoryAr : p.category}</div>
-            <h3 class="project-title">${isAr && p.nameAr ? p.nameAr : p.name}</h3>
-            <p class="project-desc">${isAr && p.shortDescriptionAr ? p.shortDescriptionAr : p.shortDescription}</p>
-            <div class="project-tags">${tagsHtml}</div>
-            <div class="project-footer">
-              <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-emerald);">${isAr && p.metricAr ? p.metricAr : p.metric}</span>
-              <span style="font-size: 0.85rem; color: var(--primary-light); display: inline-flex; align-items: center; gap: 0.25rem;">
-                ${isAr ? 'عرض التفاصيل' : 'Explore'} <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
-              </span>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function openProjectModal(p) {
-      const isAr = currentLang === 'ar';
-      const body = document.getElementById('modalBody');
-      let tagsHtml = '';
-      (p.technologies || []).forEach(t => tagsHtml += `<span class="project-tag" style="padding:0.35rem 0.75rem; font-size:0.85rem;">${t}</span>`);
-
-      const modalImageMarkup = p.imageUrl ? `
-        <div style="width: 100%; max-height: 280px; height: 220px; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--border-card); box-shadow: 0 8px 24px rgba(0,0,0,0.35); position: relative;">
-          <img src="${p.imageUrl}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-      ` : '';
-
-      body.innerHTML = `
-        ${modalImageMarkup}
-        <span class="project-category">${isAr && p.categoryAr ? p.categoryAr : p.category}</span>
-        <h2 style="font-size: 1.75rem; margin: 0.5rem 0 1rem 0;">${isAr && p.nameAr ? p.nameAr : p.name}</h2>
-        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
-          ${isAr && p.overviewAr ? p.overviewAr : (p.overview || p.shortDescription)}
-        </p>
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.5rem;">${isAr ? 'التقنيات المستخدمة' : 'Technologies & Tools'}</h4>
-          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">${tagsHtml}</div>
-        </div>
-        ${p.liveDemo ? `
-          <a href="${p.liveDemo}" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
-            <span>${isAr ? 'زيارة المشروع الحي' : 'Launch Live Demo'}</span>
-            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
-          </a>
-        ` : ''}
-      `;
-      document.getElementById('projectModal').classList.add('open');
-      lucide.createIcons();
-    }
-
-    function closeProjectModal(e) {
-      if (!e || e.target === document.getElementById('projectModal') || e.target.classList.contains('modal-close-btn')) {
-        document.getElementById('projectModal').classList.remove('open');
-      }
-    }
-
-    // Experience & Education
-    function renderExperience() {
-      const container = document.getElementById('experienceTimeline');
-      container.innerHTML = '';
-      const list = data.experience || [];
-      const isAr = currentLang === 'ar';
-
-      list.forEach(ex => {
-        const item = document.createElement('div');
-        item.className = 'timeline-item';
-        item.innerHTML = `
-          <div class="timeline-marker"></div>
-          <div class="timeline-card">
-            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">${isAr && ex.startDateAr ? ex.startDateAr : ex.startDate} - ${isAr && ex.endDateAr ? ex.endDateAr : ex.endDate}</span>
-            <h3 style="font-size: 1.25rem; margin: 0.25rem 0;">${isAr && ex.jobTitleAr ? ex.jobTitleAr : ex.jobTitle}</h3>
-            <div style="font-size: 0.9rem; color: var(--primary-light); font-weight: 600; margin-bottom: 0.75rem;">${isAr && ex.companyAr ? ex.companyAr : ex.company} (${isAr && ex.employmentTypeAr ? ex.employmentTypeAr : ex.employmentType})</div>
-            <p style="font-size: 0.95rem; color: var(--text-secondary);">${isAr && ex.responsibilitiesAr ? ex.responsibilitiesAr : ex.responsibilities}</p>
-          </div>
-        `;
-        container.appendChild(item);
-      });
-    }
-
-    function renderEducation() {
-      const eduCard = document.getElementById('educationMainCard');
-      const certsList = document.getElementById('certificationsList');
-      eduCard.innerHTML = '';
-      certsList.innerHTML = '';
-      const isAr = currentLang === 'ar';
-
-      const edu = (data.education || [])[0] || {};
-      eduCard.innerHTML = `
-        <div class="key-facts-card" style="height: 100%;">
-          <span class="project-category">${isAr ? 'الدرجة الأكاديمية' : 'Higher Degree'}</span>
-          <h3 style="font-size: 1.4rem; margin: 0.5rem 0;">${isAr && edu.degreeAr ? edu.degreeAr : edu.degree}</h3>
-          <p style="font-size: 0.95rem; color: var(--primary-light); font-weight: 600; margin-bottom: 0.75rem;">${isAr && edu.institutionAr ? edu.institutionAr : edu.institution}</p>
-          <div style="display:inline-block; padding:0.25rem 0.75rem; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:var(--radius-full); font-size:0.85rem; font-weight:700; color:var(--accent-emerald); margin-bottom:1.25rem;">
-            ${isAr && edu.gpaAr ? edu.gpaAr : edu.gpa} • ${isAr && edu.graduationDateAr ? edu.graduationDateAr : edu.graduationDate}
-          </div>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">${isAr && edu.highlightsAr ? edu.highlightsAr : edu.highlights}</p>
-        </div>
-      `;
-
-      (data.courses || []).forEach(c => {
-        const item = document.createElement('div');
-        item.className = 'cert-card';
-        item.innerHTML = `
-          <div class="cert-icon"><i data-lucide="award"></i></div>
-          <div>
-            <h4 style="font-size: 1rem; font-weight: 700;">${c.name}</h4>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">${c.platform} • ${c.completionDate}</p>
-          </div>
-        `;
-        certsList.appendChild(item);
-      });
-    }
-
-    async function fetchLatestFromCloud() {
-      if (!CLOUD_URL) return;
-      try {
-        const res = await fetch(CLOUD_URL, { cache: 'no-store' });
-        if (res.ok) {
-          const json = await res.json();
-          if (json && json.fields && json.fields.payload && json.fields.payload.stringValue) {
-            const parsed = JSON.parse(json.fields.payload.stringValue);
-            if (parsed && parsed.personal) {
-              data = parsed;
-              localStorage.setItem('portfolio_cache', JSON.stringify(data));
-              renderAll();
-            }
-          }
-        }
-      } catch (err) {}
-    }
-
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      alert(currentLang === 'ar' ? 'شكراً لتواصلك! سيتم الرد عليك في أقرب وقت.' : 'Thank you for your message! I will respond promptly.');
-      e.target.reset();
-    }
-
-    async function downloadOfficialCv(e) {
-      if (e) e.preventDefault();
-      const fileName = 'ahmed_emad_cv.pdf';
-      const fileUrl = (data && data.personal && data.personal.cvUrl) ? data.personal.cvUrl : fileName;
-
-      try {
-        const response = await fetch(fileUrl, { cache: 'no-cache' });
-        if (!response.ok) throw new Error('Fetch failed');
-        const blob = await response.blob();
-        const pdfBlob = new Blob([blob], { type: 'application/pdf' });
-        const blobUrl = window.URL.createObjectURL(pdfBlob);
-
-        const tempLink = document.createElement('a');
-        tempLink.style.display = 'none';
-        tempLink.href = blobUrl;
-        tempLink.setAttribute('download', fileName);
-        document.body.appendChild(tempLink);
-        tempLink.click();
-
-        setTimeout(() => {
-          document.body.removeChild(tempLink);
-          window.URL.revokeObjectURL(blobUrl);
-        }, 1000);
-      } catch (err) {
-        const fallbackLink = document.createElement('a');
-        fallbackLink.href = fileUrl;
-        fallbackLink.setAttribute('download', fileName);
-        document.body.appendChild(fallbackLink);
-        fallbackLink.click();
-        document.body.removeChild(fallbackLink);
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
-</body>
-</html>
+const CLOUD_URL = typeof getPortfolioCloudUrl === 'function' ? getPortfolioCloudUrl() : null;
+let data = INITIAL_DATA;
+const REVISION='2026-11-cv-refresh';
+function stored(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+// Discard an obsolete visitor cache once; keep the admin studio's data channel.
+if(stored('portfolio_content_revision')===REVISION){try{const x=JSON.parse(stored('portfolio_cache'));if(x&&x.personal)data=x}catch(e){}}
+else{save('portfolio_cache',JSON.stringify(INITIAL_DATA));save('portfolio_content_revision',REVISION)}
+let lang=stored('portfolio_lang')==='ar'?'ar':'en';
+document.documentElement.dataset.theme=stored('portfolio_theme')==='light'?'light':'dark';
+const AR={work:'أبرز المشاريع',expertise:'الخبرات التقنية',career:'المسار المهني',contact:'تواصل معي',cv:'تحميل CV ↗',hero:'هندسة برمجيات.<br><span>بفهم حقيقي للأعمال.</span>',explore:'استعرض أعمالي',pdf:'تحميل السيرة الذاتية',archLabel:'كيف أربط التفاصيل',business:'01 / طبيعة العمل',businessValue:'المرتبات · المالية · التشغيل',engine:'02 / الحل الهندسي',archNote:'من قواعد العمل إلى أنظمة الإنتاج.',workEyebrow:'01 / أبرز المشاريع',workHeading:'مشكلات حقيقية.<br><span>أنظمة مصممة لحلها.</span>',workNote:'مجموعة مختارة من منصات SaaS وأنظمة الأعمال والـ Backend لتطبيقات الموبايل.',skillEyebrow:'02 / ما يميزني',skillHeading:'أتحدث لغة الكود.<br><span>ولغة الأعمال.</span>',skillIntro:'خلفيتي في التجارة وخبرتي داخل تشغيل المؤسسات تساعداني في تحويل قواعد العمل إلى برامج عملية، وليس مجرد جداول بيانات.',payroll:'المرتبات والموارد البشرية',payrollMeta:'الحضور / التسويات',finance:'المالية والمحاسبة',financeMeta:'الموازنات / الإقفال',procurement:'المشتريات والفواتير',procurementMeta:'الموافقات / الضرائب',careerEyebrow:'03 / المسار المهني',careerHeading:'خبرة تتجاوز<br><span>11 سنة.</span>',careerNote:'من المنصات الداخلية إلى تشغيل المؤسسات والمنتجات متعددة المستأجرين.',education:'خلفية أكاديمية في الأعمال',degree:'بكالوريوس التجارة<br>جامعة أسيوط · 2013',languages:'العربية: اللغة الأم<br>الإنجليزية: إجادة مهنية للعمل',freelance:'العمل الحر والدوام الجزئي',freelanceNote:'بالتوازي مع الوظائف الثابتة وخارج مواعيد العمل. مشروع إدارة العقارات موضح أعلاه.',contactEyebrow:'04 / لنتواصل',contactHeading:'مشكلة عمل معقدة؟<br>لنبنِ النظام المناسب.',contactNote:'وظائف Backend أولى ومشاريع Laravel وأنظمة الأعمال.',email:'راسل أحمد',footer:'هندسة برمجيات تفهم الأعمال.',word:'نسخة CV قابلة للتعديل (.docx) ↓'};
+const EN={};document.querySelectorAll('[data-t]').forEach(el=>EN[el.dataset.t]=el.innerHTML);
+function val(x,key){return lang==='ar'&&x[key+'Ar']?x[key+'Ar']:(x[key]||'')}
+function esc(s){return String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]))}
+function safeUrl(s){try{const u=new URL(s,location.href);return ['http:','https:','mailto:','tel:'].includes(u.protocol)?u.href:'#'}catch(e){return '#'}}
+function chips(xs){return '<div class="chips">'+(xs||[]).map(x=>'<span class="chip">'+esc(typeof x==='string'?x:x.name)+'</span>').join('')+'</div>'}
+function roles(xs){return (xs||[]).map(r=>'<article class="role"><div class="date" dir="ltr">'+esc(r.startDate)+' – '+esc(r.endDate)+'</div><div><h3>'+esc(val(r,'jobTitle'))+'</h3><h4>'+esc(val(r,'company'))+' · '+esc(val(r,'employmentType'))+'</h4><p>'+esc(val(r,'responsibilities'))+'</p></div></article>').join('')}
+function render(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-t]').forEach(el=>el.innerHTML=(lang==='ar'?AR:EN)[el.dataset.t]||EN[el.dataset.t]);document.getElementById('lang').textContent=lang==='ar'?'EN':'ع';document.getElementById('lang').ariaLabel=lang==='ar'?'Switch to English':'Switch to Arabic';const p=data.personal||{},c=data.contact||{};
+document.getElementById('availability').textContent=val(p,'availability');document.getElementById('title').textContent=val(p,'professionalTitle')+' | '+val(p,'professionalHeadline');document.getElementById('intro').textContent=val(p,'shortIntroduction');document.getElementById('location').textContent=val(p,'currentLocation');document.querySelectorAll('.cv-link').forEach(el=>el.href=safeUrl(p.cvUrl||'ahmed_emad_cv.pdf'));
+document.getElementById('metrics').innerHTML=(data.stats||[]).map(s=>'<div class="metric"><strong dir="ltr">'+esc(s.number)+'</strong><span>'+esc(val(s,'label'))+'</span></div>').join('');
+const marks=['WX','290','SF','PM'];document.getElementById('projectGrid').innerHTML=(data.projects||[]).map((p,i)=>'<article class="project"><div class="project-top" aria-hidden="true"><span class="project-number">0'+(i+1)+' / '+esc(val(p,'category'))+'</span><span class="project-mark">'+(marks[i]||'&lt;/&gt;')+'</span><span class="mini-diagram"><i></i><i></i><i></i></span></div><div class="project-body"><div class="kicker">'+esc(val(p,'category'))+'</div><h3>'+esc(val(p,'name'))+'</h3><p>'+esc(val(p,'shortDescription'))+'</p>'+chips(p.technologies)+'<details><summary>'+(lang==='ar'?'مساهمتي في المشروع':'What I built')+'</summary><p>'+esc(val(p,'overview'))+'</p></details><div class="project-foot"><span>'+esc(val(p,'metric'))+'</span>'+(p.liveDemo?'<a href="'+esc(safeUrl(p.liveDemo))+'" target="_blank" rel="noopener noreferrer">'+(lang==='ar'?'زيارة الموقع ↗':'Visit website ↗')+'</a>':'<span>'+(lang==='ar'?'ملخص المشروع':'Project overview')+'</span>')+'</div></div></article>').join('');
+document.getElementById('skillGrid').innerHTML=(data.skillsCategories||[]).map(s=>'<div class="skill"><h3>'+esc(val(s,'categoryName'))+'</h3>'+chips(s.skills)+'</div>').join('');document.getElementById('roleList').innerHTML=roles(data.experience);document.getElementById('freelanceList').innerHTML=roles(data.freelance||INITIAL_DATA.freelance);
+if(c.email){document.querySelectorAll('.email-link').forEach(el=>el.href='mailto:'+c.email);document.getElementById('emailText').textContent=c.email}for(const k of ['linkedin','github'])if(c[k])document.getElementById(k).href=safeUrl(c[k]);if(c.phone){document.getElementById('phone').href='tel:'+c.phone;document.getElementById('phone').textContent=c.phoneDisplay||c.phone}}
+document.getElementById('lang').onclick=()=>{lang=lang==='ar'?'en':'ar';save('portfolio_lang',lang);render()};document.getElementById('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;save('portfolio_theme',t)};
+try{const bc=new BroadcastChannel('portfolio_sync');bc.onmessage=e=>{if(e.data?.type==='DATA_UPDATED'&&e.data.data?.personal){data=e.data.data;save('portfolio_cache',JSON.stringify(data));render()}}}catch(e){}
+window.addEventListener('storage',e=>{if(e.key==='portfolio_cache'&&e.newValue){try{data=JSON.parse(e.newValue);render()}catch(x){}}});
+render();
+async function fetchLatestFromCloud(){if(!CLOUD_URL)return;try{const r=await fetch(CLOUD_URL,{cache:'no-store'});if(r.ok){const j=await r.json();const p=JSON.parse(j.fields.payload.stringValue);if(p.personal){data=p;save('portfolio_cache',JSON.stringify(data));render()}}}catch(e){}}
+fetchLatestFromCloud();
+</script></body></html>
